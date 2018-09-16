@@ -1,0 +1,71 @@
+{
+  "app":{
+    "name":"browser title",
+    "description": "meta description",
+    "keywords": "meta keywords"
+  },
+  "home_categories": ["美术", "技术", "音频", "本地化", "资质"],
+  "home_display1": {
+    "title": "热门资源",
+    "learn_more": true,
+    "col": "2",
+    "body": [
+      {
+        "title": "著名大师若昕，欧美魔幻画风",
+        "image": "home-thumb-1.jpg",
+        "price": "5000",
+        "days": "45",
+        "comments": "26"
+      },
+      {
+        "title": "大师zhangji曾服务世界顶级项目",
+        "image": "home-thumb-2.jpg",
+        "price": "5000",
+        "days": "45",
+        "comments": "26"
+      }
+    ]
+  },
+  "home_display2": {
+    "title": "热门推荐",
+    "learn_more": true,
+    "col": "2",
+    "body": [
+      {
+        "title": "现代风格3D角色，韩国作者",
+        "image": "home-thumb-3.jpg",
+        "price": "12000",
+        "days": "45",
+        "comments": "54"
+      },
+      {
+        "title": "大师zhangji曾服务世界顶级项目",
+        "image": "home-thumb-4.jpg",
+        "price": "5000",
+        "days": "45",
+        "comments": "26"
+      }
+    ]
+  },
+  "home_display3": {
+    "title": "猜你喜欢",
+    "learn_more": true,
+    "col": "1",
+    "body": [
+      {
+        "title": "水墨风格/国产武侠原画，超高精度，包满意",
+        "image": "home-thumb-5.jpg",
+        "price": "¥ 30000-50000",
+        "days": "45",
+        "comments": "1012"
+      },
+      {
+        "title": "游戏美术风格的归类与划分",
+        "image": "home-thumb-5.jpg",
+        "price": "¥ 30000-50000",
+        "days": "45",
+        "comments": "2091"
+      }
+    ]
+  }
+}

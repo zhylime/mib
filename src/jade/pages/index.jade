@@ -1,0 +1,20 @@
+extends ../partials/_template
+//- include ../mixins/_menu
+//- include ../mixins/_banner
+include ../mixins/_display-projects
+
+block content
+  .c-content
+    .c-search.l-mgn--t-10
+      form.c-search--form#sf
+        .c-search--icon.ic--search
+        input(type='text', name='sf_wd', placeholder="点击搜索各类资源")
+
+    .c-categories.l-mgn--t-20
+      each item in home_categories
+        a.c-categories--btn(href="#")!=item
+          
+    +display-projects(home_display1)
+    +display-projects(home_display2)
+    +display-projects(home_display3)
+
