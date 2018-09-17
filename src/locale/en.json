@@ -15,14 +15,16 @@
         "image": "home-thumb-1.jpg",
         "price": "5000",
         "days": "45",
-        "comments": "26"
+        "comments": "26",
+        "stars_image": "ic-stars-1.png"
       },
       {
         "title": "大师zhangji曾服务世界顶级项目",
         "image": "home-thumb-2.jpg",
         "price": "5000",
         "days": "45",
-        "comments": "26"
+        "comments": "26",
+        "stars_image": "ic-stars-2.png"
       }
     ]
   },
@@ -36,14 +38,16 @@
         "image": "home-thumb-3.jpg",
         "price": "12000",
         "days": "45",
-        "comments": "54"
+        "comments": "54",
+        "stars_image": "ic-stars-3.png"
       },
       {
         "title": "大师zhangji曾服务世界顶级项目",
         "image": "home-thumb-4.jpg",
         "price": "5000",
         "days": "45",
-        "comments": "26"
+        "comments": "26",
+        "stars_image": "ic-stars-4.png"
       }
     ]
   },
@@ -55,17 +59,51 @@
       {
         "title": "水墨风格/国产武侠原画，超高精度，包满意",
         "image": "home-thumb-5.jpg",
-        "price": "¥ 30000-50000",
+        "price": "¥30000-50000",
         "days": "45",
-        "comments": "1012"
+        "comments": "1012",
+        "author": "home-author-thumb-1.jpg"
       },
       {
         "title": "游戏美术风格的归类与划分",
-        "image": "home-thumb-5.jpg",
+        "image": "home-thumb-6.jpg",
+        "price": "¥30000-50000",
+        "days": "45",
+        "comments": "2091",
+        "author": "home-author-thumb-2.jpg"
+      },
+      {
+        "title": "游戏美术风格的归类与划分",
+        "image": "home-thumb-7.jpg",
         "price": "¥ 30000-50000",
         "days": "45",
-        "comments": "2091"
+        "comments": "2091",
+        "author": "home-author-thumb-3.jpg"
       }
     ]
-  }
+  },
+  "main_menu": [
+    {
+      "icon": "ic--menu--search",
+      "name": "搜索"
+    },
+    {
+      "icon": "ic--menu--share",
+      "name": "分享"
+    },
+    {
+      "icon": "ic--menu--selected",
+      "name": "精选"
+    },
+    {
+      "icon": "ic--menu--msg",
+      "name": "消息"
+    },
+    {
+      "icon": "ic--menu--me",
+      "name": "我的"
+    }
+  ]
+
+  
 }

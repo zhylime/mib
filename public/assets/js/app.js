@@ -1,13 +1,15 @@
 'use strict';
 
 $(document).ready(function () {
-  banner();
 
-  function banner() {
-    $('.js-banner').slick({
-      dots: true,
-      infinite: true,
-      slidesToShow: 1,
+  slider();
+
+  function slider() {
+    $('.js-categories-slider').slick({
+      // centerMode: true,
+      dots: false,
+      infinite: false,
+      slidesToShow: 4,
       arrows: false
     });
   }
