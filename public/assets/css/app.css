@@ -8,8 +8,15 @@ footer {
   max-width: 580px;
   margin: auto;
 }
-h1 {
-  color: #800080;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  color: #484848;
 }
 a {
   text-decoration: none;
@@ -38,6 +45,17 @@ input:-ms-input-placeholder {
 }
 .has-shadow {
   box-shadow: 1px 1px 10px rgba(130,130,130,0.3);
+}
+.hr {
+  border-top: 1px solid #dde0e3;
+}
+.hide {
+  display: none;
+}
+.clearfix:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 .ic--stars--4 {
   background-image: url("../img/ic-stars-4.png");
@@ -85,8 +103,15 @@ footer {
   max-width: 580px;
   margin: auto;
 }
-h1 {
-  color: #800080;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+  color: #484848;
 }
 a {
   text-decoration: none;
@@ -100,6 +125,9 @@ a {
 }
 .txt--h1 {
   font-size: 28px;
+}
+.txt--center {
+  text-align: center;
 }
 .l-columns:after {
   clear: both;
@@ -801,6 +829,8 @@ a {
 }
 .c-content {
   padding: 0 20px;
+}
+.c-content.c-content--bottom {
   margin-bottom: 68px;
 }
 .c-menu {
@@ -857,6 +887,22 @@ a {
   font-size: 20px;
   outline: none;
   background: inherit;
+}
+.c-search--history--container {
+  width: 100%;
+  height: calc((40px + 12px) * 3);
+  overflow: hidden;
+}
+.c-search--history--list:after {
+  clear: both;
+}
+.c-search--history--list--item {
+  float: left;
+  padding: 10px 20px;
+  background: #f5f5f5;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 12px;
 }
 .slick-list {
   padding: 0 20px 0 0;

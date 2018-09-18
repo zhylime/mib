@@ -82,26 +82,32 @@
       }
     ]
   },
+  "search_history": ["美术外包", "3D游戏", "仙侠", "二次元", "配音", "程序外包", "角色外包", "场景设计", "UI外包", "游戏图标", "更多记录", "更多记录", "更多记录", "更多记录", "更多记录", "更多记录"],
   "main_menu": [
     {
       "icon": "ic--menu--search",
-      "name": "搜索"
+      "name": "搜索",
+      "link": "./search.html"
     },
     {
       "icon": "ic--menu--share",
-      "name": "分享"
+      "name": "分享",
+      "link": "#"
     },
     {
       "icon": "ic--menu--selected",
-      "name": "精选"
+      "name": "精选",
+      "link": "#"
     },
     {
       "icon": "ic--menu--msg",
-      "name": "消息"
+      "name": "消息",
+      "link": "#"
     },
     {
       "icon": "ic--menu--me",
-      "name": "我的"
+      "name": "我的",
+      "link": "#"
     }
   ]
 
