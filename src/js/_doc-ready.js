@@ -1,12 +1,11 @@
 $(document).ready(function(){
   slider();
-  history();
+  historyEllipsis();
 
 
 
   function slider(){
     $('.js-categories-slider').slick({
-      // centerMode: true,
       dots: false,
       infinite: false,
       slidesToShow: 4,
@@ -14,18 +13,16 @@ $(document).ready(function(){
     })
   }
 
-  function history(){
+  function historyEllipsis(){
     var defHeight = 52 * 3; //3 lines of search history
     var slideHeight = $('.js-history-list').height();
     var toggleHeight;
-
-    console.log(slideHeight);
+    // init history height
     if(defHeight < slideHeight){
       $('.js-history-view-more').removeClass('hide');
-      // $('.js-history-box').css('height', defHeight + 'px');
       toggleHeight = slideHeight;
     }
-    // $('.js-history-box').css('max-height', 'initial');
+    // toggle height
     $('.js-history-view-more').on('click', function(){
       $('.js-history-box').animate({
         'height': toggleHeight + 'px'
@@ -33,13 +30,5 @@ $(document).ready(function(){
       toggleHeight = toggleHeight == defHeight? slideHeight : defHeight;
     })
   }
-
-  // function historyEllipsis(){
-  //   $('.js-history-list').animate({
-  //     'height': toggleHeight + 'px'
-  //   });
-  //     toggleHeight = defHeight;
-    
-  // }
 
 });
