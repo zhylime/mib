@@ -45,7 +45,7 @@ var paths = {
   js: config.build + 'assets/js/',
   srcJade: config.src + 'jade/pages/**/*.jade',
   srcStylus: config.src + 'stylus/app.styl',
-  srcJs: [config.src + 'js/helpers/*.js', config.src + 'js/*.js'],
+  srcJs: [config.src + 'js/*.js', config.src + 'js/_doc-ready.js'],
   styles: config.src + 'stylus/',
   jade: config.src + 'jade/',
   locale: config.src + 'locale/' + config.language + '.json'

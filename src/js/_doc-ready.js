@@ -1,6 +1,7 @@
 $(document).ready(function(){
   slider();
-  historyEllipsis();
+  // historyEllipsis();
+  // storeExpand()
 
 
 
@@ -12,7 +13,13 @@ $(document).ready(function(){
       arrows: false
     })
   }
-
+  
+  $('[data-js-collapse]').Collapse({
+    text: true
+  });
+  // $('[data-js-collapse-comments]').Collapse({
+  //   text: true
+  // });
   function historyEllipsis(){
     var defHeight = 52 * 3; //3 lines of search history
     var slideHeight = $('.js-history-list').height();
@@ -30,5 +37,7 @@ $(document).ready(function(){
       toggleHeight = toggleHeight == defHeight? slideHeight : defHeight;
     })
   }
+
+  
 
 });
