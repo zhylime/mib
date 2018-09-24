@@ -134,17 +134,20 @@ input:-ms-input-placeholder {
 .ic--share {
   background-image: url("../img/ic-share.png");
   background-size: 100%;
+  background-repeat: no-repeat;
   display: block;
-  width: 27px;
-  height: 30px;
+  width: 18px;
+  height: 20px;
+  margin: auto;
 }
 .ic--fav {
   background-image: url("../img/ic-fav.png");
   background-repeat: no-repeat;
   background-size: 100%;
   display: block;
-  width: 30px;
-  height: 30px;
+  width: 18px;
+  height: 20px;
+  margin: auto;
 }
 .ic--art1 {
   background-image: url("../img/ic-art1.png");
@@ -1088,12 +1091,12 @@ a {
   padding: 0 20px;
 }
 .c-header {
-  position: fixed;
+  position: absolute;
   width: 100%;
-  top: 0;
-  left: 0;
+}
+.c-header.pos-absolute {
+  position: absolute;
   background: #fff;
-  z-index: 1;
 }
 .c-header span {
   color: #fff;
@@ -1101,12 +1104,16 @@ a {
 .c-header--other {
   display: inline-block;
 }
+.c-header--other--item,
 .c-header--other--share,
 .c-header--other--fav {
   display: inline-block;
 }
 .c-header--other--notif span {
   font-size: 10px;
+}
+.c-header--other--item span {
+  font-size: 14px;
 }
 .c-header.has-shadow {
   box-shadow: 1px 1px 5px rgba(130,130,130,0.3);
