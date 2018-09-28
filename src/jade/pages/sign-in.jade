@@ -1,0 +1,34 @@
+extends ../partials/_template
+
+//- include ../mixins/_display-projects
+//- include ../mixins/_menu
+//- include ../mixins/_search-bar
+
+block content
+  .c-content.c-sign-in--bg
+    .c-sign-in
+      h1 欢迎使用MIB
+      h2 (Mega Icebreaker)
+      form.c-sign-in--form
+        
+        .c-sign-in--form--rol
+          .ic--user
+          input
+        .c-sign-in--form--rol
+          .ic--psw
+          input
+          .ic-eye
+        div.c-sign-in--form--switch 
+          span 用短信验证码登录
+        button.c-sign-in--form--submit(value="登陆")
+        div.c-sign-in--form--help
+          span 忘记密码？点击获取帮助
+
+      .c-sign-in--other
+        span 第三方账号快速登录
+        .c-sign-in--other--enter
+          .ic--wechat
+          .ic--qq
+      .c-sign-in--register
+        span 还没有账户？注册
+

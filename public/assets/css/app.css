@@ -1,3 +1,11 @@
+@font-face {
+  font-family 'appleFont' {
+    src: url("../fonts/pingfang-medium-webfont.eot");
+    src: url("../fonts/pingfang-medium-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/pingfang-medium-webfont.woff2") format('woff2'), url("../fonts/pingfang-medium-webfont.woff") format('woff'), url("../fonts/pingfang-medium-webfont.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
 html,
 body {
   height: 100%;
@@ -21,12 +29,18 @@ h4,
 h5,
 h6,
 p,
-a {
+a,
+li,
+span {
   color: #484848;
 }
 a {
   text-decoration: none;
   color: initial;
+}
+p {
+  font-size: 16px;
+  line-height: 24px;
 }
 .bg--white {
   background: #fff;
@@ -36,6 +50,20 @@ a {
 }
 .bg--wild-sand {
   background: #f5f5f5;
+}
+@font-face {
+  font-family 'appleFont' {
+    src: url("../fonts/pingfang-medium-webfont.eot");
+    src: url("../fonts/pingfang-medium-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/pingfang-medium-webfont.woff2") format('woff2'), url("../fonts/pingfang-medium-webfont.woff") format('woff'), url("../fonts/pingfang-medium-webfont.ttf") format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+@font-face {
+  font-family 'appleFont' {
+    src: url("../fonts/pingfang-medium-webfont.eot");
+    src: url("../fonts/pingfang-medium-webfont.eot?#iefix") format('embedded-opentype'), url("../fonts/pingfang-medium-webfont.woff2") format('woff2'), url("../fonts/pingfang-medium-webfont.woff") format('woff'), url("../fonts/pingfang-medium-webfont.ttf") format('truetype');
+  }
 }
 input::-webkit-input-placeholder {
   color: #8c8c8c;
@@ -242,18 +270,30 @@ h4,
 h5,
 h6,
 p,
-a {
+a,
+li,
+span {
   color: #484848;
 }
 a {
   text-decoration: none;
   color: initial;
 }
+p {
+  font-size: 16px;
+  line-height: 24px;
+}
 .txt--white {
   color: #fff;
 }
 .txt--black {
   color: #000 !important;
+}
+.txt--bittersweet {
+  color: #fd6160 !important;
+}
+.txt--persian-green {
+  color: #00a5a5;
 }
 .txt--h1 {
   font-size: 28px;
@@ -1165,6 +1205,49 @@ a {
 .c-menu--item.active .ic--menu--me {
   background-position: 37px 37px;
 }
+.c-price-detail h3 {
+  font-size: 28px;
+}
+.c-price-detail h4 {
+  font-size: 20px;
+  line-height: 30px;
+}
+.c-price-detail--section {
+  margin: 20px 0 40px;
+  border: 1px solid #cad3d3;
+  border-radius: 5px;
+  padding: 20px;
+}
+.c-price-detail--section ul li {
+  list-style-type: none;
+  position: relative;
+  padding-left: 30px;
+  margin-bottom: 20px;
+}
+.c-price-detail--section ul li:before {
+  content: "";
+  background: url("../img/ic-bullet.png");
+  background-size: 100%;
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.c-price-detail--section ul li:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: calc(100% - 10px);
+  position: absolute;
+  top: 25px;
+  left: 10px;
+  background: #00a5a5;
+}
+.c-price-detail--section ul li:nth-last-of-type(1):after {
+  display: none;
+}
 .c-search--icon {
   width: 17px;
   height: 17px;
@@ -1199,6 +1282,24 @@ a {
   border-radius: 5px;
   margin-right: 10px;
   margin-bottom: 12px;
+}
+.c-sign-in--bg {
+  background: url("../img/bg-sign-in.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
+.c-sign-in h1 {
+  font-size: 44px;
+  color: #484848;
+  font-family: $font-apple;
+}
+.c-sign-in h2 {
+  font-size: 22px;
+  color: #484848;
 }
 .slick-list {
   padding: 0 20px 0 0;
@@ -1349,6 +1450,12 @@ a {
   position: absolute;
   right: 0;
 }
+.c-store--links li.ps {
+  font-size: 20px;
+}
+.c-store--links li.ps:after {
+  background: none;
+}
 .c-store--footer {
   padding: 10px 20px;
   box-sizing: border-box;
@@ -1379,6 +1486,16 @@ a {
   top: 50%;
   margin-top: -25px;
   text-align: center;
+}
+.c-store--popup--comments {
+  box-sizing: border-box;
+}
+.c-store--popup--comments ul li {
+  list-style-type: none;
+}
+.c-store--popup--comments ul li img {
+  width: 65px;
+  float: right;
 }
 .m-display-projects .txt--h1 {
   color: #484848;
@@ -1413,4 +1530,13 @@ a {
 }
 .m-display-projects .col {
   box-sizing: border-box;
+}
+.m-store-comments--item .thumb {
+  width: 50px;
+}
+.m-store-comments--item .col {
+  vertical-align: middle;
+}
+.m-store-comments--item .reply {
+  padding-left: 20px;
 }
