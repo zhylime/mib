@@ -1,7 +1,7 @@
 $(document).ready(function(){
   slider();
   historyEllipsis();
-
+  $(document).Popups();
 
 
 
@@ -17,9 +17,22 @@ $(document).ready(function(){
   $('[data-js-collapse]').Collapse({
     text: true
   });
-  // $('[data-js-collapse-comments]').Collapse({
-  //   text: true
-  // });
+  $('[data-js-carousel').Carousel();
+  
+  // lightbox on store
+  lightbox.option({
+    'resizeDuration': 200,
+    'wrapAround': true
+  })
+
+  // datepicker on order detail
+  $('.js-datepicker').dateRangePicker({
+    language:'cn'
+  });
+
+
+
+
   function historyEllipsis(){
     var defHeight = 52 * 3; //3 lines of search history
     var slideHeight = $('.js-history-list').height();

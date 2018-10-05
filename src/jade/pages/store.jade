@@ -16,8 +16,15 @@ block content
 
 
   .c-store
-    .c-store--banner
-      img.l-w--100p(src=paths.img + 'store-image-1.jpg')
+    .c-store--banner(data-js-carousel)
+      a(href=paths.img + 'store-image-1.jpg', data-lightbox="store-banner")
+        img.l-w--100p(src=paths.img + 'store-image-1.jpg')
+      a(href=paths.img + 'store-image-2.jpg', data-lightbox="store-banner")
+        img.l-w--100p(src=paths.img + 'store-image-2.jpg')
+      a(href=paths.img + 'store-image-1.jpg', data-lightbox="store-banner")
+        img.l-w--100p(src=paths.img + 'store-image-1.jpg')
+      a(href=paths.img + 'store-image-2.jpg', data-lightbox="store-banner")
+        img.l-w--100p(src=paths.img + 'store-image-2.jpg', data-lightbox)
     .c-content
       .c-store--main
         .c-store--main--subtitle.l-mgn--t-20 美术整包
@@ -26,7 +33,7 @@ block content
           ul.col.l-w--70p
             li
               i.ic--art1
-              span.l-mgn--t-10 专业美术团队
+              span 专业美术团队
             li
               i.ic--art2 
               span 顶级国风原画
