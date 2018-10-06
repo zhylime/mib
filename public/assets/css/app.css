@@ -118,6 +118,14 @@ input:-ms-input-placeholder {
   border-radius: 5px;
   text-align: center;
 }
+.btn-type-2 {
+  height: 50px;
+  line-height: 50px;
+  background: #00a5a5;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+}
 .ic--stars--4 {
   background-image: url("../img/ic-stars-4.png");
   background-size: cover;
@@ -1457,6 +1465,16 @@ input {
 }
 .c-project-profile .c-price-detail--section {
   padding: 20px 5px;
+}
+.c-rules {
+  position: relative;
+  height: 100%;
+}
+.c-rules .btn-type-2 {
+  display: block;
+  width: calc(100% - 40px);
+  position: absolute;
+  bottom: 20px;
 }
 .c-search--icon {
   width: 17px;
