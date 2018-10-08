@@ -26,9 +26,9 @@ $(document).ready(function(){
   })
 
   // datepicker on order detail
-  $('.js-datepicker').dateRangePicker({
-    language:'cn'
-  });
+  // $('.js-datepicker').dateRangePicker({
+  //   language:'cn'
+  // });
 
 
 

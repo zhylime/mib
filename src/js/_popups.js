@@ -16,10 +16,11 @@ $.fn.Popups = function(opts){
       // $('.js-popup-code').show();
       showPopup($('.js-popup-code'));
     });
-    $(document).on('click touch', '.js-popup-cover', function(e){
+    $(document).on('click touch', '.js-popup-cover, .js-close-popup-code', function(e){
       e.stopPropagation();
       closePopup($('.js-popup-code'));
     });
+
   }
 
   function showPopup(ele){

@@ -90,9 +90,10 @@ $(document).ready(function () {
   });
 
   // datepicker on order detail
-  $('.js-datepicker').dateRangePicker({
-    language: 'cn'
-  });
+  // $('.js-datepicker').dateRangePicker({
+  //   language:'cn'
+  // });
+
 
   function historyEllipsis() {
     var defHeight = 52 * 3; //3 lines of search history
@@ -136,7 +137,7 @@ $.fn.Popups = function (opts) {
       // $('.js-popup-code').show();
       showPopup($('.js-popup-code'));
     });
-    $(document).on('click touch', '.js-popup-cover', function (e) {
+    $(document).on('click touch', '.js-popup-cover, .js-close-popup-code', function (e) {
       e.stopPropagation();
       closePopup($('.js-popup-code'));
     });

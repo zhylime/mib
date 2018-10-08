@@ -117,6 +117,7 @@ input:-ms-input-placeholder {
   border: 1px solid #00a5a5;
   border-radius: 5px;
   text-align: center;
+  display: block;
 }
 .btn-type-2 {
   height: 50px;
@@ -125,6 +126,7 @@ input:-ms-input-placeholder {
   color: #fff;
   border-radius: 5px;
   text-align: center;
+  display: block;
 }
 .ic--stars--4 {
   background-image: url("../img/ic-stars-4.png");
@@ -1252,6 +1254,42 @@ input {
   margin: auto;
   float: none;
 }
+.c-find-psw--header {
+  background: #00a5a5;
+}
+.c-find-psw--header .ic--back {
+  float: left;
+  margin-right: 10px;
+}
+.c-find-psw--header span {
+  color: #fff;
+}
+.c-find-psw--form {
+  margin-top: 40px;
+}
+.c-find-psw--form p {
+  font-size: 20px;
+}
+.c-find-psw--form--rol {
+  margin-top: 20px;
+  padding: 10px 0;
+}
+.c-find-psw--form--rol input {
+  font-size: 20px;
+}
+.c-find-psw--form--rol input.input-psw {
+  width: calc(100% - 100px);
+}
+.c-find-psw--form--rol .btn-type-1 {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  width: 100px;
+}
+.c-find-psw--form .btn-type-2 {
+  width: 100%;
+  margin-top: 40px;
+}
 .c-gift-card form label {
   font-size: 13px;
   color: #484848;
@@ -1375,6 +1413,15 @@ input {
   background: #fff;
   text-align: center;
   padding: 20px;
+}
+.c-popup--code .warning {
+  display: block;
+  font-size: 14px;
+  color: #ee4746;
+}
+.c-popup--code .ic--close--black {
+  position: relative;
+  z-index: 1;
 }
 .c-popup--code h2 {
   font-size: 26px;
