@@ -8,6 +8,8 @@ $.fn.Popups = function(opts){
 
   function events(){
     txtMsgPopup();
+    registerPopup();
+    verifyEmailPopup();
   }
 
   function txtMsgPopup(){
@@ -21,6 +23,24 @@ $.fn.Popups = function(opts){
       closePopup($('.js-popup-code'));
     });
 
+  }
+  function registerPopup(){
+    $(document).on('click touch', '.js-popup-cover, .js-close-register', function(e){
+      e.stopPropagation();
+      closePopup($('.js-popup-register'));
+    });
+  }
+
+  function verifyEmailPopup(){
+    $(document).on('click touch', '.js-register-btn', function(e){
+      e.stopPropagation()
+      // $('.js-popup-code').show();
+      showPopup($('.js-popup-verify-email'));
+    });
+    $(document).on('click touch', '.js-popup-cover, .js-close-verify-email', function(e){
+      e.stopPropagation();
+      closePopup($('.js-popup-verify-email'));
+    });
   }
 
   function showPopup(ele){

@@ -1,5 +1,5 @@
 extends ../partials/_template
-
+include ../mixins/_popup
 
 block content
   .c-content.c-sign-in--bg
@@ -23,19 +23,7 @@ block content
             .ic--wechat.l-mgn--10
             .ic--qq.l-mgn--10
         .c-sign-in--register.l-mgn--10
-          a(href="javascript:void(0);") 还没有账户？注册
-  .c-popup--code.js-popup-code
-    a(href="javascript:void(0);").js-close-popup-code.ic--close--black.l-f--r
-    h2 请输入短信验证码
-    span.warning.l-mgn--t-10 验证码错误
-    .l-mgn--t-10.l-mgn--b-20
-      input(type="text")
-      input(type="text")
-      input(type="text")
-      input(type="text")
-      input(type="text")
-      input(type="text")
-    a.btn-type-1(href="javascript:void(0);") 发送验证码
-    a.login-btn.l-mgn--t-20(href="javascript:void(0);") 登陆
-  .c-popup--cover.js-popup-cover
+          a(href="register.html") 还没有账户？注册
+  +popup('signIn')
+
 

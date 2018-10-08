@@ -68,6 +68,7 @@ $(document).ready(function () {
   slider();
   historyEllipsis();
   $(document).Popups();
+  $('[data-js-register]').Register();
 
   function slider() {
     $('.js-categories-slider').slick({
@@ -90,10 +91,9 @@ $(document).ready(function () {
   });
 
   // datepicker on order detail
-  // $('.js-datepicker').dateRangePicker({
-  //   language:'cn'
-  // });
-
+  $('.js-datepicker').dateRangePicker({
+    language: 'cn'
+  });
 
   function historyEllipsis() {
     var defHeight = 52 * 3; //3 lines of search history
@@ -129,6 +129,8 @@ $.fn.Popups = function (opts) {
 
   function events() {
     txtMsgPopup();
+    registerPopup();
+    verifyEmailPopup();
   }
 
   function txtMsgPopup() {
@@ -142,6 +144,24 @@ $.fn.Popups = function (opts) {
       closePopup($('.js-popup-code'));
     });
   }
+  function registerPopup() {
+    $(document).on('click touch', '.js-popup-cover, .js-close-register', function (e) {
+      e.stopPropagation();
+      closePopup($('.js-popup-register'));
+    });
+  }
+
+  function verifyEmailPopup() {
+    $(document).on('click touch', '.js-register-btn', function (e) {
+      e.stopPropagation();
+      // $('.js-popup-code').show();
+      showPopup($('.js-popup-verify-email'));
+    });
+    $(document).on('click touch', '.js-popup-cover, .js-close-verify-email', function (e) {
+      e.stopPropagation();
+      closePopup($('.js-popup-verify-email'));
+    });
+  }
 
   function showPopup(ele) {
     var ele = ele;
@@ -153,5 +173,24 @@ $.fn.Popups = function (opts) {
     var ele = ele;
     ele.hide();
     $('.js-popup-cover').hide();
+  }
+};
+'use strict';
+
+$.fn.Register = function (opts) {
+
+  var container = $(this);
+  var _checkbox = $(this).find('.js-checkbox');
+
+  events();
+
+  function events() {
+    checkbox();
+  }
+
+  function checkbox() {
+    _checkbox.on('click touch', function () {
+      $(this).toggleClass('checked');
+    });
   }
 };

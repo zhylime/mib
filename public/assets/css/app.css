@@ -318,6 +318,14 @@ input:-ms-input-placeholder {
   width: 20px;
   height: 25px;
 }
+.ic--email {
+  background-image: url("../img/ic-email.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+  width: 20px;
+  height: 25px;
+}
 .ic--eye {
   background-image: url("../img/ic-eye.png");
   background-repeat: no-repeat;
@@ -408,6 +416,9 @@ input {
 }
 .txt--r {
   text-align: right;
+}
+.txt--l {
+  text-align: left;
 }
 .l-columns:after {
   clear: both;
@@ -1392,18 +1403,7 @@ input {
 .c-order-detail--item .col {
   vertical-align: middle;
 }
-.c-popup--cover {
-  display: none;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.6);
-  z-index: 10;
-  top: 0;
-  left: 0;
-}
-.c-popup--code {
-  display: none;
+.c-popup {
   position: fixed;
   z-index: 99;
   top: 50%;
@@ -1414,8 +1414,17 @@ input {
   text-align: center;
   padding: 20px;
 }
+.c-popup--cover {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  z-index: 10;
+  top: 0;
+  left: 0;
+}
 .c-popup--code .warning {
-  display: block;
+  display: none;
   font-size: 14px;
   color: #ee4746;
 }
@@ -1449,6 +1458,80 @@ input {
   height: 50px;
   line-height: 50px;
   border-radius: 5px;
+}
+.c-popup--register img {
+  width: 80px;
+}
+.c-popup--verify-email {
+  display: none;
+}
+.c-popup--verify-email a.btn-type-2 {
+  display: inline-block;
+  width: 48%;
+}
+.c-popup--verify-email a.btn-type-2:nth-of-type(2) {
+  margin-right: 2%;
+}
+.c-popup--verify-email a.btn-type-2:nth-of-type(3) {
+  margin-left: 2%;
+}
+.c-popup--verify-email a.btn-type-2.disabled {
+  background: #dde0e3;
+  color: #fff;
+}
+.c-popup--verify-email--subscription p,
+.c-popup--verify-email--subscription .checkbox {
+  display: inline-block;
+  vertical-align: middle;
+}
+.c-popup--verify-email--subscription p {
+  width: calc(100% - 100px);
+}
+.c-popup--verify-email .subscription {
+  visibility: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.c-popup--verify-email .checkbox {
+  background: #00a5a5;
+  height: 40px;
+  position: relative;
+  width: 50px;
+  margin-left: 30px;
+}
+.c-popup--verify-email .checkbox:before,
+.c-popup--verify-email .checkbox:after {
+  content: "";
+  width: 40px;
+  height: 40px;
+  background: #00a5a5;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  display: block;
+}
+.c-popup--verify-email .checkbox:before {
+  left: -20px;
+}
+.c-popup--verify-email .checkbox:after {
+  right: -20px;
+}
+.c-popup--verify-email .checkbox .icon {
+  width: 40px;
+  height: 40px;
+  border: 2px solid #00a5a5;
+  position: absolute;
+  background: #fff;
+  left: -20px;
+  top: 0;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.c-popup--verify-email .checkbox.checked .icon {
+  left: 30px;
 }
 .c-price-detail h3 {
   font-size: 28px;
@@ -1512,6 +1595,20 @@ input {
 }
 .c-project-profile .c-price-detail--section {
   padding: 20px 5px;
+}
+.c-register .c-sign-in--form--rol {
+  margin-top: 30px;
+}
+.c-register .c-sign-in--form--rol .ic--email {
+  display: inline-block;
+  vertical-align: middle;
+}
+.c-register .c-sign-in--form--rol .input-email {
+  width: calc(100% - 40px);
+}
+.c-register .button.disabled {
+  background: #dde0e3;
+  color: #fff;
 }
 .c-rules {
   position: relative;
