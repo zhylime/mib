@@ -107,6 +107,19 @@ input:-ms-input-placeholder {
 .has-menu {
   margin-bottom: 68px;
 }
+.has-right-arrow--b {
+  position: relative;
+}
+.has-right-arrow--b:after {
+  content: "";
+  background: url("../img/ic-right-arrow-b.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  width: 9px;
+  height: 18px;
+  position: absolute;
+  right: 0;
+}
 .border-bottom {
   border-bottom: 1px solid #dde0e3;
 }
@@ -123,6 +136,15 @@ input:-ms-input-placeholder {
   height: 50px;
   line-height: 50px;
   background: #00a5a5;
+  color: #fff;
+  border-radius: 5px;
+  text-align: center;
+  display: block;
+}
+.btn-type-3 {
+  height: 50px;
+  line-height: 50px;
+  background: #fd6160;
   color: #fff;
   border-radius: 5px;
   text-align: center;
@@ -302,6 +324,16 @@ input:-ms-input-placeholder {
 .ic--checkbox.active {
   background-image: url("../img/ic-checkbox-active.png");
 }
+.ic--checkbox-2 {
+  background-image: url("../img/ic-checkbox-2.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 15px;
+  height: 15px;
+}
+.ic--checkbox-2.active {
+  background-image: url("../img/ic-checkbox-2-active.png");
+}
 .ic--user {
   background-image: url("../img/ic-user.png");
   background-repeat: no-repeat;
@@ -349,6 +381,13 @@ input:-ms-input-placeholder {
   background-size: 100%;
   width: 70px;
   height: 70px;
+}
+.ic--alipay {
+  background-image: url("../img/ic-alipay.png");
+  background-size: 100%;
+  width: 30px;
+  height: 30px;
+  background-position: center;
 }
 html,
 body {
@@ -459,6 +498,9 @@ input {
 }
 .l-w--100p {
   width: 100% !important;
+}
+.l-inl-b {
+  display: inline-block;
 }
 .l-f--l {
   float: left;
@@ -1400,6 +1442,7 @@ input {
   padding: 20px 20px 80px 20px;
 }
 .c-order-detail--item {
+  display: block;
   border-bottom: 1px solid #dde0e3;
   padding: 20px 0;
 }
@@ -1549,6 +1592,10 @@ input {
 }
 .c-popup--verify-email .checkbox.checked .icon {
   left: 30px;
+}
+.c-prepay .has-right-arrow--b:after {
+  top: 50%;
+  margin-top: -9px;
 }
 .c-price-detail h3 {
   font-size: 28px;

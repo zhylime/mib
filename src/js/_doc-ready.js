@@ -5,6 +5,7 @@ $(document).ready(function(){
 
   $('[data-js-register]').Register();
   $('[data-js-order-detail]').OrderDetail();
+  $('[data-js-prepay]').PrePay();
 
 
 
