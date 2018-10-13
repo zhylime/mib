@@ -1,4 +1,6 @@
 extends ../partials/_template
+include ../mixins/_popup
+
 
 block content
   .c-find-psw
@@ -16,6 +18,7 @@ block content
         input.l-w--100p(type="password", placeholder="再次输入新密码")
 
       button.btn-type-2 确定
+  +popup('resetPsw')
     
 
 

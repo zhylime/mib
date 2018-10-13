@@ -68,7 +68,9 @@ $(document).ready(function () {
   slider();
   historyEllipsis();
   $(document).Popups();
+
   $('[data-js-register]').Register();
+  $('[data-js-order-detail]').OrderDetail();
 
   function slider() {
     $('.js-categories-slider').slick({
@@ -121,6 +123,50 @@ $(document).ready(function () {
 });
 'use strict';
 
+$.fn.OrderDetail = function (opts) {
+
+  var _checkbox = $(this).find('.js-order-detail-checkbox');
+  var _userInfo = $(this).find('.js-user-info p');
+  var _inputUserName = $(this).find('.js-user-info input[name="userName"]');
+  var _inputUserId = $(this).find('.js-user-info input[name="userId"]');
+  var _updateUserBtn = $(this).find('.js-user-info .js-btn');
+
+  events();
+
+  function events() {
+    toggleCheckbox();
+    updateUserInfo();
+  }
+
+  function toggleCheckbox() {
+    _checkbox.on('click touch', function () {
+      var _value = $(this).attr('data-value') == '' ? 'checked' : '';
+      // console.log($(this).attr('data-value') == '');
+      $(this).toggleClass('active');
+      $(this).attr('data-value', _value);
+      $(this).next().val(_value);
+    });
+  }
+
+  function updateUserInfo() {
+    var label = _updateUserBtn.html() == '更改' ? '完成' : '更改';
+    syncUserInfo();
+
+    _updateUserBtn.on('click touch', function () {
+      _inputUserName.toggle();
+      _inputUserId.toggle();
+      _userInfo.toggle();
+      syncUserInfo();
+    });
+  }
+
+  function syncUserInfo() {
+    var _html = _inputUserName.val() + ' ' + _inputUserId.val();
+    _userInfo.html(_html);
+  }
+};
+'use strict';
+
 $.fn.Popups = function (opts) {
 
   var container = $(this);
@@ -131,6 +177,7 @@ $.fn.Popups = function (opts) {
     txtMsgPopup();
     registerPopup();
     verifyEmailPopup();
+    resetPswPopup();
   }
 
   function txtMsgPopup() {
@@ -160,6 +207,15 @@ $.fn.Popups = function (opts) {
     $(document).on('click touch', '.js-popup-cover, .js-close-verify-email', function (e) {
       e.stopPropagation();
       closePopup($('.js-popup-verify-email'));
+    });
+  }
+
+  function resetPswPopup() {
+    $(document).on('click touch', '.js-popup-cover', function (e) {
+      e.stopPropagation();
+      closePopup($('.js-popup-reset-psw'));
+      // console.log('clicked');
+      // $('.js-popup-reset-psw-btn').click();
     });
   }
 

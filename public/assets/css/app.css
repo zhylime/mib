@@ -1396,12 +1396,29 @@ input {
 .c-menu--item.active .ic--menu--me {
   background-position: 37px 37px;
 }
+.c-order-detail {
+  padding: 20px 20px 80px 20px;
+}
 .c-order-detail--item {
   border-bottom: 1px solid #dde0e3;
   padding: 20px 0;
 }
 .c-order-detail--item .col {
   vertical-align: middle;
+}
+.c-order-detail--item .user-name,
+.c-order-detail--item .user-id {
+  margin-top: 10px;
+  border: 1px solid #dde0e3;
+  display: none;
+  padding: 5px 10px;
+}
+.c-order-detail .c-menu {
+  left: 0;
+}
+.c-order-detail .c-menu .link {
+  color: #00a5a5;
+  font-size: 14px;
 }
 .c-popup {
   position: fixed;

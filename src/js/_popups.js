@@ -10,6 +10,7 @@ $.fn.Popups = function(opts){
     txtMsgPopup();
     registerPopup();
     verifyEmailPopup();
+    resetPswPopup();
   }
 
   function txtMsgPopup(){
@@ -41,6 +42,15 @@ $.fn.Popups = function(opts){
       e.stopPropagation();
       closePopup($('.js-popup-verify-email'));
     });
+  }
+
+  function resetPswPopup(){
+    $(document).on('click touch', '.js-popup-cover', function(e){
+      e.stopPropagation();
+      closePopup($('.js-popup-reset-psw'));
+      // console.log('clicked');
+      // $('.js-popup-reset-psw-btn').click();
+    })
   }
 
   function showPopup(ele){

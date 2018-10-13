@@ -2,7 +2,10 @@ $(document).ready(function(){
   slider();
   historyEllipsis();
   $(document).Popups();
+
   $('[data-js-register]').Register();
+  $('[data-js-order-detail]').OrderDetail();
+
 
 
 

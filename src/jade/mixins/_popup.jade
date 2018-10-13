@@ -39,5 +39,14 @@ mixin popup(page)
           input.subscription(name="subscription", type="checkbox")
           .icon
 
+  else if (page == 'resetPsw')
+    .c-popup.c-popup--reset-psw.js-popup-reset-psw
+      //- a(href="javascript:void(0);").js-close-reset-psw.ic--close--black.l-f--r
+      //- .clearfix
+      .txt--c
+        img(src=paths.img + 'register-img-1.jpg')
+        h2.l-mgn--t-20.l-mgn--b-20 重置密码成功
+      a.btn-type-2.js-popup-reset-psw-btn(href="./sign-in.html") 返回登陆
+
   
   

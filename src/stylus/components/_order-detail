@@ -1,7 +1,0 @@
-.c-order-detail
-  &--item
-    .col
-      vertical-align middle
-  input
-    visibility hidden
-    position absolute
