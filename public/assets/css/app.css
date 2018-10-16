@@ -468,6 +468,9 @@ input {
 .txt--burnt-sienna {
   color: #ec6664;
 }
+.txt--bold {
+  font-weight: bold;
+}
 .txt--h1 {
   font-size: 28px;
 }
@@ -1474,6 +1477,9 @@ input {
 .c-menu--item.active .ic--menu--me {
   background-position: 37px 37px;
 }
+.c-menu--item--name {
+  font-size: 12px;
+}
 .c-order-detail {
   padding: 20px 20px 80px 20px;
 }
@@ -1736,8 +1742,8 @@ input {
   margin: 0 10px 0 20px;
 }
 .c-search--form--input {
-  padding: 7px 0;
-  border-radius: 10px;
+  padding: 14px 0;
+  border-radius: 0;
 }
 .c-search input {
   border: none;
@@ -2059,18 +2065,20 @@ input {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  font-size: 17px;
-  margin-bottom: 5px;
+  font-size: 21px;
+  padding: 0 10px;
 }
 .m-display-projects--item--price {
   color: #ff8605;
 }
 .m-display-projects--item--price,
 .m-display-projects--item--days {
-  font-size: 13px;
+  font-size: 16px;
+  line-height: 22px;
+  padding: 0 10px;
 }
 .m-display-projects--item--comments {
-  font-size: 12px;
+  font-size: 15px;
 }
 .m-display-projects--item--author {
   height: 52px;
@@ -2082,6 +2090,19 @@ input {
 .m-display-projects--more {
   color: #00a5a5;
   font-size: 15px;
+  vertical-align: middle;
+}
+.m-display-projects--more:after {
+  content: "";
+  background: url("../img/ic-right-arrow-2.png");
+  width: 5px;
+  height: 17px;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 4px;
 }
 .m-display-projects .col {
   box-sizing: border-box;
