@@ -6,6 +6,7 @@ body {
   position: relative;
   font-size: 16px;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei";
+  color: #484848;
 }
 footer {
   max-width: 580px;
@@ -25,7 +26,8 @@ h6,
 p,
 a,
 li,
-span {
+span,
+div {
   color: #484848;
 }
 a {
@@ -90,7 +92,7 @@ input:-ms-input-placeholder {
   border-radius: 50%;
 }
 .has-menu {
-  margin-bottom: 68px;
+  margin-bottom: 78px;
 }
 .has-right-arrow--b {
   position: relative;
@@ -143,6 +145,7 @@ input:-ms-input-placeholder {
   background-image: url("../img/ic-search.png");
   background-size: 100%;
   background-repeat: no-repeat;
+  background-position: center;
 }
 .ic--menu {
   background-image: url("../img/ic-main-menu.png");
@@ -395,6 +398,14 @@ input:-ms-input-placeholder {
   height: 40px;
   background-position: center;
 }
+.ic--bin {
+  background-image: url("../img/ic-bin.png");
+  background-size: 100%;
+  width: 20px;
+  height: 30px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 html,
 body {
   height: 100%;
@@ -403,6 +414,7 @@ body {
   position: relative;
   font-size: 16px;
   font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei";
+  color: #484848;
 }
 footer {
   max-width: 580px;
@@ -422,7 +434,8 @@ h6,
 p,
 a,
 li,
-span {
+span,
+div {
   color: #484848;
 }
 a {
@@ -1181,12 +1194,12 @@ input {
 .c-categories--btn {
   background: #fff;
   border: 1px solid #c7c7c7;
-  color: #000;
+  color: #484848;
   text-align: center;
   border-radius: 5px;
   padding: 10px 0;
-  font-size: 14px;
-  margin-right: 2%;
+  font-size: 18px;
+  margin-right: 20px;
 }
 .c-categories--btn.active {
   background: #00a5a5;
@@ -1680,6 +1693,12 @@ input {
 .c-price-detail--section ul li:nth-last-of-type(1):after {
   display: none;
 }
+.c-process h2 {
+  font-size: 40px;
+}
+.c-process .smaller {
+  font-size: 16px;
+}
 .c-project-profile ul li:before {
   content: "";
   width: 8px;
@@ -1721,24 +1740,73 @@ input {
   position: absolute;
   bottom: 20px;
 }
+.c-search {
+  font-size: 17px;
+}
+.c-search h1 {
+  font-size: 22px;
+}
 .c-search--icon {
-  width: 17px;
-  height: 17px;
+  width: 18px;
+  height: 24px;
   float: left;
   margin: 0 10px 0 20px;
 }
+.c-search--form {
+  font-size: 17px;
+}
 .c-search--form--input {
   padding: 14px 0;
-  border-radius: 0;
 }
 .c-search input {
   border: none;
-  line-height: 20px;
+  line-height: 24px;
   width: calc(100% - 60px);
   font-size: 20px;
   outline: none;
   background: inherit;
-  font-size: 16px;
+  font-size: 19px;
+  color: #484848;
+}
+.c-search--history {
+  position: relative;
+}
+.c-search--history h1 {
+  font-size: 22px;
+  font-weight: 500;
+}
+.c-search--history--bin {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.c-search--history--more {
+  color: #00a5a5;
+  position: relative;
+}
+.c-search--history--more:before,
+.c-search--history--more:after {
+  content: "";
+  width: 9px;
+  height: 2px;
+  position: absolute;
+  top: 10px;
+  right: -13px;
+  background: #00a5a5;
+}
+.c-search--history--more:before {
+  transform: rotate(-45deg);
+  right: -19px;
+}
+.c-search--history--more:after {
+  transform: rotate(45deg);
+}
+.c-search--history--more[data-expanded="true"]:before {
+  transform: rotate(45deg);
+  right: -19px;
+}
+.c-search--history--more[data-expanded="true"]:after {
+  transform: rotate(-45deg);
 }
 .c-search--history--container {
   width: 100%;
@@ -2053,6 +2121,7 @@ input {
   white-space: nowrap;
   font-size: 21px;
   padding: 0 10px;
+  margin-top: 7px;
 }
 .m-display-projects--item--price {
   color: #ff8605;
@@ -2091,6 +2160,13 @@ input {
   margin-left: 4px;
 }
 .m-display-projects .col {
+  box-sizing: border-box;
+}
+.m-display-projects .other {
+  font-size: 18px;
+  height: 40px;
+  line-height: 40px;
+  border: 2px solid #00a5a5;
   box-sizing: border-box;
 }
 .m-store-comments--item .thumb {
