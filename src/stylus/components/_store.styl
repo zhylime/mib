@@ -1,6 +1,12 @@
 .c-store
   margin-bottom 120px
   &--main
+    &--subtitle
+      font-size 11px
+    &--title
+      font-size 22px
+      line-height 28px
+      margin 7px 0 14px 
     &--info
       ul
         padding 0
@@ -14,21 +20,21 @@
           color $col-white
           text-align center
           vertical-align middle
-          padding 5px 10px
-          height 50px
+          padding 5px
+          height 38px
           border-radius 5px
           box-sizing border-box
           position relative
           i
-            margin-right 5px
+            margin-right 2px
             width 15px
             vertical-align middle
             height 100%
           span
             display inline-block
-            line-height 40px
+            line-height 30px
             // width 104px
-            font-size 14px
+            font-size 12px
             color $col-white
       &--author
         text-align center
@@ -36,21 +42,51 @@
         box-sizing border-box
         vertical-align top
         img
-          width 65px
+          width 50px
       &--contact
         background $col-bittersweet
         border-radius 5px
-        padding 5px 10px
-        margin-top 3px
+        padding 5px
+        // margin-top 3px
+        width 70px
+        line-height 14px
+        margin auto
         span
           color $col-white
+          font-size 10px
+          line-height 14px
         i
-          margin-right 5px
+          margin-right 2px
           vertical-align middle
   &--detail
     position relative
+    h2
+      font-size 18px
+      font-weight normal
     &--translate
       color $col-persian-green
+      font-size 14px
+      span
+        padding-right 10px
+        position relative
+        &:before
+        &:after
+          content ""
+          width 7px
+          height 2px
+          position absolute
+          background $col-persian-green
+          right 0
+          top 7px
+          display block
+        &:before
+          transform rotate(45deg)
+          
+        &:after
+          transform rotate(145deg)
+          top 11px
+          
+          
     &--body
       height 142px
       overflow hidden

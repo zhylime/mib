@@ -65,7 +65,6 @@ $.fn.Collapse = function (opts) {
 'use strict';
 
 $(document).ready(function () {
-  slider();
 
   $(document).Popups();
 
@@ -73,20 +72,13 @@ $(document).ready(function () {
   $('[data-js-order-detail]').OrderDetail();
   $('[data-js-prepay]').PrePay();
   $('[data-js-payment-method]').PaymentMethod();
-
-  function slider() {
-    $('.js-categories-slider').slick({
-      dots: false,
-      infinite: false,
-      slidesToShow: 4,
-      arrows: false
-    });
-  }
+  $('[data-js-home]').Home();
+  $('[data-js-project-list]').ProjectList();
 
   $('[data-js-collapse]').Collapse({
     text: true
   });
-  $('[data-js-carousel').Carousel();
+  // $('[data-js-carousel').Carousel();
   $('[data-js-search]').Search();
 
   // lightbox on store
@@ -94,13 +86,28 @@ $(document).ready(function () {
     'resizeDuration': 200,
     'wrapAround': true
   });
-
-  // datepicker on order detail
-  // $('.js-datepicker').dateRangePicker({
-  //   language:'cn'
-  // });
-
 });
+'use strict';
+
+$.fn.Home = function (opts) {
+
+  var sliderContainer = $(this).find('.js-categories-slider');
+
+  events();
+
+  function events() {
+    slider();
+  }
+
+  function slider() {
+    sliderContainer.slick({
+      dots: false,
+      infinite: false,
+      slidesToShow: 4,
+      arrows: false
+    });
+  }
+};
 'use strict';
 
 $.fn.OrderDetail = function (opts) {
@@ -262,6 +269,27 @@ $.fn.PrePay = function (opts) {
       $(this).toggleClass('active');
       $(this).attr('data-checked', checkStatus);
       $(this).prev().val(checkStatus);
+    });
+  }
+};
+'use strict';
+
+$.fn.ProjectList = function (opts) {
+
+  var sliderContainer = $(this).find('.js-categories-slider');
+
+  events();
+
+  function events() {
+    slider();
+  }
+
+  function slider() {
+    sliderContainer.slick({
+      dots: false,
+      infinite: false,
+      slidesToShow: 3,
+      arrows: false
     });
   }
 };
