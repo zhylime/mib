@@ -27,7 +27,7 @@ $.fn.Calender = function (opts) {
       });
     }
     _calendarContainer.append('<input type="hidden" name="selectDate" class="js-calendar-select-date">');
-    selectDate();
+    // selectDate();
   }
 
   function selectDate() {
