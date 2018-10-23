@@ -24,7 +24,7 @@ mixin display-projects(data)
         if (col == 2)
           - klass = klass + ' ' + space_klass;
 
-        a.col.m-display-projects--item(class=klass)(href="store.html")
+        a.col.m-display-projects--item(class=klass, href="store.html")
           img.has-corner--5.l-w--100p(src=paths.img + item.image, class=shadow_klass)
           .m-display-projects--item--name!=item.title
           if (col == 2)
