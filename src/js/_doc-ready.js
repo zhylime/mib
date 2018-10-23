@@ -9,6 +9,10 @@ $(document).ready(function(){
   $('[data-js-payment-method]').PaymentMethod();
   $('[data-js-home]').Home();
   $('[data-js-project-list]').ProjectList();
+  $('[data-js-carousel]').Carousel();
+  $('[data-js-store-comments]').StoreComments();
+  $('[data-js-password]').TogglePsw();
+  $('[data-js-calendar]').Calender();
 
 
 
@@ -18,7 +22,7 @@ $(document).ready(function(){
   $('[data-js-collapse]').Collapse({
     text: true
   });
-  // $('[data-js-carousel').Carousel();
+
   $('[data-js-search]').Search();
   
   // lightbox on store

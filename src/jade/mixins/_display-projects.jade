@@ -9,10 +9,10 @@ mixin display-projects(data)
         .txt--h1.txt--500.col.l-v--m.l-w--70p!= title
         .col.l-v--m.l-w--30p.txt--r
           if viewMore
-            a.m-display-projects--more(href="#") 查看更多
+            a.m-display-projects--more(href="project-list.html") 查看更多
     .l-columns
       each item, i in data.body
-        - var klass = col == 2 ? 'l-w--50p col-2' : 'l-w--100p l-mgn--b-20 col-1';
+        - var klass = col == 2 ? 'l-w--50p col-2' : 'l-w--100p col-1';
         - var space_klass = (i+1)%2 == 0 ? 'l-pad--l-5' : 'l-pad--r-5';
         - var _price = item.price + '/套';
         - var _days = '制作周期: ' + item.days + '天';
@@ -24,7 +24,7 @@ mixin display-projects(data)
         if (col == 2)
           - klass = klass + ' ' + space_klass;
 
-        .col.m-display-projects--item(class=klass)
+        a.col.m-display-projects--item(class=klass)(href="store.html")
           img.has-corner--5.l-w--100p(src=paths.img + item.image, class=shadow_klass)
           .m-display-projects--item--name!=item.title
           if (col == 2)
@@ -46,7 +46,7 @@ mixin display-projects(data)
               .m-display-projects--item--author
                 img.has-corner--50p(src=paths.img + item.author)
       if (data.other)
-        a.btn-type-1.l-mgn--t-15.l-w--45p.other.txt--500(href="#")!=data.other
+        a.btn-type-1.l-mgn--t-15.l-w--45p.other.txt--500(href="project-list.html")!=data.other
 
 
 

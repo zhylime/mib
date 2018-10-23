@@ -27,6 +27,25 @@
     height 18px
     position absolute
     right 0
+.has-right-arrow
+  position relative
+  &:before
+  &:after
+    content ""
+    width 10px
+    height 2px
+    position absolute
+    right 0
+  &:before
+    transform rotate(45deg) translateY(-50%)
+    top calc(50% - 2.5px)
+  &:after
+    transform rotate(135deg) translateY(-50%)
+    top calc(50% + 2.5px)
+  &--porcelain 
+    &:before
+    &:after
+      background-color $col-porcelain
 
 .border-bottom
   border-bottom 1px solid $col-iron
