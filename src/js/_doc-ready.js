@@ -4,7 +4,7 @@ $(document).ready(function(){
   $(document).Popups();
 
   $('[data-js-sign-in]').SignIn();
-
+  $('[data-js-sign-in-by-mobile]').MobileVerification();
   $('[data-js-register]').Register();
   $('[data-js-order-detail]').OrderDetail();
   $('[data-js-prepay]').PrePay();
@@ -15,6 +15,9 @@ $(document).ready(function(){
   $('[data-js-store-comments]').StoreComments();
   $('[data-js-password]').TogglePsw();
   $('[data-js-calendar]').Calender();
+
+  $('[data-js-forget-psw]').forgetPsw();
+  $('[data-js-reset-psw]').resetPsw();
 
 
 
