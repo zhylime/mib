@@ -149,49 +149,158 @@ $.fn.forgetPsw = function (opts) {
   var codeBtn = $(this).find('.js-code');
   var submitBtn = $(this).find('.js-submit');
   var form = $(this).find('.js-forget-psw-form');
+  var error = $(this).find('.js-error');
 
   events();
 
   function events() {
     getCode();
     submit();
+    checkInput();
   }
+  function checkInput() {
+    var inputStatus = false;
+    container.find('input').on('keydown', function () {
+      var _length = container.find('input').length;
+      // console.log(_length);
+      for (var i = 0; i < _length; i++) {
 
-  function getCode() {
-    codeBtn.on('click touch', function () {
-      if (!$(this).hasClass('disabled')) {
-        var _time = 60;
-        var _this = this;
-        $(this).addClass('disabled');
+        if ($(container.find('input')[i]).val() == '') {
 
-        var countTime = setInterval(function () {
-          _time = _time - 1;
+          inputStatus = false;
+          break;
+        } else {
+          inputStatus = true;
+        }
+      }
 
-          $(_this).html('重新发送 (' + _time + ')');
-          if (_time == 0) {
-            clearInterval(countTime);
-            $(_this).html('发送验证码');
-            $(_this).removeClass('disabled');
-          }
-        }, 1000);
+      if (inputStatus) {
+        updateSubmitBtn();
       }
     });
+  }
+  function updateSubmitBtn() {
+
+    submitBtn.removeAttr('disabled');
+  }
+  function getCode() {
+    codeBtn.on('click touch', function () {
+      form.validate({
+        rules: {
+          uid: 'required'
+        },
+        messages: {
+          uid: $('input[name="forget-psw-500"]').val()
+        },
+        submitHandler: function submitHandler(e) {
+
+          var _data = form.serializeJson();
+          var _url = 'http://mib.zengpan.org:8000/forget-psw?';
+          var q = form.serializeJson();
+          var response = { "status": 100, "message": "有效用户名" };
+          q['_response'] = response;
+          q = JSON.stringify(q);
+          _url = _url + q;
+
+          var r = new XMLHttpRequest();
+          r.open("GET", encodeURI(_url), true);
+          r.onerror = r.onabort = r.ontimeout = function (e) {
+            console.log(e);
+          };
+          r.send();
+          r.onreadystatechange = function () {
+            if (r.readyState == r.DONE) {
+              if (r.status == 200) {
+                var _status = $.parseJSON(r.response).status;
+                var _msg = $.parseJSON(r.response).message;
+                if (_status == 100) {
+                  error.hide();
+                  getCodeCountDown();
+                } else {
+                  var _errorHtml;
+                  if (_status == 200) {
+                    _errorHtml = $('input[name="forget-psw-200"]').val();
+                  }
+
+                  error.html(_errorHtml);
+                  error.show();
+                }
+              }
+            }
+          };
+        }
+      });
+    });
+  }
+  function getCodeCountDown() {
+
+    var _time = 60;
+    codeBtn.attr('disabled', 'disabled');
+
+    var countTime = setInterval(function () {
+      _time = _time - 1;
+
+      codeBtn.html('重新发送 (' + _time + ')');
+      if (_time == 0) {
+        clearInterval(countTime);
+        codeBtn.html('发送验证码');
+        codeBtn.removeAttr('disabled');
+      }
+    }, 1000);
   }
 
   function submit() {
     submitBtn.on('click touch', function () {
-      var _data = form.serialize();
-      var _url = '';
-
-      /*form submit*/
-      $.ajax({
-        type: 'POST',
-        dataType: 'text',
-        url: _url,
-        data: _data,
-        success: function success(msg) {}
+      form.validate({
+        rules: {
+          uid: 'required',
+          secureCode: 'required'
+        },
+        messages: {
+          uid: $('input[name="forget-psw-500"]').val(),
+          secureCode: $('input[name="forget-psw-600"]').val()
+        },
+        submitHandler: function submitHandler(e) {
+          submitData();
+        }
       });
     });
+  }
+
+  function submitData() {
+    var _data = form.serializeJson();
+    var _url = 'http://mib.zengpan.org:8000/forget-psw?';
+    var q = form.serializeJson();
+    var response = { "status": 300, "message": "验证成功" };
+    q['_response'] = response;
+    q = JSON.stringify(q);
+    _url = _url + q;
+
+    var r = new XMLHttpRequest();
+    r.open("GET", encodeURI(_url), true);
+    r.onerror = r.onabort = r.ontimeout = function (e) {
+      console.log(e);
+    };
+    r.send();
+    r.onreadystatechange = function () {
+      if (r.readyState == r.DONE) {
+        if (r.status == 200) {
+          var _status = $.parseJSON(r.response).status;
+          var _msg = $.parseJSON(r.response).message;
+          if (_status == 300) {
+            error.hide();
+            window.location.href = './reset-psw.html';
+          } else {
+            var _errorHtml;
+            if (_status == 400) {
+              _errorHtml = $('input[name="forget-psw-400"]').val();
+            }
+            error.html(_errorHtml);
+            error.show();
+          }
+        }
+      }
+    };
   }
 };
 'use strict';
@@ -679,7 +788,7 @@ $.fn.Register = function (opts) {
     var _data = form.serializeJson();
     var _url = 'http://mib.zengpan.org:8000/register?';
     var q = form.serializeJson();
-    var response = { "status": 100, "message": "succeed" };
+    var response = { "status": 213, "message": "手机号不可用" };
     q['_response'] = response;
     q = JSON.stringify(q);
     _url = _url + q;
@@ -706,7 +815,36 @@ $.fn.Register = function (opts) {
                 verifyMobilePopup(uid);
               }
           } else {
-            // console.log(_msg);
+            var _errorHtml;
+            if (_status == 210) {
+              _errorHtml = $('input[name="register-210"]').val();
+            } else if (_status == 211) {
+              _errorHtml = $('input[name="register-211"]').val();
+            } else if (_status == 212) {
+              _errorHtml = $('input[name="register-212"]').val();
+            } else if (_status == 213) {
+              _errorHtml = $('input[name="register-213"]').val();
+            } else if (_status == 214) {
+              _errorHtml = $('input[name="register-214"]').val();
+            } else if (_status == 215) {
+              _errorHtml = $('input[name="register-215"]').val();
+            } else if (_status == 220) {
+              _errorHtml = $('input[name="register-220"]').val();
+            } else if (_status == 221) {
+              _errorHtml = $('input[name="siregistergnin-221"]').val();
+            } else if (_status == 222) {
+              _errorHtml = $('input[name="register-222"]').val();
+            } else if (_status == 223) {
+              _errorHtml = $('input[name="register-223"]').val();
+            } else if (_status == 230) {
+              _errorHtml = $('input[name="register-230"]').val();
+            } else if (_status == 231) {
+              _errorHtml = $('input[name="register-231"]').val();
+            } else if (_status == 232) {
+              _errorHtml = $('input[name="register-232"]').val();
+            } else if (_status == 233) {
+              _errorHtml = $('input[name="register-233"]').val();
+            }
             error.html(_msg);
             error.show();
           }
@@ -771,7 +909,7 @@ $.fn.Register = function (opts) {
       var _data = emailForm.serializeJson();
       var q = emailForm.serializeJson();
       var _url = 'http://mib.zengpan.org:8000/register?';
-      var response = { "status": 100, "message": "success" };
+      var response = { "status": 100, "message": "验证成功" };
       q['_response'] = response;
       q = JSON.stringify(q);
       _url = _url + q;
@@ -791,7 +929,12 @@ $.fn.Register = function (opts) {
               emailError.hide();
               registerSuccess();
             } else {
-              emailError.html(_msg);
+              var _errorHtml;
+              if (_status == 200) {
+                _errorHtml = $('input[name="register-email-200"]').val();
+              }
+
+              emailError.html(_errorHtml);
               emailError.show();
             }
           }
@@ -840,7 +983,7 @@ $.fn.Register = function (opts) {
       var _data = mobileForm.serializeJson();
       var _url = 'http://mib.zengpan.org:8000/register?';
       var q = mobileForm.serializeJson();
-      var response = { "status": 100, "message": "success" };
+      var response = { "status": 100, "message": "验证成功" };
       q['_response'] = response;
       q = JSON.stringify(q);
       _url = _url + q;
@@ -854,14 +997,18 @@ $.fn.Register = function (opts) {
       r.onreadystatechange = function () {
         if (r.readyState == r.DONE) {
           if (r.status == 200) {
-            console.log(r);
+            // console.log(r);
             var _status = $.parseJSON(r.response).status;
             var _msg = $.parseJSON(r.response).message;
             if (_status == 100) {
               mobileError.hide();
               registerSuccess();
             } else {
-              mobileError.html(_msg);
+              var _errorHtml;
+              if (_status == 200) {
+                _errorHtml = $('input[name="register-mobile-200"]').val();
+              }
+              mobileError.html(_errorHtml);
               mobileError.show();
             }
           }
@@ -1129,9 +1276,9 @@ $.fn.SignIn = function (opts) {
 
   function submitForm() {
     var _data = form.serializeJson();
-    var _url = 'http://mib.zengpan.org:8000/register?';
+    var _url = 'http://mib.zengpan.org:8000/signin?';
     var q = form.serializeJson();
-    var response = { "status": 100, "message": "success" };
+    var response = { "status": 100, "message": "登陆成功" };
     q['_response'] = response;
     q = JSON.stringify(q);
     _url = _url + q;
@@ -1151,7 +1298,13 @@ $.fn.SignIn = function (opts) {
             error.hide();
             window.location.href = './index.html';
           } else {
-            error.html(_msg);
+            var _errorHtml;
+            if (_status == 200) {
+              _errorHtml = $('input[name="signin-200"]').val();
+            } else if (_status == 201) {
+              _errorHtml = $('input[name="signin-201"]').val();
+            }
+            error.html(_errorHtml);
             error.show();
           }
         }
