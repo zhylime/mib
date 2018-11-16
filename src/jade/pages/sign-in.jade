@@ -2,6 +2,9 @@ extends ../partials/_template
 
 
 block content
+  input(type="hidden", name="signin-200", value="用户名未填写")
+  input(type="hidden", name="signin-202", value="密码未填写")
+  input(type="hidden", name="signin-201", value="用户名或密码错误")
   .c-content.c-sign-in--bg(data-js-sign-in)
     .c-sign-in
       h1 欢迎使用MIB

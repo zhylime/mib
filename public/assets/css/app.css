@@ -1926,6 +1926,9 @@ input[type="number"] {
 .c-popup--code .login-btn.disabled {
   background: #dde0e3;
 }
+.c-popup--reset-psw {
+  display: none;
+}
 .c-popup--reset-psw img {
   width: 80px;
 }
@@ -2176,6 +2179,8 @@ input[type="number"] {
 .c-reset-psw--form--rol input {
   width: 100%;
   background: #fff;
+  display: block;
+  margin: 0;
 }
 .c-reset-psw--form--rol input.input-psw {
   width: calc(100% - 100px);
