@@ -105,6 +105,47 @@ $.fn.Collapse = function (opts) {
 };
 'use strict';
 
+$.fn.DeleteFriends = function (opts) {
+
+  var container = $(this);
+  var submitBtn = $(this).find('.js-submit');
+  var checkbox = $(this).find('.js-checkbox');
+
+  events();
+
+  function events() {
+    initCheckbox();
+
+    submitBtn.on('click touch', function () {
+      submitDate();
+    });
+  }
+
+  function initCheckbox() {
+    checkbox.on('click touch', function () {
+      var _value;
+      $(this).toggleClass('active');
+      _value = $(this).hasClass('active') ? 'selected' : '';
+
+      $(this).find('input').val(_value);
+      updateSubmitBtn();
+    });
+  }
+  function updateSubmitBtn() {
+    var num = 0;
+    checkbox.each(function () {
+      if ($(this).hasClass('active')) {
+        num += 1;
+      }
+    });
+
+    submitBtn.html('完成 (' + num + ')');
+  }
+
+  function submitDate() {}
+};
+'use strict';
+
 $(document).ready(function () {
 
   $(document).Popups();
@@ -123,7 +164,11 @@ $(document).ready(function () {
   $('[data-js-calendar]').Calender();
 
   $('[data-js-forget-psw]').forgetPsw();
-  $('[data-js-reset-psw]').resetPsw();
+
+  $('[data-js-switch-control]').SwitchControl();
+  $('[data-js-delete-friends]').DeleteFriends();
+
+  $('[data-js-tab-panel]').TabPanel();
 
   $('[data-js-collapse]').Collapse({
     text: true
@@ -150,6 +195,7 @@ $.fn.forgetPsw = function (opts) {
   var submitBtn = $(this).find('.js-submit');
   var form = $(this).find('.js-forget-psw-form');
   var error = $(this).find('.js-error');
+  var popup = $('.js-popup-reset-psw');
 
   events();
 
@@ -184,23 +230,21 @@ $.fn.forgetPsw = function (opts) {
     submitBtn.removeAttr('disabled');
   }
   function getCode() {
-    codeBtn.on('click touch', function () {
-      form.validate({
-        rules: {
-          uid: 'required'
-        },
-        messages: {
-          uid: $('input[name="forget-psw-500"]').val()
-        },
-        submitHandler: function submitHandler(e) {
-
+    codeBtn.on('click touch', function (e) {
+      // e.preventDefult();
+      if (!$(this).hasClass('disabled')) {
+        if (form.find('input[name="uid"]').val() !== "") {
           var _data = form.serializeJson();
+          // console.log(_data);
           var _url = 'http://mib.zengpan.org:8000/forget-psw?';
           var q = form.serializeJson();
-          var response = { "status": 100, "message": "有效用户名" };
+          var response = { "status": 203, "message": "有效用户名" };
+          q['uid'] = form.find('input[name="uid"]').val();
           q['_response'] = response;
+          q['btn'] = "getCAPTCHA"; //按钮
           q = JSON.stringify(q);
           _url = _url + q;
+          // console.log(q);
 
           var r = new XMLHttpRequest();
           r.open("GET", encodeURI(_url), true);
@@ -213,13 +257,15 @@ $.fn.forgetPsw = function (opts) {
               if (r.status == 200) {
                 var _status = $.parseJSON(r.response).status;
                 var _msg = $.parseJSON(r.response).message;
-                if (_status == 100) {
+                if (_status == 203) {
                   error.hide();
                   getCodeCountDown();
                 } else {
                   var _errorHtml;
                   if (_status == 200) {
                     _errorHtml = $('input[name="forget-psw-200"]').val();
+                  } else if (_status == 202) {
+                    _errorHtml = $('input[name="forget-psw-202"]').val();
                   }
 
                   error.html(_errorHtml);
@@ -228,14 +274,18 @@ $.fn.forgetPsw = function (opts) {
               }
             }
           };
+        } else {
+          error.html($('input[name="forget-psw-201"]').val());
+          error.show();
         }
-      });
+      }
     });
   }
   function getCodeCountDown() {
 
     var _time = 60;
     codeBtn.attr('disabled', 'disabled');
+    codeBtn.addClass('disabled');
 
     var countTime = setInterval(function () {
       _time = _time - 1;
@@ -245,6 +295,7 @@ $.fn.forgetPsw = function (opts) {
         clearInterval(countTime);
         codeBtn.html('发送验证码');
         codeBtn.removeAttr('disabled');
+        codeBtn.removeClass('disabled');
       }
     }, 1000);
   }
@@ -254,13 +305,29 @@ $.fn.forgetPsw = function (opts) {
       form.validate({
         rules: {
           uid: 'required',
-          secureCode: 'required'
+          secureCode: 'required',
+          newPsw: {
+            required: true,
+            minlength: 6,
+            maxlength: 18
+          },
+          repeatPsw: {
+            equalTo: "#newPsw"
+          }
         },
         messages: {
-          uid: $('input[name="forget-psw-500"]').val(),
-          secureCode: $('input[name="forget-psw-600"]').val()
+          uid: $('input[name="forget-psw-201"]').val(),
+          secureCode: $('input[name="forget-psw-210"]').val(),
+          newPsw: {
+            required: $('input[name="forget-psw-220"]').val(),
+            minlength: $('input[name="forget-psw-222"]').val(),
+            maxlength: $('input[name="forget-psw-223"]').val()
+          },
+          repeatPsw: {
+            equalTo: $('input[name="forget-psw-221"]').val()
+          }
         },
-        submitHandler: function submitHandler(e) {
+        submitHandler: function submitHandler() {
           submitData();
         }
       });
@@ -268,13 +335,16 @@ $.fn.forgetPsw = function (opts) {
   }
 
   function submitData() {
+
     var _data = form.serializeJson();
     var _url = 'http://mib.zengpan.org:8000/forget-psw?';
     var q = form.serializeJson();
-    var response = { "status": 300, "message": "验证成功" };
+    console.log(q);
+    var response = { "status": 100, "message": "修改成功" };
     q['_response'] = response;
     q = JSON.stringify(q);
     _url = _url + q;
+    console.log(q);
 
     var r = new XMLHttpRequest();
     r.open("GET", encodeURI(_url), true);
@@ -283,17 +353,22 @@ $.fn.forgetPsw = function (opts) {
     };
     r.send();
     r.onreadystatechange = function () {
+      console.log('run onreadystatechange');
       if (r.readyState == r.DONE) {
         if (r.status == 200) {
           var _status = $.parseJSON(r.response).status;
           var _msg = $.parseJSON(r.response).message;
-          if (_status == 300) {
+          if (_status == 100) {
             error.hide();
-            window.location.href = './reset-psw.html';
+            showPopup(popup);
           } else {
             var _errorHtml;
-            if (_status == 400) {
-              _errorHtml = $('input[name="forget-psw-400"]').val();
+            if (_status == 211) {
+              _errorHtml = $('input[name="forget-psw-211"]').val();
+            } else if (_status == 200) {
+              _errorHtml = $('input[name="forget-psw-200"]').val();
+            } else if (_status == 224) {
+              _errorHtml = $('input[name="forget-psw-224"]').val();
             }
             error.html(_errorHtml);
             error.show();
@@ -301,6 +376,12 @@ $.fn.forgetPsw = function (opts) {
         }
       }
     };
+  }
+
+  function showPopup(ele) {
+    var ele = ele;
+    ele.show();
+    $('.js-popup-cover').show();
   }
 };
 'use strict';
@@ -1083,102 +1164,105 @@ $.fn.Register = function (opts) {
     });
   }
 };
-'use strict';
+// $.fn.resetPsw = function(opts){
 
-$.fn.resetPsw = function (opts) {
+//   var container = $(this);
 
-  var container = $(this);
+//   var submitBtn = $(this).find('.js-submit');
+//   var form = $(this).find('.js-reset-psw-form');
+//   var psw1 = $(this).find('.js-input-psw1');
+//   var psw2 = $(this).find('.js-input-psw2');
+//   var error = $(this).find('.js-error');
+//   var popup = $('.js-popup-reset-psw');
 
-  var submitBtn = $(this).find('.js-submit');
-  var form = $(this).find('.js-reset-psw-form');
-  var psw1 = $(this).find('.js-input-psw1');
-  var psw2 = $(this).find('.js-input-psw2');
-  var error = $(this).find('.js-error');
-  var popup = $('.js-popup-reset-psw');
+//   events();
 
-  events();
+//   function events(){
 
-  function events() {
+//     validateForm();
+//   }
 
-    validateForm();
-  }
+//   function validateForm(){
+//     submitBtn.on('click', function(e){
+//       // e.preventDefault();
+//       form.validate({
+//         rules: {
+//           newPsw: {
+//             required: true,
+//             minlength: 6,
+//             maxlength: 18
+//           },
+//           repeatPsw: {
+//             equalTo: "#newPsw"
+//           }
+//         },
+//         messages: {
+//           newPsw: {
+//             required: $('input[name="reset-psw-200"]').val(),
+//             minlength: $('input[name="reset-psw-221"]').val(),
+//             maxlength: $('input[name="reset-psw-222"]').val()
+//           },
+//           repeatPsw: {
+//             equalTo: $('input[name="reset-psw-210"]').val()
+//           }
+//         },
+//         submitHandler: function(e){
+//           // submitData();
+//           showPopup(popup);
+//         }
+//       })
 
-  function validateForm() {
-    submitBtn.on('click', function (e) {
-      // e.preventDefault();
-      form.validate({
-        rules: {
-          newPsw: {
-            required: true,
-            minlength: 6,
-            maxlength: 18
-          },
-          repeatPsw: {
-            equalTo: "#newPsw"
-          }
-        },
-        messages: {
-          newPsw: {
-            required: $('input[name="reset-psw-200"]').val(),
-            minlength: $('input[name="reset-psw-221"]').val(),
-            maxlength: $('input[name="reset-psw-222"]').val()
-          },
-          repeatPsw: {
-            equalTo: $('input[name="reset-psw-210"]').val()
-          }
-        },
-        submitHandler: function submitHandler(e) {
-          // submitData();
-          showPopup(popup);
-        }
-      });
-    });
-  }
+//     })
+//   }
 
-  function submitData() {
-    var _data = form.serializeJson();
-    var _url = 'http://mib.zengpan.org:8000/reset-psw?';
-    var q = form.serializeJson();
-    var response = { "status": 100, "message": "修改成功" };
-    q['_response'] = response;
-    q = JSON.stringify(q);
-    _url = _url + q;
+//   function submitData(){
+//     var _data = form.serializeJson();
+//     var _url = 'http://mib.zengpan.org:8000/reset-psw?';
+//     var q = form.serializeJson();
+//     var response = { "status" : 100, "message" : "修改成功" } ;
+//     q['_response'] = response;
+//     q = JSON.stringify(q);
+//     _url = _url + q;   
 
-    var r = new XMLHttpRequest();
-    r.open("GET", encodeURI(_url), true);
-    r.onerror = r.onabort = r.ontimeout = function (e) {
-      console.log(e);
-    };
-    r.send();
-    r.onreadystatechange = function () {
-      if (r.readyState == r.DONE) {
-        if (r.status == 200) {
-          var _status = $.parseJSON(r.response).status;
-          var _msg = $.parseJSON(r.response).message;
-          if (_status == 300) {
-            error.hide();
-            showPopup(popup);
-          } else {
-            var _errorHtml;
-            if (_status == 300) {
-              _errorHtml = $('input[name="reset-psw-300"]').val();
-            } else if (_status == 223) {
-              _errorHtml = $('input[name="reset-psw-223"]').val();
-            }
-            error.html(_errorHtml);
-            error.show();
-          }
-        }
-      }
-    };
-  }
+//     var r = new XMLHttpRequest();
+//     r.open("GET", encodeURI(_url), true);
+//     r.onerror = r.onabort = r.ontimeout = function(e) { console.log(e); }
+//     r.send();
+//     r.onreadystatechange = function() {
+//       if (r.readyState == r.DONE) {
+//         if (r.status == 200) {
+//           var _status = $.parseJSON(r.response).status;
+//           var _msg = $.parseJSON(r.response).message;
+//           if(_status == 300){
+//             error.hide();
+//             showPopup(popup);
+//           }
+//           else{
+//             var _errorHtml;
+//             if(_status == 300){
+//               _errorHtml = $('input[name="reset-psw-300"]').val();
+//             }
+//             else if(_status == 223){
+//               _errorHtml = $('input[name="reset-psw-223"]').val();
+//             }
+//             error.html(_errorHtml);
+//             error.show();
+//           }
 
-  function showPopup(ele) {
-    var ele = ele;
-    ele.show();
-    $('.js-popup-cover').show();
-  }
-};
+//         }
+//       }
+//     }
+//   }
+
+//   function showPopup(ele){
+//     var ele = ele;
+//     ele.show();
+//     $('.js-popup-cover').show();
+//   }
+
+// }
+//   
+"use strict";
 'use strict';
 
 $.fn.Search = function (opts) {
@@ -1431,6 +1515,45 @@ $.fn.StoreComments = function (opts) {
           $(this).attr('data-expanded', 'false');
         }
       });
+    });
+  }
+};
+'use strict';
+
+$.fn.SwitchControl = function (opts) {
+
+  var container = $(this);
+  var checkbox = $(this).find('.js-checkbox');
+
+  events();
+
+  function events() {
+    checkbox.on('click touch', function (e) {
+      // e.preventDefault();
+      // e.stopPropagation();
+
+      $(this).toggleClass('checked');
+    });
+  }
+};
+'use strict';
+
+$.fn.TabPanel = function (opts) {
+
+  var container = $(this);
+  var tabMenu = $(this).find('.js-tab-menu');
+  var tabPanel = $(this).find('.js-tab-panel');
+
+  events();
+
+  function events() {
+    tabMenu.on('click touch', function (e) {
+      e.stopPropagation();
+      var index = $(this).attr('data-tab-index');
+      tabMenu.removeClass('active');
+      tabPanel.removeClass('active');
+      $(this).addClass('active');
+      container.find('.js-tab-panel[data-panel-index=' + index + ']').addClass('active');
     });
   }
 };

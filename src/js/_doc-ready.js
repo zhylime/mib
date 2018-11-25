@@ -17,12 +17,16 @@ $(document).ready(function(){
   $('[data-js-calendar]').Calender();
 
   $('[data-js-forget-psw]').forgetPsw();
-  $('[data-js-reset-psw]').resetPsw();
+
+  $('[data-js-switch-control]').SwitchControl();
+  $('[data-js-delete-friends]').DeleteFriends();
+
+ 
 
 
 
 
-  
+  $('[data-js-tab-panel]').TabPanel();
   
   $('[data-js-collapse]').Collapse({
     text: true

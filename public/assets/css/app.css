@@ -150,8 +150,7 @@ input:-ms-input-placeholder {
   box-shadow: 1px 1px 10px rgba(130,130,130,0.3);
 }
 .hr {
-  border-top: 1px solid #dde0e3;
-  border-bottom: 0;
+  border: none;
 }
 .hide {
   display: none;
@@ -204,7 +203,7 @@ input:-ms-input-placeholder {
 }
 .has-right-arrow--porcelain:before,
 .has-right-arrow--porcelain:after {
-  background-color: #e1e7e7;
+  background-color: #edf1f1;
 }
 .border-bottom {
   border-bottom: 1px solid #dde0e3;
@@ -316,6 +315,28 @@ input:-ms-input-placeholder {
   width: 11px;
   height: 11px;
 }
+.ic--close--green {
+  position: relative;
+  width: 20px;
+  height: 20px;
+}
+.ic--close--green:before,
+.ic--close--green:after {
+  content: "";
+  width: 20px;
+  height: 2px;
+  position: absolute;
+  display: block;
+  top: 10px;
+  left: 0;
+  background: #378186;
+}
+.ic--close--green:before {
+  transform: rotate(45deg);
+}
+.ic--close--green:after {
+  transform: rotate(135deg);
+}
 .ic--share {
   background-image: url("../img/ic-share.png");
   background-size: 100%;
@@ -390,6 +411,22 @@ input:-ms-input-placeholder {
 .ic--notif.active {
   background-image: url("../img/ic-ring-active.png");
 }
+.ic--clock {
+  background-image: url("../img/ic-clock.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: block;
+  width: 20px;
+  height: 24px;
+}
+.ic--more {
+  background-image: url("../img/ic-more.png");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: block;
+  width: 20px;
+  height: 20px;
+}
 .ic--img {
   background-image: url("../img/ic-img.png");
   background-repeat: no-repeat;
@@ -432,6 +469,16 @@ input:-ms-input-placeholder {
 }
 .ic--checkbox-2.active {
   background-image: url("../img/ic-checkbox-2-active.png");
+}
+.ic--checkbox-3 {
+  background-image: url("../img/ic-checkbox-3.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 18px;
+  height: 18px;
+}
+.ic--checkbox-3.active {
+  background-image: url("../img/ic-checkbox-3-active.jpg");
 }
 .ic--user {
   background-image: url("../img/ic-user.png");
@@ -587,6 +634,16 @@ input:-ms-input-placeholder {
 .ic--remove:after {
   transform: rotate(135deg);
 }
+.ic--secure {
+  background-image: url("../img/ic-secure.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 10px;
+  height: 15px;
+  display: inline-block;
+  vertical-align: middle;
+}
 html,
 body {
   height: 100%;
@@ -658,6 +715,9 @@ input[type="number"] {
 }
 .txt--edwardapprox {
   color: #9da4a4;
+}
+.txt--tiara {
+  color: #cad3d3;
 }
 .txt--500 {
   font-weight: 500;
@@ -1405,7 +1465,7 @@ input[type="number"] {
   padding-bottom: 100px !important;
 }
 .pos-relative {
-  position: relative;
+  position: relative !important;
 }
 .c-add-card label {
   display: block;
@@ -1468,6 +1528,60 @@ input[type="number"] {
 }
 .c-categories .slick-list {
   padding: 0 20px 0 0;
+}
+.c-change-display-name form {
+  margin-top: 40px;
+}
+.c-change-display-name form .rol {
+  padding: 10px 0;
+  position: relative;
+}
+.c-change-display-name form .rol input {
+  font-size: initial;
+}
+.c-change-display-name form .ic--close--green {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+.c-change-display-name .ps {
+  color: #9da4a4;
+  font-size: initial;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+.c-chat-detail {
+  background-color: #edf1f1;
+  height: 100%;
+}
+.c-chat-detail .c-header {
+  background-color: #fff;
+}
+.c-chat-detail--group {
+  background-color: #fff;
+  padding: 20px 0;
+}
+.c-chat-detail--group li {
+  list-style-type: none;
+  width: 16%;
+  margin: 0 2%;
+}
+.c-chat-detail--group li a {
+  display: block;
+}
+.c-chat-detail--group li img {
+  display: block;
+  margin-bottom: 5px;
+}
+.c-chat-detail--group li span {
+  font-size: 12px;
+}
+.c-chat-detail .c-list {
+  background-color: #fff;
+}
+.c-chat-detail .c-list .title {
+  font-size: 18px;
 }
 .c-chat--body--notif {
   background: #f7f7f7;
@@ -1585,6 +1699,24 @@ input[type="number"] {
   height: 100%;
   opacity: 0;
 }
+.c-collapse {
+  position: relative;
+}
+.c-collapse--container {
+  overflow: hidden;
+}
+.c-collapse--expand-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+.c-collapse--expand-btn span {
+  color: #00a5a5;
+  background: #fff;
+}
+.c-collapse--expand-btn[data-expanded="true"] {
+  bottom: -15px;
+}
 .c-content {
   padding: 0 20px;
 }
@@ -1674,6 +1806,36 @@ input[type="number"] {
 .c-forget-psw .c-sign-in--main {
   margin: 0;
 }
+.c-friends--subtitle {
+  background: #f2f9f8;
+  padding: 20px 20px;
+}
+.c-friends--people img {
+  width: 50px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.c-friends--people--info {
+  display: inline-block;
+  vertical-align: middle;
+}
+.c-friends--people--info .note {
+  color: #484848;
+}
+.c-friends .c-list--item {
+  padding: 20px;
+}
+.c-friends .c-list--item .btn-type-2 {
+  width: 100px;
+  line-height: 40px;
+  height: 40px;
+  display: inline-block;
+}
+.c-friends .c-list--item .ic--checkbox-3 {
+  display: inline-block;
+  margin-top: 3px;
+}
 .c-gift-card.c-process h2 {
   font-size: 30px;
 }
@@ -1697,6 +1859,48 @@ input[type="number"] {
   line-height: 40px;
   border-radius: 5px;
 }
+.c-group--qr {
+  background: #edf1f1;
+  height: 100%;
+}
+.c-group--qr .c-header {
+  background: #fff;
+}
+.c-group--qr .c-header--back span {
+  display: inline-block;
+  vertical-align: middle;
+  color: #000;
+}
+.c-group--qr--body {
+  width: 80%;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+}
+.c-group--qr--body--thumb {
+  display: inline-block;
+  vertical-align: middle;
+  width: 70px;
+  margin-right: 10px;
+}
+.c-group--qr--body--name {
+  display: inline-block;
+  vertical-align: middle;
+}
+.c-group--qr--body--image {
+  width: 80%;
+  margin: 20px auto 0;
+}
+.c-group--qr--body--date {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 12px;
+  color: #8c8c8c;
+}
+.c-group--notification textarea {
+  width: 100%;
+  resize: none;
+}
 .c-header {
   position: absolute;
   width: 100%;
@@ -1705,6 +1909,9 @@ input[type="number"] {
 .c-header.pos-absolute {
   position: absolute;
   background: #fff;
+}
+.c-header.pos-relative {
+  position: relative;
 }
 .c-header span {
   color: #fff;
@@ -1716,6 +1923,7 @@ input[type="number"] {
 .c-header--other--share,
 .c-header--other--fav {
   display: inline-block;
+  font-size: 0;
 }
 .c-header--other--notif span {
   font-size: 10px;
@@ -2164,38 +2372,6 @@ input[type="number"] {
 .c-register .c-sign-in--other {
   margin-top: 80px;
 }
-.c-reset-psw .warning {
-  display: none;
-  color: #ee4746;
-  margin-top: 10px;
-}
-.c-reset-psw--form {
-  margin-top: 20px;
-}
-.c-reset-psw--form--rol {
-  margin-top: 15px;
-  padding: 10px 0;
-}
-.c-reset-psw--form--rol input {
-  width: 100%;
-  background: #fff;
-  display: block;
-  margin: 0;
-}
-.c-reset-psw--form--rol input.input-psw {
-  width: calc(100% - 100px);
-}
-.c-reset-psw--form--rol .btn-type-1 {
-  display: inline-block;
-  height: 40px;
-  line-height: 40px;
-  width: 100px;
-}
-.c-reset-psw--form .btn-type-2 {
-  width: 100%;
-  margin-top: 40px;
-  border: none;
-}
 .c-rules {
   position: relative;
   height: 100%;
@@ -2309,6 +2485,16 @@ input[type="number"] {
   margin-right: 10px;
   margin-bottom: 12px;
   font-size: 13px;
+}
+.c-search--grey {
+  background: #edf1f1;
+  padding: 15px 20px;
+}
+.c-search--grey .c-search--form--input {
+  background: #fff;
+  width: 100%;
+  margin: auto;
+  border-radius: 25px;
 }
 .c-share--hero {
   position: relative;
@@ -2612,6 +2798,7 @@ input[type="number"] {
   border: 2px solid #00a5a5;
   border-radius: 5px;
   font-weight: bold;
+  font-size: 14px;
 }
 .c-store--comments--stars {
   width: calc(100% - 85px);
@@ -2683,6 +2870,80 @@ input[type="number"] {
 .c-store--popup--comments .name,
 .c-store--popup--comments .reply-author {
   font-size: 16px;
+}
+.c-switch-control {
+  background: #fff;
+}
+.c-switch-control .checkbox {
+  background: #edf1f1;
+  height: 30px;
+  position: relative;
+  width: 60px;
+  margin-left: 37px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.c-switch-control .checkbox.checked {
+  background: #00a5a5;
+}
+.c-switch-control .checkbox.checked .icon {
+  left: 0;
+}
+.c-switch-control .checkbox .icon {
+  width: 30px;
+  height: 30px;
+  border: 2px solid #00a5a5;
+  position: absolute;
+  background: #fff;
+  left: 30px;
+  top: 0;
+  border-radius: 50%;
+  box-sizing: border-box;
+  transition: all 0.3s;
+  z-index: 1;
+}
+.c-tab-panel--menu {
+  border-bottom: 1px solid #dde0e3;
+}
+.c-tab-panel--menu:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.c-tab-panel--menu--item {
+  cursor: pointer;
+  float: left;
+  padding: 5px 0;
+  margin-right: 10px;
+}
+.c-tab-panel--menu--item span {
+  font-weight: bold;
+}
+.c-tab-panel--menu--item.active {
+  border-bottom: 4px solid #00a5a5;
+}
+.c-tab-panel--content {
+  padding: 30px 0 40px;
+  border-bottom: 1px solid #dde0e3;
+}
+.c-tab-panel--content--item {
+  display: none;
+}
+.c-tab-panel--content--item.active {
+  display: block;
+}
+.c-user .c-collapse--container {
+  height: 64px;
+}
+.c-user .c-store--comments--read-all {
+  display: block;
+  width: 150px;
+}
+.c-user .ic--secure {
+  margin-right: 3px;
+}
+.c-user .c-list--item {
+  line-height: 24px;
 }
 .m-display-projects {
   margin-bottom: 20px;
