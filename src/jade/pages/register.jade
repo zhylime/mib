@@ -1,6 +1,7 @@
 //- 新用户注册
 extends ../partials/_template
 include ../mixins/_popup
+include ../mixins/_loading
 
 block content
   input(type="hidden", name="register-210", value="邮箱或手机不能为空")
@@ -43,6 +44,8 @@ block content
               //- .ic--eye
             div.c-sign-in--form--link.txt--r
               a(href="sign-in-code.html") 用短信验证码登录
+            br
+            label#pwd-error.error(for="pwd")
             .error.js-error
             button.button.btn-type-2.l-mgn--t-20.js-register-btn(disabled) 注册
 
@@ -56,6 +59,7 @@ block content
     +popup('register')
     +popup('verifyEmail')
     +popup('signIn')
+    +loading
 
 
 

@@ -110,6 +110,7 @@ $.fn.DeleteFriends = function (opts) {
   var container = $(this);
   var submitBtn = $(this).find('.js-submit');
   var checkbox = $(this).find('.js-checkbox');
+  var deleteGroup = $(this).find('.js-delete-group');
 
   events();
 
@@ -129,6 +130,7 @@ $.fn.DeleteFriends = function (opts) {
 
       $(this).find('input').val(_value);
       updateSubmitBtn();
+      updateDeleteGroup();
     });
   }
   function updateSubmitBtn() {
@@ -142,6 +144,24 @@ $.fn.DeleteFriends = function (opts) {
     submitBtn.html('完成 (' + num + ')');
   }
 
+  function updateDeleteGroup() {
+    var html = '';
+    checkbox.each(function () {
+      if ($(this).hasClass('active')) {
+        var img = $(this).attr('data-img');
+        var name = $(this).attr('data-name');
+        html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/><span>' + name + '</span></li>';
+        container.find('.js-delete-group ul').html(html);
+      }
+    });
+    if (container.find('.js-checkbox.active').length > 0) {
+      deleteGroup.show();
+    } else {
+      container.find('.js-delete-group ul').html('');
+      deleteGroup.hide();
+    }
+  }
+
   function submitDate() {}
 };
 'use strict';
@@ -151,6 +171,7 @@ $(document).ready(function () {
   $(document).Popups();
 
   $('[data-js-sign-in]').SignIn();
+  $('[data-js-sign-in-by-mobile]').SignInByMobile();
   $('[data-js-sign-in-by-mobile]').MobileVerification();
   $('[data-js-register]').Register();
   $('[data-js-order-detail]').OrderDetail();
@@ -167,6 +188,8 @@ $(document).ready(function () {
 
   $('[data-js-switch-control]').SwitchControl();
   $('[data-js-delete-friends]').DeleteFriends();
+
+  $('[data-js-more-menu').MoreMenu();
 
   $('[data-js-tab-panel]').TabPanel();
 
@@ -320,8 +343,7 @@ $.fn.forgetPsw = function (opts) {
           secureCode: $('input[name="forget-psw-210"]').val(),
           newPsw: {
             required: $('input[name="forget-psw-220"]').val(),
-            minlength: $('input[name="forget-psw-222"]').val(),
-            maxlength: $('input[name="forget-psw-223"]').val()
+            minlength: $('input[name="forget-psw-222"]').val()
           },
           repeatPsw: {
             equalTo: $('input[name="forget-psw-221"]').val()
@@ -367,9 +389,8 @@ $.fn.forgetPsw = function (opts) {
               _errorHtml = $('input[name="forget-psw-211"]').val();
             } else if (_status == 200) {
               _errorHtml = $('input[name="forget-psw-200"]').val();
-            } else if (_status == 224) {
-              _errorHtml = $('input[name="forget-psw-224"]').val();
             }
+
             error.html(_errorHtml);
             error.show();
           }
@@ -450,7 +471,15 @@ $.fn.MobileVerification = function () {
               mobileError.hide();
               window.location.href = './index.html';
             } else {
-              mobileError.html(_msg);
+              var _errorHtml;
+              if (_status == 200) {
+                _errorHtml = $('input[name="mobile-signin-200"]').val();
+              } else if (_status == 201) {
+                _errorHtml = $('input[name="mobile-signin-201"]').val();
+              } else if (_status == 210) {
+                _errorHtml = $('input[name="mobile-signin-210"]').val();
+              }
+              mobileError.html(_errorHtml);
               mobileError.show();
             }
           }
@@ -477,6 +506,25 @@ $.fn.MobileVerification = function () {
       //     console.log(error);
       //   }
       // })
+    });
+  }
+};
+'use strict';
+
+$.fn.MoreMenu = function (opts) {
+
+  var container = $(this);
+  var trigger = $(this).find('.js-open-menu');
+  var menu = $(this).find('.js-menu-dropdown');
+
+  events();
+
+  function events() {
+    trigger.on('click touch', function (e) {
+      e.stopPropagation();
+      e.preventDefault();
+      container.toggleClass('active');
+      menu.slideToggle();
     });
   }
 };
@@ -582,11 +630,11 @@ $.fn.Popups = function (opts) {
 
   // 手机短信验证
   function txtMsgPopup() {
-    $(document).on('click touch', '.js-open-popup-code', function (e) {
-      e.stopPropagation();
-      // $('.js-popup-code').show();
-      showPopup($('.js-popup-code'));
-    });
+    // $(document).on('click touch', '.js-open-popup-code', function(e){
+    //   e.stopPropagation()
+
+    //   showPopup($('.js-popup-code'));
+    // });
     $(document).on('click touch', '.js-popup-cover, .js-close-popup-code', function (e) {
       e.stopPropagation();
       closePopup($('.js-popup-code'));
@@ -851,8 +899,8 @@ $.fn.Register = function (opts) {
           email_mobile: 'required',
           pwd: {
             required: true,
-            minlength: 6,
-            maxlength: 18
+            minlength: 6
+
           }
         },
         messages: {
@@ -860,13 +908,15 @@ $.fn.Register = function (opts) {
           email_mobile: $('input[name="register-210"]').val(),
           pwd: {
             required: $('input[name="register-220"]').val(),
-            minlength: $('input[name="register-221"]').val(),
-            maxlength: $('input[name="register-222"]').val()
+            minlength: $('input[name="register-221"]').val()
+
           }
         },
         submitHandler: function submitHandler(e) {
 
           var uid = form.find('input[name="email_mobile"]').val();
+          registerBtn.attr('disabled');
+          $('.js-loading').show();
           submitRegisterForm(uid);
         }
       });
@@ -890,6 +940,7 @@ $.fn.Register = function (opts) {
     r.send();
     r.onreadystatechange = function () {
       if (r.readyState == r.DONE) {
+        $('.js-loading').hide();
         if (r.status == 200) {
           var _status = $.parseJSON(r.response).status;
           var _msg = $.parseJSON(r.response).message;
@@ -1162,6 +1213,9 @@ $.fn.Register = function (opts) {
     successPopup.find('a').on('click touch', function () {
       window.location.href = './index.html';
     });
+    setTimeout(function () {
+      window.location.href = './index.html';
+    }, 5000);
   }
 };
 // $.fn.resetPsw = function(opts){
@@ -1337,6 +1391,41 @@ $.fn.serializeJson = function () {
                 }
         });
         return serializeObj;
+};
+'use strict';
+
+$.fn.SignInByMobile = function (opts) {
+
+  var signInSubmitBtn = $(this).find('.js-open-popup-code');
+
+  var form = $(this).find('.js-form');
+  var error = form.find('.js-error');
+  // var 
+
+
+  events();
+
+  function events() {
+    signInSubmitBtn.on('click touch', function () {
+      form.validate({
+        rules: {
+          uid: 'required'
+        },
+        messages: {
+          uid: $('input[name="mobile-signin-201"]').val()
+        },
+        submitHandler: function submitHandler(e) {
+          showPopup($('.js-popup-code'));
+        }
+      });
+    });
+  }
+
+  function showPopup(ele) {
+    var ele = ele;
+    ele.show();
+    $('.js-popup-cover').show();
+  }
 };
 'use strict';
 
