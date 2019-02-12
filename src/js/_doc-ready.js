@@ -18,11 +18,37 @@ $(document).ready(function(){
   $('[data-js-calendar]').Calender();
 
   $('[data-js-forget-psw]').forgetPsw();
+  // $('[data-js-scan').Scan();
+  $('[data-js-add-friends-2]').AddFriends2();
 
   $('[data-js-switch-control]').SwitchControl();
-  $('[data-js-delete-friends]').DeleteFriends();
 
-  $('[data-js-more-menu').MoreMenu();
+  $('[data-js-select-friends]').SelectFriends();
+  $('[data-js-delete-friends]').DeleteFriends();
+  $('[data-js-group-members]').GroupMembers();
+  
+  $('[data-js-group-owner]').GroupOwner();
+
+  $('[data-js-setting-user]').SettingUser();
+
+  $('[data-js-publish]').Publish();
+
+  $('[data-js-product-info]').ProductInfo();
+
+  $('[data-js-chat]').Chat();
+  $('[data-js-select-and-count]').SelectAndCount();
+  $('[data-js-location]').SelectLocation();
+
+  $('[data-js-selected]').Selected();
+
+
+  $('[data-js-more-menu]').MoreMenu();
+  $('[data-js-favorite]').Favorite();
+
+
+  $('[data-js-add-media]').AddMedia();
+  $('[data-js-checkbox]').Checkbox();
+  $('[data-js-radio-box]').RadioBox();
 
  
 

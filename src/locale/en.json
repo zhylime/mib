@@ -160,10 +160,11 @@
     {
       "icon": "ic--menu--me",
       "name": "我的",
-      "link": "#"
+      "link": "./wsetting.html"
     }
   ],
   "filter_menu": ["筛选条件", "筛选条件", "筛选条件", "筛选条件", "筛选条件"],
+  "selected_filter": ["中国", "欧美", "日本", "东南亚", "港澳台", "其他"],
   "store_body": "水墨动漫成立于2016年（前身米卡工作室成立于2012年），座落与福州橘园洲创意广场，主营游戏美术外包设计，公司坚持以人为本的管理理念，以追求卓越为目标，以技术力量为核心，以市场需求为导向，以高质高效为基础，大力倡导提升内部制作团队和管理团队的综合实力与技术实力，团队设计师行业经验均在6年以上，专注于国内外游戏美术外包（cocos2d、android安卓、unity3D等游戏美术整包设计），与国内外多家游戏开发公司成功合作过多款大型网络游戏、网页游戏和手机游戏的开发制作，并在多年的游戏外包服务中整理出一套完整的服务管控体系。以量身定做为服务理念，为客户提供更专业、更高效、更严谨的服务，以诚信为本，向客户提供长期、稳定和优质的游戏美术服务，已完成100余款页游、手游整套美术设计，是国内游戏开发公司的优质合作服务商，欢迎长期定制与合作。",
   "store_comments": [
     {
@@ -234,6 +235,1414 @@
         "stars_image": "ic-stars-4.png"
       }
     ]
-  }
+  },
+  "setting_list":[
+    {
+      "title": "我的游戏",
+      "icon": "ic--setting--1",
+      "link": "javascipt:void(0);"
+    },
+    {
+      "title": "我的订单",
+      "icon": "ic--setting--2",
+      "link": "javascipt:void(0);"
+    },
+    {
+      "title": "通知",
+      "icon": "ic--setting--3",
+      "link": "javascipt:void(0);"
+    },
+    {
+      "title": "获取帮助",
+      "icon": "ic--setting--4",
+      "link": "javascipt:void(0);"
+    },
+    {
+      "title": "邀请好友",
+      "icon": "ic--setting--5",
+      "link": "javascipt:void(0);"
+    },
+    {
+      "title": "发布商品",
+      "icon": "ic--setting--6",
+      "link": "./publish-2.html"
+    },
+    {
+      "title": "成为游戏开发者",
+      "icon": "ic--setting--7",
+      "link": "javascipt:void(0);"
+    },
+    {
+      "title": "设置",
+      "icon": "ic--setting--8",
+      "link": "javascipt:void(0);"
+    }
+  ],
+  "project_categories":[
+    "游戏产品授权",
+    "游戏设计",
+    "宣传素材",
+    "音频制作",
+    "本地化",
+    "资质申请",
+    "技术外包",
+    "运营相关",
+    "其他"
+  ],
+  "publish_catgories": [
+    {
+      "name": "游戏产品授权",
+      "data": "data0",
+      "show": "1"
+    },
+    {
+      "name": "游戏设计",
+      "data": "data1",
+      "options": [
+        {
+          "name": "美术设计",
+          "data": "data11",
+          "show": "2",
+          "option1": "select",
+          "option2": "select"
+        },
+        {
+          "name": "美术制作",
+          "data": "data12",
+          "show": "2",
+          "option1": "select",
+          "option2": "select"
+        },
+        {
+          "name": "美术整包",
+          "data": "data13",
+          "show": "2",
+          "option1": "input",
+          "option2": "select"
+        },
+        {
+          "name": "游戏策划",
+          "data": "data14",
+          "show": "2",
+          "option1": "input",
+          "option2": "select"
+        }
+      ]
+    },
+    {
+      "name": "宣传素材",
+      "data": "data2",
+      "options":[
+        {
+          "name": "原画",
+          "data": "data21",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "平面广告",
+          "data": "data22",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "视频制作",
+          "data": "data23",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        }
+      ]
+    },
+    {
+      "name": "音频制作",
+      "data": "data3",
+      "options":[
+        {
+          "name": "音乐",
+          "data": "data31",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "音效",
+          "data": "data32",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "配音",
+          "data": "data33",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "主题曲",
+          "data": "data34",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        }
+      ]
+    },
+    {
+      "name": "本地化",
+      "data": "data4",
+      "options":[
+        {
+          "name": "翻译",
+          "data": "data41",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "运营外包",
+          "data": "data42",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "技术对接",
+          "data": "data43",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        }
+      ]
+    },
+    {
+      "name": "资质申请",
+      "data": "data5",
+      "options":[
+        {
+          "name": "公司注册",
+          "data": "data51",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "文网文",
+          "data": "data52",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "云备案",
+          "data": "data53",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "软著",
+          "data": "data54",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "知识产权",
+          "data": "data54",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "ICP证",
+          "data": "data55",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "文化部备案",
+          "data": "data56",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "版号",
+          "data": "data57",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        }
+      ]
+    },
+    {
+      "name": "技术外包",
+      "data": "data6",
+      "options":[
+        {
+          "name": "APP开发",
+          "data": "data61",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "网站开发",
+          "data": "data62",
+          "show": "2",
+          "option1": "select",
+          "option2": "input"
+        },
+        {
+          "name": "运维相关",
+          "data": "data63",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        }
+      ]
+    },
+    {
+      "name": "运营相关",
+      "data": "data7",
+      "options":[
+        {
+          "name": "客服外包",
+          "data": "data71",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        },
+        {
+          "name": "测试外包",
+          "data": "data72",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        }
+      ]
+    },
+    {
+      "name": "其他",
+      "data": "data8",
+      "options": [
+        {
+          "name": "其他",
+          "data": "data83",
+          "show": "2",
+          "option1": "input",
+          "option2": "input"
+        }
+      ]
+    }
+  ],
+  "selected_content": [
+    {
+      "title": "神魔圣域",
+      "brief": "顶级欧美研发团队强力打造，全球155个国家同版 魔幻PK手游",
+      "type": "西方魔幻，RPG",
+      "image": "selected-1.jpg",
+      "author_img": "list-author-thumb-1.jpg"
+    },
+    {
+      "title": "圣魔传奇",
+      "brief": "恋爱交友，唯美动作史诗手游—月神互娱",
+      "type": "角色扮演，魔幻",
+      "image": "selected-2.jpg",
+      "author_img": "home-author-thumb-1.jpg"
+    },
+    {
+      "title": "黑暗与荣耀",
+      "brief": "即战式3D MMO暗黑冒险手游寻找拉美和中东区域的海 外合作机会",
+      "type": "MMO，多人在线，MU，奇迹",
+      "image": "selected-3.jpg",
+      "author_img": "selected-thumb-3.jpg"
+    },
+    {
+      "title": "光明勇士",
+      "brief": "元气Q萌异界风光，萌趣玩法萌力全开，找欧美区域代理合作",
+      "type": "角色扮演，Q版，多人在线，3D",
+      "image": "selected-4.jpg",
+      "author_img": "selected-thumb-4.jpg"
+    }
+  ],
+  "select_country": [
+    {
+      "name": "中国大陆",
+      "": "cn"
+    },
+    {
+      "name": "中国港澳台",
+      "data": "hktw"
+    },
+    {
+      "name": "日本",
+      "data": "jp"
+    },
+    {
+      "name": "韩国",
+      "data": "kr"
+    },
+    {
+      "name": "东南亚",
+      "data": "asean"
+    },
+    {
+      "name": "欧洲",
+      "data": "eu"
+    },
+    {
+      "name": "拉美",
+      "data": "LA"
+    },
+    {
+      "name": "中东",
+      "data": "ME"
+    },
+    {
+      "name": "非洲",
+      "data": "AF"
+    },
+    {
+      "name": "俄罗斯",
+      "data": "RU"
+    },
+    {
+      "name": "澳洲",
+      "data": "AU"
+    }
+  ],
+  "select_language": [
+    {
+      "name": "中文(简体)",
+      "data": "CN"
+    },
+    {
+      "name": "英文",
+      "data": "EN"
+    },
+    {
+      "name": "日本语",
+      "data": "JP"
+    },
+    {
+      "name": "西班牙文",
+      "data": "ES"
+    },
+    {
+      "name": "法文",
+      "data": "FR"
+    },
+    {
+      "name": "俄文",
+      "data": "RU"
+    },
+    {
+      "name": "葡萄牙文",
+      "data": "PT"
+    }
+  ],
+  "select_location": [
+    {
+      "name": "阿尔巴尼亚",
+      "data": "ALB"
+    },
+    {
+      "name": "阿尔及利亚",
+      "data": "DZA"
+    },
+    {
+      "name": "阿富汗",
+      "data": "AFG"
+    },
+    {
+      "name": "阿根廷",
+      "data": "ARG"
+    },
+    {
+      "name": "阿拉伯联合酋长国",
+      "data": "ARE"
+    },
+    {
+      "name": "阿鲁巴",
+      "data": "ABW"
+    },
+    {
+      "name": "阿曼",
+      "data": "OMN"
+    },
+    {
+      "name": "阿塞拜疆",
+      "data": "AZE"
+    },
+    {
+      "name": "埃及",
+      "data": "EGY"
+    },
+    {
+      "name": "埃塞俄比亚",
+      "data": "ETH"
+    },
+    {
+      "name": "爱尔兰",
+      "data": "IRL"
+    },
+    {
+      "name": "爱沙尼亚",
+      "data": "EST"
+    },
+    {
+      "name": "安道尔",
+      "data": "AND"
+    },
+    {
+      "name": "安哥拉",
+      "data": "AGO"
+    },
+    {
+      "name": "安奎拉",
+      "data": "AIA"
+    },
+    {
+      "name": "安提瓜岛和巴布达",
+      "data": "ATG"
+    },
+    {
+      "name": "奥地利",
+      "data": "AUT"
+    },
+    {
+      "name": "奥兰群岛",
+      "data": "ALA"
+    },
+    {
+      "name": "澳大利亚",
+      "data": "AUS"
+    },
+    {
+      "name": "巴巴多斯岛",
+      "data": "BRB"
+    },
+    {
+      "name": "巴布亚新几内亚",
+      "data": "PNG"
+    },
+    {
+      "name": "巴哈马",
+      "data": "BHS"
+    },
+    {
+      "name": "巴基斯坦",
+      "data": "PAK"
+    },
+    {
+      "name": "巴拉圭",
+      "data": "PRY"
+    },
+    {
+      "name": "巴勒斯坦领土",
+      "data": "PSE"
+    },
+    {
+      "name": "巴林",
+      "data": "BHR"
+    },
+    {
+      "name": "巴拿马",
+      "data": "PAN"
+    },
+    {
+      "name": "巴西",
+      "data": "BRA"
+    },
+    {
+      "name": "白俄罗斯",
+      "data": "BLR"
+    },
+    {
+      "name": "百慕大",
+      "data": "BMU"
+    },
+    {
+      "name": "保加利亚",
+      "data": "BGR"
+    },
+    {
+      "name": "北马里亚纳群岛",
+      "data": "MNP"
+    },
+    {
+      "name": "贝宁",
+      "data": "BEN"
+    },
+    {
+      "name": "比利时",
+      "data": "BEL"
+    },
+    {
+      "name": "冰岛",
+      "data": "ISL"
+    },
+    {
+      "name": "波多黎各",
+      "data": "PRI"
+    },
+    {
+      "name": "波黑",
+      "data": "BIH"
+    },
+    {
+      "name": "波兰",
+      "data": "POL"
+    },
+    {
+      "name": "玻利维亚",
+      "data": "BOL"
+    },
+    {
+      "name": "伯利兹",
+      "data": "BLZ"
+    },
+    {
+      "name": "博茨瓦纳",
+      "data": "BWA"
+    },
+    {
+      "name": "不丹",
+      "data": "BTN"
+    },
+    {
+      "name": "布基纳法索",
+      "data": "BFA"
+    },
+    {
+      "name": "布隆迪",
+      "data": "BDI"
+    },
+    {
+      "name": "布韦岛",
+      "data": "BVT"
+    },
+    {
+      "name": "朝鲜",
+      "data": "PRK"
+    },
+    {
+      "name": "赤道几内亚",
+      "data": "GNQ"
+    },
+    {
+      "name": "丹麦",
+      "data": "DNK"
+    },
+    {
+      "name": "德国",
+      "data": "DEU"
+    },
+    {
+      "name": "东帝汶",
+      "data": "TLS"
+    },
+    {
+      "name": "多哥",
+      "data": "TGO"
+    },
+    {
+      "name": "多米尼加共和国",
+      "data": "DOM"
+    },
+    {
+      "name": "多米尼克",
+      "data": "DMA"
+    },
+    {
+      "name": "俄罗斯",
+      "data": "RUS"
+    },
+    {
+      "name": "厄瓜多尔",
+      "data": "ECU"
+    },
+    {
+      "name": "厄立特里亚",
+      "data": "ERI"
+    },
+    {
+      "name": "法国",
+      "data": "FRA"
+    },
+    {
+      "name": "法罗群岛",
+      "data": "FRO"
+    },
+    {
+      "name": "法属玻里尼西亚",
+      "data": "PYF"
+    },
+    {
+      "name": "法属圭亚那",
+      "data": "GUF"
+    },
+    {
+      "name": "法属南部领土",
+      "data": "ATF"
+    },
+    {
+      "name": "梵蒂冈",
+      "data": "VAT"
+    },
+    {
+      "name": "菲律宾",
+      "data": "PHL"
+    },
+    {
+      "name": "斐济",
+      "data": "FJI"
+    },
+    {
+      "name": "芬兰",
+      "data": "FIN"
+    },
+    {
+      "name": "佛得角",
+      "data": "CPV"
+    },
+    {
+      "name": "福克兰群岛",
+      "data": "FLK"
+    },
+    {
+      "name": "冈比亚",
+      "data": "GMB"
+    },
+    {
+      "name": "刚果民主共和国",
+      "data": "COD"
+    },
+    {
+      "name": "刚果共和国",
+      "data": "COG"
+    },
+    {
+      "name": "哥伦比亚",
+      "data": "COL"
+    },
+    {
+      "name": "哥斯达黎加",
+      "data": "CRI"
+    },
+    {
+      "name": "格恩西岛",
+      "data": "GGY"
+    },
+    {
+      "name": "格林纳达",
+      "data": "GRD"
+    },
+    {
+      "name": "格陵兰",
+      "data": "GRL"
+    },
+    {
+      "name": "古巴",
+      "data": "CUB"
+    },
+    {
+      "name": "瓜德罗普岛",
+      "data": "GLP"
+    },
+    {
+      "name": "关岛",
+      "data": "GUM"
+    },
+    {
+      "name": "圭亚那",
+      "data": "GUY"
+    },
+    {
+      "name": "哈萨克斯坦",
+      "data": "KAZ"
+    },
+    {
+      "name": "海地",
+      "data": "HTI"
+    },
+    {
+      "name": "韩国",
+      "data": "KOR"
+    },
+    {
+      "name": "荷兰",
+      "data": "NLD"
+    },
+    {
+      "name": "荷属圣马丁",
+      "data": "SXM"
+    },
+    {
+      "name": "赫德与麦克唐纳群岛",
+      "data": "HMD"
+    },
+    {
+      "name": "黑山共和国",
+      "data": "MNE"
+    },
+    {
+      "name": "洪都拉斯",
+      "data": "HND"
+    },
+    {
+      "name": "基里巴斯",
+      "data": "KIR"
+    },
+    {
+      "name": "吉布提",
+      "data": "DJI"
+    },
+    {
+      "name": "吉尔吉斯斯坦",
+      "data": "KGZ"
+    },
+    {
+      "name": "几内亚",
+      "data": "GIN"
+    },
+    {
+      "name": "几内亚比绍",
+      "data": "GNB"
+    },
+    {
+      "name": "加勒比荷兰",
+      "data": "BES"
+    },
+    {
+      "name": "加拿大",
+      "data": "CAN"
+    },
+    {
+      "name": "加纳",
+      "data": "GHA"
+    },
+    {
+      "name": "加蓬",
+      "data": "GAB"
+    },
+    {
+      "name": "柬埔寨",
+      "data": "KHM"
+    },
+    {
+      "name": "捷克共和国",
+      "data": "CZE"
+    },
+    {
+      "name": "津巴布韦",
+      "data": "ZWE"
+    },
+    {
+      "name": "喀麦隆",
+      "data": "CMR"
+    },
+    {
+      "name": "卡塔尔",
+      "data": "QAT"
+    },
+    {
+      "name": "开曼群岛",
+      "data": "CYM"
+    },
+    {
+      "name": "科科斯群岛",
+      "data": "CCK"
+    },
+    {
+      "name": "科摩罗",
+      "data": "COM"
+    },
+    {
+      "name": "科特迪瓦",
+      "data": "CIV"
+    },
+    {
+      "name": "科威特",
+      "data": "KWT"
+    },
+    {
+      "name": "克罗地亚",
+      "data": "HRV"
+    },
+    {
+      "name": "肯尼亚",
+      "data": "KEN"
+    },
+    {
+      "name": "库克群岛",
+      "data": "COK"
+    },
+    {
+      "name": "库拉索",
+      "data": "CUW"
+    },
+    {
+      "name": "拉脱维亚",
+      "data": "LVA"
+    },
+    {
+      "name": "莱索托",
+      "data": "LSO"
+    },
+    {
+      "name": "老挝",
+      "data": "LAO"
+    },
+    {
+      "name": "黎巴嫩",
+      "data": "LBN"
+    },
+    {
+      "name": "立陶宛",
+      "data": "LTU"
+    },
+    {
+      "name": "利比里亚",
+      "data": "LBR"
+    },
+    {
+      "name": "利比亚",
+      "data": "LBY"
+    },
+    {
+      "name": "列支敦士登",
+      "data": "LIE"
+    },
+    {
+      "name": "留尼旺岛",
+      "data": "REU"
+    },
+    {
+      "name": "卢森堡",
+      "data": "LUX"
+    },
+    {
+      "name": "卢旺达",
+      "data": "RWA"
+    },
+    {
+      "name": "罗马尼亚",
+      "data": "ROU"
+    },
+    {
+      "name": "马达加斯加",
+      "data": "MDG"
+    },
+    {
+      "name": "马尔代夫",
+      "data": "MDV"
+    },
+    {
+      "name": "马耳他",
+      "data": "MLT"
+    },
+    {
+      "name": "马拉维",
+      "data": "MWI"
+    },
+    {
+      "name": "马来西亚",
+      "data": "MYS"
+    },
+    {
+      "name": "马里",
+      "data": "MLI"
+    },
+    {
+      "name": "马其顿",
+      "data": "MKD"
+    },
+    {
+      "name": "马绍尔群岛",
+      "data": "MHL"
+    },
+    {
+      "name": "马提尼克群岛",
+      "data": "MTQ"
+    },
+    {
+      "name": "马约特",
+      "data": "MYT"
+    },
+    {
+      "name": "毛里求斯",
+      "data": "MUS"
+    },
+    {
+      "name": "毛里塔尼亚",
+      "data": "MRT"
+    },
+    {
+      "name": "美国",
+      "data": "USA"
+    },
+    {
+      "name": "美国边远小岛",
+      "data": "UMI"
+    },
+    {
+      "name": "美属萨摩亚",
+      "data": "ASM"
+    },
+    {
+      "name": "美属维京群岛",
+      "data": "VIR"
+    },
+    {
+      "name": "蒙古",
+      "data": "MNG"
+    },
+    {
+      "name": "蒙特色拉特岛",
+      "data": "MSR"
+    },
+    {
+      "name": "孟加拉",
+      "data": "BGD"
+    },
+    {
+      "name": "秘鲁",
+      "data": "PER"
+    },
+    {
+      "name": "密克罗尼西亚",
+      "data": "FSM"
+    },
+    {
+      "name": "缅甸",
+      "data": "MMR"
+    },
+    {
+      "name": "摩尔多瓦",
+      "data": "MDA"
+    },
+    {
+      "name": "摩洛哥",
+      "data": "MAR"
+    },
+    {
+      "name": "摩纳哥",
+      "data": "MCO"
+    },
+    {
+      "name": "莫桑比克",
+      "data": "MOZ"
+    },
+    {
+      "name": "墨西哥",
+      "data": "MEX"
+    },
+    {
+      "name": "纳米比亚",
+      "data": "NAM"
+    },
+    {
+      "name": "南非",
+      "data": "ZAF"
+    },
+    {
+      "name": "南极洲",
+      "data": "ATA"
+    },
+    {
+      "name": "南乔治亚岛和南桑威奇群岛",
+      "data": "SGS"
+    },
+    {
+      "name": "南苏丹",
+      "data": "SSD"
+    },
+    {
+      "name": "瑙鲁",
+      "data": "NRU"
+    },
+    {
+      "name": "尼泊尔",
+      "data": "NPL"
+    },
+    {
+      "name": "尼加拉瓜",
+      "data": "NIC"
+    },
+    {
+      "name": "尼日尔",
+      "data": "NER"
+    },
+    {
+      "name": "尼日利亚",
+      "data": "NGA"
+    },
+    {
+      "name": "纽埃",
+      "data": "NIU"
+    },
+    {
+      "name": "挪威",
+      "data": "NOR"
+    },
+    {
+      "name": "诺福克岛",
+      "data": "NFK"
+    },
+    {
+      "name": "帕劳群岛",
+      "data": "PLW"
+    },
+    {
+      "name": "皮特凯恩群岛",
+      "data": "PCN"
+    },
+    {
+      "name": "葡萄牙",
+      "data": "PRT"
+    },
+    {
+      "name": "乔治亚",
+      "data": "GEO"
+    },
+    {
+      "name": "日本",
+      "data": "JPN"
+    },
+    {
+      "name": "瑞典",
+      "data": "SWE"
+    },
+    {
+      "name": "瑞士",
+      "data": "CHE"
+    },
+    {
+      "name": "萨尔瓦多",
+      "data": "SLV"
+    },
+    {
+      "name": "萨摩亚",
+      "data": "WSM"
+    },
+    {
+      "name": "塞尔维亚",
+      "data": "SRB"
+    },
+    {
+      "name": "塞拉利昂",
+      "data": "SLE"
+    },
+    {
+      "name": "塞内加尔",
+      "data": "SEN"
+    },
+    {
+      "name": "塞浦路斯",
+      "data": "CYP"
+    },
+    {
+      "name": "塞舌尔",
+      "data": "SYC"
+    },
+    {
+      "name": "沙特阿拉伯",
+      "data": "SAU"
+    },
+    {
+      "name": "圣巴泰勒米",
+      "data": "BLM"
+    },
+    {
+      "name": "圣诞岛",
+      "data": "CXR"
+    },
+    {
+      "name": "圣多美与普林希比",
+      "data": "STP"
+    },
+    {
+      "name": "圣赫勒拿",
+      "data": "SHN"
+    },
+    {
+      "name": "圣基茨和尼维斯",
+      "data": "KNA"
+    },
+    {
+      "name": "圣卢西亚",
+      "data": "LCA"
+    },
+    {
+      "name": "圣马丁",
+      "data": "MAF"
+    },
+    {
+      "name": "圣马力诺",
+      "data": "SMR"
+    },
+    {
+      "name": "圣皮埃尔和密克隆",
+      "data": "SPM"
+    },
+    {
+      "name": "圣文森特和格林纳丁斯",
+      "data": "VCT"
+    },
+    {
+      "name": "斯里兰卡",
+      "data": "LKA"
+    },
+    {
+      "name": "斯洛伐克",
+      "data": "SVK"
+    },
+    {
+      "name": "斯洛文尼亚",
+      "data": "SVN"
+    },
+    {
+      "name": "斯瓦尔巴特和扬马廷",
+      "data": "SJM"
+    },
+    {
+      "name": "斯威士兰",
+      "data": "SWZ"
+    },
+    {
+      "name": "苏丹",
+      "data": "SDN"
+    },
+    {
+      "name": "苏里南",
+      "data": "SUR"
+    },
+    {
+      "name": "所罗门群岛",
+      "data": "SLB"
+    },
+    {
+      "name": "索马里",
+      "data": "SOM"
+    },
+    {
+      "name": "塔吉克斯坦",
+      "data": "TJK"
+    },
+    {
+      "name": "泰国",
+      "data": "THA"
+    },
+    {
+      "name": "坦桑尼亚",
+      "data": "TZA"
+    },
+    {
+      "name": "汤加",
+      "data": "TON"
+    },
+    {
+      "name": "特克斯和凯科斯群岛",
+      "data": "TCA"
+    },
+    {
+      "name": "特立尼达和多巴哥",
+      "data": "TTO"
+    },
+    {
+      "name": "突尼斯",
+      "data": "TUN"
+    },
+    {
+      "name": "图瓦卢",
+      "data": "TUV"
+    },
+    {
+      "name": "土耳其",
+      "data": "TUR"
+    },
+    {
+      "name": "土库曼斯坦",
+      "data": "TKM"
+    },
+    {
+      "name": "托克劳",
+      "data": "TKL"
+    },
+    {
+      "name": "瓦利斯群岛和富图纳群岛",
+      "data": "WLF"
+    },
+    {
+      "name": "瓦努阿图",
+      "data": "VUT"
+    },
+    {
+      "name": "危地马拉",
+      "data": "GTM"
+    },
+    {
+      "name": "委内瑞拉",
+      "data": "VEN"
+    },
+    {
+      "name": "文莱",
+      "data": "BRN"
+    },
+    {
+      "name": "乌干达",
+      "data": "UGA"
+    },
+    {
+      "name": "乌克兰",
+      "data": "UKR"
+    },
+    {
+      "name": "乌拉圭",
+      "data": "URY"
+    },
+    {
+      "name": "乌兹别克斯坦",
+      "data": "UZB"
+    },
+    {
+      "name": "西班牙",
+      "data": "ESP"
+    },
+    {
+      "name": "西撒哈拉",
+      "data": "ESH"
+    },
+    {
+      "name": "希腊",
+      "data": "GRC"
+    },
+    {
+      "name": "新加坡",
+      "data": "SGP"
+    },
+    {
+      "name": "新喀里多尼亚",
+      "data": "NCL"
+    },
+    {
+      "name": "新西兰",
+      "data": "NZL"
+    },
+    {
+      "name": "匈牙利",
+      "data": "HUN"
+    },
+    {
+      "name": "叙利亚",
+      "data": "SYR"
+    },
+    {
+      "name": "牙买加",
+      "data": "JAM"
+    },
+    {
+      "name": "亚美尼亚",
+      "data": "ARM"
+    },
+    {
+      "name": "也门",
+      "data": "YEM"
+    },
+    {
+      "name": "伊拉克",
+      "data": "IRQ"
+    },
+    {
+      "name": "伊朗",
+      "data": "IRN"
+    },
+    {
+      "name": "以色列",
+      "data": "ISR"
+    },
+    {
+      "name": "意大利",
+      "data": "ITA"
+    },
+    {
+      "name": "印度",
+      "data": "IND"
+    },
+    {
+      "name": "印度尼西亚",
+      "data": "IDN"
+    },
+    {
+      "name": "英国",
+      "data": "GBR"
+    },
+    {
+      "name": "英国属地曼岛",
+      "data": "IMN"
+    },
+    {
+      "name": "英属维尔京群岛",
+      "data": "VGB"
+    },
+    {
+      "name": "英属印度洋领地",
+      "data": "IOT"
+    },
+    {
+      "name": "约旦",
+      "data": "JOR"
+    },
+    {
+      "name": "越南",
+      "data": "VNM"
+    },
+    {
+      "name": "赞比亚",
+      "data": "ZMB"
+    },
+    {
+      "name": "泽西岛",
+      "data": "JEY"
+    },
+    {
+      "name": "乍得",
+      "data": "TCD"
+    },
+    {
+      "name": "直布罗陀",
+      "data": "GIB"
+    },
+    {
+      "name": "智利",
+      "data": "CHL"
+    },
+    {
+      "name": "中非共和国",
+      "data": "CAF"
+    },
+    {
+      "name": "中国",
+      "data": "CHN"
+    },
+    {
+      "name": "中国澳门",
+      "data": "MAC"
+    },
+    {
+      "name": "中国台湾",
+      "data": "TWN"
+    },
+    {
+      "name": "中国香港",
+      "data": "HKG"
+    }
+  ]
   
 }

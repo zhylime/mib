@@ -47,7 +47,8 @@ $.fn.DeleteFriends = function(opts){
       if($(this).hasClass('active')){
         var img = $(this).attr('data-img');
         var name = $(this).attr('data-name');
-        html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/><span>' + name + '</span></li>'
+        html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/></li>';
+        // html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/><span>' + name + '</span></li>'
         container.find('.js-delete-group ul').html(html);
       }
     });

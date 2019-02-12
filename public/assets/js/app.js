@@ -1,5 +1,155 @@
 'use strict';
 
+$.fn.AddFriends2 = function (opts) {
+
+  var container = $(this);
+  var submitBtn = $(this).find('.js-submit');
+  var checkbox = $(this).find('.js-checkbox');
+  var form = $(this).find('.js-form');
+  var popup = $('.js-popup-add-friends');
+
+  events();
+
+  function events() {
+    initCheckbox();
+
+    submitBtn.on('click touch', function () {
+      // submitDate();
+      if (!$(this).hasClass('disabled')) {
+        openFriendRequestPopup();
+      }
+    });
+
+    $(document).on('click touch', '.js-popup-cover, .js-close-add-friends', function (e) {
+      e.stopPropagation();
+      closePopup(popup);
+    });
+  }
+
+  function initCheckbox() {
+    checkbox.on('click touch', function () {
+      if ($(this).attr('data-name') === 'all') {
+        if ($(this).hasClass('active')) {
+          resetAll();
+        } else {
+          selectAll();
+        }
+      } else {
+        var _value;
+        $(this).toggleClass('active');
+        _value = $(this).hasClass('active') ? 'selected' : '';
+
+        $(this).find('input').val(_value);
+      }
+
+      updateSubmitBtn();
+    });
+  }
+  function resetAll() {
+    checkbox.each(function () {
+      $(this).removeClass('active');
+      $(this).find('input').val('');
+    });
+  }
+
+  function selectAll() {
+    checkbox.each(function () {
+      $(this).addClass('active');
+      $(this).find('input').val('selected');
+    });
+  }
+
+  function updateSubmitBtn() {
+    if (checkbox.hasClass('active')) {
+      submitBtn.removeClass('disabled');
+    } else {
+      submitBtn.addClass('disabled');
+    }
+  }
+
+  function openFriendRequestPopup() {
+    showPopup(popup);
+  }
+
+  function showPopup(ele) {
+    var ele = ele;
+    ele.show();
+    $('.js-popup-cover').show();
+  }
+
+  function closePopup(ele) {
+    var ele = ele;
+    ele.hide();
+    $('.js-popup-cover').hide();
+  }
+
+  function submitDate() {}
+};
+'use strict';
+
+/*
+(data-js-add-media)
+  .l-flex.c-product-info--form--media.js-media
+    .item
+      input.input-file.js-input-file(type="file", name="", accept="image/*" capture="camera")
+      .item--content.js-add-media
+        .ic--add-3
+        span 照片/视频
+*/
+$.fn.AddMedia = function (opts) {
+
+  var container = $(this);
+  var mediaHtml = container.find('.js-media').html();
+  var maxMedia = 6;
+  events();
+
+  function events() {
+    addMedia();
+  }
+
+  function addMedia() {
+
+    updateMedia();
+    container.find('.js-media input[type="file"]').on('change', function () {
+      var file = this.files[0];
+      var _this = this;
+      var reader = new FileReader();
+      var replaceImg = $(this).parent().hasClass('uploaded');
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        if (!replaceImg) {
+          if (container.find('.js-media input[type="file"]').length < maxMedia) {
+            container.find('.js-media').append(mediaHtml);
+            addMedia();
+          }
+        }
+        $(_this).parent().addClass('uploaded');
+        $(_this).parent().find('.media-img').remove();
+        $(_this).parent().append('<img class="media-img" src="' + this.result + '" alt="" />');
+      };
+    });
+  }
+
+  function updateMedia() {
+    if (isIOSDevice) {
+      container.find('.js-media input[type="file"]').removeAttr("capture");
+    }
+  }
+
+  function isIOSDevice() {
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if (isAndroid) {
+      return false;
+    }
+    if (isIOS) {
+      return true;
+    }
+  }
+};
+'use strict';
+
 $.fn.Calender = function (opts) {
 
   var _calendarContainer = $(this).find('.js-calendar-container');
@@ -53,6 +203,58 @@ $.fn.Carousel = function (opts) {
       infinite: true,
       arrows: false,
       dots: false
+    });
+  }
+};
+'use strict';
+
+$.fn.Chat = function (opts) {
+
+  var container = $(this);
+  var insertBtn = container.find('.js-insert-btn');
+  var inputPopup = container.find('.js-input-popup');
+
+  events();
+
+  function events() {
+    toggleInputPopup();
+  }
+
+  function toggleInputPopup() {
+    insertBtn.on('click touch', function () {
+      var popup = $(this).attr('data-open');
+      if ($(this).hasClass('active')) {
+        inputPopup.removeClass('active');
+        insertBtn.removeClass('active');
+      } else {
+        insertBtn.removeClass('active');
+        $(this).addClass('active');
+        inputPopup.removeClass('active');
+        $('.js-input-popup[data-popup="' + popup + '"]').addClass('active');
+      }
+    });
+  }
+};
+'use strict';
+
+$.fn.Checkbox = function (opts) {
+
+  var container = $(this);
+  var checkbox = container.find('.js-checkbox');
+
+  events();
+
+  function events() {
+    initCheckbox();
+  }
+
+  function initCheckbox() {
+    checkbox.on('click touch', function () {
+      var _value;
+      $(this).toggleClass('active');
+      _value = $(this).hasClass('active') ? 'selected' : '';
+
+      $(this).find('input').val(_value);
     });
   }
 };
@@ -150,7 +352,8 @@ $.fn.DeleteFriends = function (opts) {
       if ($(this).hasClass('active')) {
         var img = $(this).attr('data-img');
         var name = $(this).attr('data-name');
-        html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/><span>' + name + '</span></li>';
+        html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/></li>';
+        // html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/><span>' + name + '</span></li>'
         container.find('.js-delete-group ul').html(html);
       }
     });
@@ -185,11 +388,35 @@ $(document).ready(function () {
   $('[data-js-calendar]').Calender();
 
   $('[data-js-forget-psw]').forgetPsw();
+  // $('[data-js-scan').Scan();
+  $('[data-js-add-friends-2]').AddFriends2();
 
   $('[data-js-switch-control]').SwitchControl();
-  $('[data-js-delete-friends]').DeleteFriends();
 
-  $('[data-js-more-menu').MoreMenu();
+  $('[data-js-select-friends]').SelectFriends();
+  $('[data-js-delete-friends]').DeleteFriends();
+  $('[data-js-group-members]').GroupMembers();
+
+  $('[data-js-group-owner]').GroupOwner();
+
+  $('[data-js-setting-user]').SettingUser();
+
+  $('[data-js-publish]').Publish();
+
+  $('[data-js-product-info]').ProductInfo();
+
+  $('[data-js-chat]').Chat();
+  $('[data-js-select-and-count]').SelectAndCount();
+  $('[data-js-location]').SelectLocation();
+
+  $('[data-js-selected]').Selected();
+
+  $('[data-js-more-menu]').MoreMenu();
+  $('[data-js-favorite]').Favorite();
+
+  $('[data-js-add-media]').AddMedia();
+  $('[data-js-checkbox]').Checkbox();
+  $('[data-js-radio-box]').RadioBox();
 
   $('[data-js-tab-panel]').TabPanel();
 
@@ -209,6 +436,26 @@ $(document).ready(function () {
 // $(window).onload(function(){
 //   $('[data-js-sign-in]').SignIn();
 // })
+'use strict';
+
+$.fn.Favorite = function (opts) {
+
+  var container = $(this);
+  var favBtn = container.find('.js-fav');
+
+  events();
+
+  function events() {
+    toggleFavorite();
+  }
+
+  function toggleFavorite() {
+    favBtn.on('click', function () {
+      $(this).toggleClass('active');
+      $(this).find('.ic--fav').toggleClass('active');
+    });
+  }
+};
 'use strict';
 
 $.fn.forgetPsw = function (opts) {
@@ -404,6 +651,60 @@ $.fn.forgetPsw = function (opts) {
     ele.show();
     $('.js-popup-cover').show();
   }
+};
+'use strict';
+
+$.fn.GroupMembers = function (opts) {
+
+  var container = $(this);
+  var title = $(this).find('.js-title');
+  var list = $(this).find('.js-list');
+
+  events();
+
+  function events() {
+    updateTitle();
+  }
+
+  function updateTitle() {
+    var number = list.find('li').length - 1;
+    title.html(title.html() + '(' + number + ')');
+    // console.log(number);
+  }
+};
+'use strict';
+
+$.fn.GroupOwner = function (opts) {
+
+  var container = $(this);
+  var submitBtn = $(this).find('.js-submit');
+  var checkbox = $(this).find('.js-checkbox');
+
+  events();
+
+  function events() {
+    initCheckbox();
+
+    submitBtn.on('click touch', function () {
+      submitDate();
+    });
+  }
+
+  function initCheckbox() {
+    checkbox.on('click touch', function () {
+      var _value;
+      checkbox.each(function () {
+        $(this).removeClass('active');
+        $(this).find('input').val('');
+      });
+      $(this).toggleClass('active');
+      // _value = $(this).hasClass('active') ? 'selected' : '';
+
+      $(this).find('input').val('selected');
+    });
+  }
+
+  function submitDate() {}
 };
 'use strict';
 
@@ -796,6 +1097,61 @@ $.fn.PrePay = function (opts) {
 };
 'use strict';
 
+$.fn.ProductInfo = function (opts) {
+
+  var container = $(this);
+
+  var mediaHtml = container.find('.js-media').html();
+  var maxMedia = 6;
+  events();
+
+  function events() {
+    addMedia();
+  }
+
+  function addMedia() {
+
+    updateMedia();
+    container.find('.js-media input[type="file"]').on('change', function () {
+      var file = this.files[0];
+      var _this = this;
+      var reader = new FileReader();
+      var replaceImg = $(this).parent().hasClass('uploaded');
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        if (!replaceImg) {
+          if (container.find('.js-media input[type="file"]').length < maxMedia) {
+            container.find('.js-media').append(mediaHtml);
+            addMedia();
+          }
+        }
+        $(_this).parent().addClass('uploaded');
+        $(_this).parent().find('.media-img').remove();
+        $(_this).parent().append('<img class="media-img" src="' + this.result + '" alt="" />');
+      };
+    });
+  }
+
+  function updateMedia() {
+    if (isIOSDevice) {
+      container.find('.js-media input[type="file"]').removeAttr("capture");
+    }
+  }
+
+  function isIOSDevice() {
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if (isAndroid) {
+      return false;
+    }
+    if (isIOS) {
+      return true;
+    }
+  }
+};
+'use strict';
+
 $.fn.ProjectList = function (opts) {
 
   var sliderContainer = $(this).find('.js-categories-slider');
@@ -827,6 +1183,188 @@ $.fn.ProjectList = function (opts) {
         e.stopPropagation();
         $(this).toggleClass('active');
       });
+    });
+  }
+};
+'use strict';
+
+$.fn.Publish = function (opts) {
+
+  var container = $(this);
+  var checkbox = container.find('.js-checkbox');
+  var projectExperience = container.find('.js-project-experience');
+  var type = container.find('.js-type');
+  var selectedTypeLabel = container.find('.js-selected-type');
+  var selectedTypeInput = container.find('input[name="type"]');
+
+  events();
+
+  function events() {
+    if (checkbox.length > 0) {
+      initCheckbox();
+    }
+
+    initPublish();
+    if (projectExperience.length > 0) {
+      addProjectExperience();
+    }
+
+    if (type.length > 0) {
+      selectType();
+    }
+  }
+  function initPublish() {
+    var url = location.href;
+    var dataArray = [];
+    var option1 = false;
+    var option2 = false;
+    // type selected
+    if (url.indexOf('?') >= 0 && url.indexOf('t2')) {
+      var data = location.search.replace('?', '').split('&');
+      for (var i = 0; i < data.length; i++) {
+        dataArray.push(data[i].split('='));
+      }
+      selectedTypeLabel.html(decodeURIComponent(dataArray[1][1]));
+      selectedTypeInput.val(dataArray[0][1]);
+      selectedTypeLabel.removeClass('hide');
+      if (dataArray.length >= 4) {
+        option1 = dataArray[3][1];
+      }
+      if (dataArray.length == 5) {
+        option2 = dataArray[4][1];
+      }
+
+      showContent(dataArray[2][1], option1, option2);
+    }
+  }
+  function showContent(show, option1, option2) {
+    // console.log(data);
+    console.log("option1: " + option1);
+    console.log(option2);
+    var show = show;
+    if (show == '1') {
+      $('.js-show-game').removeClass('hide');
+    } else {
+      $('.js-show-other').removeClass('hide');
+      if (option1) {
+        switch (option1) {
+          case 'input':
+            $('.js-option1-input').removeClass('hide');
+            break;
+          case 'select':
+            $('.js-option1-select').removeClass('hide');
+            break;
+        };
+      }
+      if (option2) {
+        switch (option2) {
+          case 'input':
+            $('.js-option2-input').removeClass('hide');
+            break;
+          case 'select':
+            $('.js-option2-select').removeClass('hide');
+            break;
+        }
+      }
+    }
+    $('.js-next').removeClass('hide');
+  }
+  function selectType() {
+    type.find('.js-type-heading').on('click touch', function () {
+      var data = $(this).attr('data-category');
+      var value = $(this).html();
+      var show = $(this).attr('data-show');
+      if ($('[data-type-category="' + data + '"]').length > 0) {
+        $('[data-type-category="' + data + '"]').stop().slideToggle();
+      } else {
+        type.removeClass('selected');
+        container.find('.js-type-option').removeClass('selected');
+        $(this).parent().addClass('selected');
+        setVariable(data, value, show);
+      }
+    });
+    type.find('.js-type-option').on('click touch', function (e) {
+      var data = $(this).attr('data-type-option');
+      var option1 = $(this).attr('data-option1');
+      var option2 = $(this).attr('data-option2');
+      var value = $(this).find('span').html();
+      var show = $(this).attr('data-show');
+
+      type.removeClass('selected');
+      container.find('.js-type-option').removeClass('selected');
+      $(this).addClass('selected');
+      $(this).parents('.js-type').addClass('selected');
+      // console.log(option1);
+      setVariable(data, value, show, option1, option2);
+    });
+  }
+  function setVariable(data, value, show, option1, option2) {
+    var t2 = data;
+    var val = value;
+    var url = $('input[name="url"]').val();
+
+    if (option1 && option2) {
+      var option1 = option1;
+      var option2 = option2;
+      url = url + '?t2=' + t2 + '&val=' + val + '&show=' + show + '&option1=' + option1 + '&option2=' + option2;
+    } else {
+      url = url + '?t2=' + t2 + '&val=' + val + '&show=' + show;
+    }
+
+    window.location.href = url;
+  }
+
+  function initCheckbox() {
+    checkbox.each(function () {
+      $(this).on('click touch', function () {
+        resetAllInput();
+
+        $(this).addClass('active');
+        $(this).attr('data-checked', 'checked');
+        $(this).next().val('checked');
+      });
+    });
+  }
+
+  function resetAllInput() {
+    checkbox.each(function () {
+      $(this).removeClass('active');
+      $(this).attr('data-checked', '');
+      $(this).next().val('');
+    });
+  }
+
+  function addProjectExperience() {
+    var html = projectExperience.html();
+    container.find('.js-add').on('click touch', function () {
+      projectExperience.append(html);
+    });
+  }
+};
+'use strict';
+
+$.fn.RadioBox = function (opts) {
+
+  var container = $(this);
+  var checkbox = container.find('.js-checkbox');
+
+  events();
+
+  function events() {
+    initCheckbox();
+  }
+
+  function initCheckbox() {
+    checkbox.on('click touch', function () {
+      var _value;
+      checkbox.each(function () {
+        $(this).removeClass('active');
+        $(this).find('input').val('');
+      });
+      $(this).toggleClass('active');
+      // _value = $(this).hasClass('active') ? 'selected' : '';
+
+      $(this).find('input').val('selected');
     });
   }
 };
@@ -1317,6 +1855,83 @@ $.fn.Register = function (opts) {
 // }
 //   
 "use strict";
+"use strict";
+
+$.fn.Scan = function (opts) {
+
+  var container = $(this);
+
+  events();
+
+  function events() {
+    initScan();
+  }
+  function initScan() {
+    var canvas = null,
+        context = null,
+        video = null;
+    window.addEventListener("DOMContentLoaded", function () {
+      try {
+        canvas = document.getElementById("canvas");
+        context = canvas.getContext("2d");
+        video = document.getElementById("video");
+
+        var videoObj = { "video": true, audio: false },
+            flag = true,
+            MediaErr = function MediaErr(error) {
+          flag = false;
+          if (error.PERMISSION_DENIED) {
+            alert('用户拒绝了浏览器请求媒体的权限', '提示');
+          } else if (error.NOT_SUPPORTED_ERROR) {
+            alert('对不起，您的浏览器不支持拍照功能，请使用其他浏览器', '提示');
+          } else if (error.MANDATORY_UNSATISFIED_ERROR) {
+            alert('指定的媒体类型未接收到媒体流', '提示');
+          } else {
+            alert('系统未能获取到摄像头，请确保摄像头已正确安装。或尝试刷新页面，重试', '提示');
+          }
+        };
+        //获取媒体的兼容代码，目前只支持（Firefox,Chrome,Opera）
+        if (navigator.getUserMedia) {
+          //qq浏览器不支持
+          if (navigator.userAgent.indexOf('MQQBrowser') > -1) {
+            alert('对不起，您的浏览器不支持拍照功能，请使用其他浏览器', '提示');
+            return false;
+          }
+          navigator.getUserMedia(videoObj, function (stream) {
+            video.src = stream;
+            video.play();
+          }, MediaErr);
+        } else if (navigator.webkitGetUserMedia) {
+          navigator.webkitGetUserMedia(videoObj, function (stream) {
+            video.src = window.webkitURL.createObjectURL(stream);
+            video.play();
+          }, MediaErr);
+        } else if (navigator.mozGetUserMedia) {
+          navigator.mozGetUserMedia(videoObj, function (stream) {
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+          }, MediaErr);
+        } else if (navigator.msGetUserMedia) {
+          navigator.msGetUserMedia(videoObj, function (stream) {
+            $(document).scrollTop($(window).height());
+            video.src = window.URL.createObjectURL(stream);
+            video.play();
+          }, MediaErr);
+        } else {
+          alert('对不起，您的浏览器不支持拍照功能，请使用其他浏览器');
+          return false;
+        }
+        if (flag) {
+          alert('为了获得更准确的测试结果，请尽量将二维码置于框中，然后进行拍摄、扫描。 请确保浏览器有权限使用摄像功能');
+        }
+        //这个是拍照按钮的事件，          
+        // $("#snap").click(function () {startPat();}).show();
+      } catch (e) {
+        printHtml("浏览器不支持HTML5 CANVAS");
+      }
+    }, false);
+  }
+};
 'use strict';
 
 $.fn.Search = function (opts) {
@@ -1370,6 +1985,162 @@ $.fn.Search = function (opts) {
     $('.js-history-view-more').attr('data-expanded', 'false').html('更多');
   }
 };
+'use strict';
+
+$.fn.SelectAndCount = function (opts) {
+
+  var container = $(this);
+  var completeBtn = container.find('.js-complete');
+  var selections = container.find('.js-selection');
+
+  var btnLabel = completeBtn.html();
+
+  events();
+
+  function events() {
+    initSelections();
+  }
+  function initSelections() {
+    selections.on('click touch', function () {
+      $(this).toggleClass('active');
+      updateCompleteBtn();
+    });
+  }
+
+  function updateCompleteBtn() {
+    var num = container.find('.js-selection.active').length;
+    if (num !== 0) {
+      completeBtn.html(btnLabel + '(' + num + ')');
+    } else {
+      completeBtn.html(btnLabel);
+    }
+  }
+};
+'use strict';
+
+$.fn.SelectFriends = function (opts) {
+
+  var container = $(this);
+  var submitBtn = $(this).find('.js-submit');
+  var checkbox = $(this).find('.js-checkbox');
+  var selectGroup = $(this).find('.js-select-group');
+
+  events();
+
+  function events() {
+    initCheckbox();
+
+    submitBtn.on('click touch', function () {
+      submitDate();
+    });
+  }
+
+  function initCheckbox() {
+    checkbox.on('click touch', function () {
+      var _value;
+      $(this).toggleClass('active');
+      _value = $(this).hasClass('active') ? 'selected' : '';
+
+      $(this).find('input').val(_value);
+      updateSubmitBtn();
+      updateSelectGroup();
+    });
+  }
+  function updateSubmitBtn() {
+    var num = 0;
+    checkbox.each(function () {
+      if ($(this).hasClass('active')) {
+        num += 1;
+      }
+    });
+
+    submitBtn.html('完成 (' + num + ')');
+  }
+
+  function updateSelectGroup() {
+    var html = '';
+    checkbox.each(function () {
+      if ($(this).hasClass('active')) {
+        var img = $(this).attr('data-img');
+        var name = $(this).attr('data-name');
+        html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/></li>';
+        // html += '<li class="txt--c"><img class="l-w--100p has-corner--50p" src="' + img + '" alt="' + name + '"/><span>' + name + '</span></li>'
+        container.find('.js-select-group ul').html(html);
+      }
+    });
+    if (container.find('.js-checkbox.active').length > 0) {
+      selectGroup.show();
+    } else {
+      container.find('.js-select-group ul').html('');
+      selectGroup.hide();
+    }
+  }
+
+  function submitDate() {}
+};
+'use strict';
+
+$.fn.SelectLocation = function (opts) {
+
+  var container = $(this);
+  var completeBtn = container.find('.js-complete');
+  var selections = container.find('.js-selection');
+  var selected = container.find('.js-selected');
+
+  var btnLabel = completeBtn.html();
+
+  events();
+
+  function events() {
+    initSelections();
+  }
+  function getLocation() {}
+  function initSelections() {
+    selections.on('click touch', function () {
+      var countryName = $(this).find('.c-location--item--name').html();
+      selections.removeClass('active');
+      $(this).toggleClass('active');
+      selected.find('.c-location--item--name').html(countryName);
+      selected.removeClass('hide');
+    });
+  }
+};
+'use strict';
+
+$.fn.Selected = function (opts) {
+
+  var sliderContainer = $(this).find('.js-categories-slider');
+  var favoriteIcons = $(this).find('.js-favorite');
+
+  events();
+
+  function events() {
+    slider();
+    // getData();
+    toggleFavorite();
+  }
+
+  function slider() {
+    sliderContainer.slick({
+      dots: false,
+      infinite: false,
+      slidesToShow: 5,
+      arrows: false
+    });
+  }
+  // function getData(){
+  //   var 
+  // }
+  function toggleFavorite() {
+    favoriteIcons.each(function () {
+      $(this).on('click touch', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        $(this).toggleClass('active');
+      });
+    });
+  }
+};
 "use strict";
 
 $.fn.serializeJson = function () {
@@ -1391,6 +2162,57 @@ $.fn.serializeJson = function () {
                 }
         });
         return serializeObj;
+};
+'use strict';
+
+$.fn.SettingUser = function (opts) {
+
+  var container = $(this);
+  var fileInput = container.find('.js-input-file');
+  var DOBInput = container.find('.js-birthday');
+  var astroInput = container.find('.js-astro');
+
+  events();
+
+  function events() {
+    updateUserPic();
+
+    // 星座
+    updateAstro();
+  }
+
+  function updateUserPic() {
+    if (isIOSDevice) {
+      fileInput.removeAttr("capture");
+    }
+  }
+
+  function isIOSDevice() {
+    var u = navigator.userAgent;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+    if (isAndroid) {
+      return false;
+    }
+    if (isIOS) {
+      return true;
+    }
+  }
+
+  function updateAstro() {
+    DOBInput.on('change', function () {
+      var DOB = new Date($(this).val().replace('-', '/'));
+      var month = DOB.getMonth() + 1;
+      var date = DOB.getDate();
+      astroInput.html(getAstro(month, date));
+    });
+  }
+
+  function getAstro(month, date) {
+    var AstroName = "摩羯座水瓶座双鱼座白羊座金牛座双子座巨蟹座狮子座处女座天秤座天蝎座射手座魔羯座";
+    var dateArr = [20, 19, 21, 21, 21, 22, 23, 23, 23, 23, 22, 22];
+    return AstroName.substr(month * 3 - (date < dateArr[month] ? 3 : 0), 3);
+  }
 };
 'use strict';
 

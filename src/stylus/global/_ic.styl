@@ -9,7 +9,8 @@
     background-size 100%
     background-repeat no-repeat
     background-position center
-  
+    width 14px
+    height 24px
   &--menu
     &--me
       background-image url(../img/ic-menu-user.png)
@@ -130,6 +131,8 @@
     width 18px
     height 20px
     margin auto
+    &.active
+      background-image url(../img/ic-fav-active.png)
   &--art1
     background-image url(../img/ic-art1.png)
     background-size 100%
@@ -199,12 +202,34 @@
     background-size 100%
     width 25px
     height 25px
+    &--2
+      background-image url(../img/ic-img-2.png)
+      background-repeat no-repeat
+      background-size 100%
+      background-position center
+      width 15px
+      height 15px
   &--camera
     background-image url(../img/ic-camera.png)
     background-repeat no-repeat
     background-size 100%
     width 25px
     height 25px
+    &--white
+      background-image url(../img/ic-camera-white.png)
+      background-repeat no-repeat
+      background-size 100%
+      background-position center
+      width 25px
+      height 25px
+  &--emoji
+    background-image url(../img/ic-chat-emoji.png)
+    background-repeat no-repeat
+    background-size 100%
+    width 25px
+    height 25px
+
+  
   &--mutiply
     background-image url(../img/ic-mutiply.png)
     background-repeat no-repeat
@@ -422,11 +447,153 @@
       background-position center
       width 17px
       height 18px
-
-    
   
-    
+  &--exclamation
+    background-image url(../img/ic-exclamation.png)
+    background-size 100%
+    background-repeat no-repeat
+    background-position center
+    width 18px
+    height 18px
+  &--contacts
+    &--phone
+      background-image url(../img/ic-contacts-phone.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 18px
+      height 18px
+    &--group
+      background-image url(../img/ic-contacts-group.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 18px
+      height 18px
+    &--new
+      background-image url(../img/ic-contacts-new.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 18px
+      height 18px
+    &--special
+      background-image url(../img/ic-contact-special.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 18px
+      height 18px
   
+  &--arrow
+    &--r--s--green
+      position relative
+      width 7px
+      height 20px
+      &:before
+      &:after
+        content ""
+        width 7px
+        height 2px
+        position absolute
+        background $col-persian-green
+        right 0
+        top 6px
+        display block
+      &:before
+        transform rotate(45deg)
+      &:after
+        transform rotate(135deg)
+        top 10px
+  
+  &--add-2
+    background-image url(../img/ic-add-2.png)
+    background-size 100%
+    background-repeat no-repeat
+    background-position center
+    width 20px
+    height 20px
+    &.large
+      width 25px
+      height 25px
+  &--add-3
+    background-image url(../img/ic-add-3.png)
+    background-size 100%
+    background-repeat no-repeat
+    background-position center
+    width 20px
+    height 20px
+  &--setting
+    &--1
+      background-image url(../img/ic-setting-1.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--2
+      background-image url(../img/ic-setting-2.png)
+      background-size auto 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--3
+      background-image url(../img/ic-setting-3.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--4
+      background-image url(../img/ic-setting-4.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--5
+      background-image url(../img/ic-setting-5.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--6
+      background-image url(../img/ic-setting-6.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--7
+      background-image url(../img/ic-setting-7.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+    &--8
+      background-image url(../img/ic-setting-8.png)
+      background-size 100%
+      background-repeat no-repeat
+      background-position center
+      width 24px
+      height 24px
+  &--edit
+    background-image url(../img/ic-edit.png)
+    background-size 100%
+    background-repeat no-repeat
+    background-position center
+    width 18px
+    height 18px
+  &--location
+    background-image url(../img/ic-location.png)
+    background-size 100%
+    background-repeat no-repeat
+    background-position center
+    width 10px
+    height 18px
     
 
 

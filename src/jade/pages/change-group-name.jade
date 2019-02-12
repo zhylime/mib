@@ -1,0 +1,21 @@
+extends ../partials/_template
+
+
+block content
+  .c-change-display-name
+    .c-header.l-columns.has-shadow.l-v--m.l-pad--20.pos-relative
+      .c-header--title
+        span.txt--black.txt--600 修改群名称
+      .col.c-header--back.l-w--50p
+        a.ic--back--black(href="#")
+    .c-content
+      form.js-change-display-name
+        .rol.border-bottom
+          input.l-w--100p(type="text", value="输入群名称", name="displayName")
+          //- .ic--close--green
+
+        br
+        button.btn-type-2(type="submit") 确定
+      
+
+
