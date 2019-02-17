@@ -1046,6 +1046,30 @@ input:-ms-input-placeholder {
   width: 10px;
   height: 18px;
 }
+.ic--notification--gift {
+  background-image: url("../img/ic-notification-gift.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+.ic--notification--discount {
+  background-image: url("../img/ic-notification-discount.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
+.ic--notification--vip {
+  background-image: url("../img/ic-notification-vip.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 50px;
+  height: 50px;
+}
 html,
 body {
   height: 100%;
@@ -2316,6 +2340,16 @@ textarea.light:-ms-input-placeholder {
 .c-collapse--expand-btn[data-expanded="true"] {
   bottom: -15px;
 }
+.c-contact-form textarea {
+  height: 160px;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #00a5a5;
+  font-size: 16px;
+  line-height: 24px;
+}
 .c-contacts--main {
   position: relative;
 }
@@ -2587,6 +2621,47 @@ textarea.light:-ms-input-placeholder {
   top: 7px;
   margin-right: 10px;
 }
+.c-guide--ol-list {
+  padding: 20px 20px 20px 10px;
+}
+.c-guide--ol-list li {
+  list-style-type: none;
+  position: relative;
+  padding-left: 35px;
+  margin: 0;
+}
+.c-guide--ol-list li:before {
+  content: "";
+  background: url("../img/ic-bullet.png");
+  background-size: 70%;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+  display: block;
+  position: absolute;
+  background-position: center;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #fff;
+  z-index: 1;
+  margin: 0 auto;
+}
+.c-guide--ol-list li:after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 15px;
+  background: #00a5a5;
+}
+.c-guide--ol-list li .box {
+  padding: 15px 10px;
+  border: 1px solid #dde0e3;
+  border-radius: 5px;
+}
 .c-header {
   position: absolute;
   width: 100%;
@@ -2725,6 +2800,7 @@ textarea.light:-ms-input-placeholder {
   padding: 10px 0 5px;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 }
 .c-menu--item {
   text-align: center;
@@ -2894,6 +2970,38 @@ textarea.light:-ms-input-placeholder {
 }
 .c-msg--main--item.active .order-detail .ic--timer {
   background-image: url("../img/ic-timer-active.png");
+}
+.c-notification--item {
+  background-color: #f1f8f8;
+  border: 1px solid #00a5a5;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding: 15px;
+  display: block;
+  margin-bottom: 20px;
+}
+.c-notification--item .title {
+  font-size: 18px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.c-notification--item p {
+  font-size: 16px;
+  line-height: 24px;
+}
+.c-notification--item .sender,
+.c-notification--item .time {
+  font-size: 14px;
+  color: #8c8c8c;
+}
+.c-notification--item .sender {
+  margin-top: 15px;
+}
+.c-notification--item .time {
+  margin-bottom: 10px;
 }
 .c-order-detail {
   padding: 20px 20px 70px 20px;
