@@ -150,6 +150,112 @@ $.fn.AddMedia = function (opts) {
 };
 'use strict';
 
+$.fn.AddProduct = function (opts) {
+
+  var container = $(this);
+  var form = container.find('form');
+  var submitBtn = container.find('.js-submit');
+  var addNewProductBtn = container.find('.js-add-new-product');
+
+  var productHtml = container.find('.js-product-container').html();
+
+  events();
+
+  function events() {
+    initAll();
+
+    addNewProductBtn.on('click touch', function () {
+      $(productHtml).appendTo(container.find('.js-product-container'));
+      initAll();
+    });
+  }
+  function initAll() {
+    radioToggle();
+    checkboxToggle();
+    submitBtn.on('click touch', function () {
+      $('input[name="period"][value="yes"]').each(function () {
+        // 周期预估 输入数量 true
+        if ($(this).prop('checked')) {
+          $(this).parents('.js-radio-group').find('input[name="period_number"]').prop('required', true);
+        } else {
+          $(this).parents('.js-radio-group').find('input[name="period_number"]').prop('required', false);
+        }
+      });
+
+      formValidation();
+    });
+  }
+  function formValidation() {
+    form.validate({
+      rules: {
+        productName: 'required',
+        price: 'required'
+      },
+      messages: {
+        productName: '',
+        price: ''
+      },
+      submitHandler: function submitHandler(e) {
+        // 临时代码，
+        window.location.href = './67.html';
+      }
+    });
+  }
+  function radioToggle() {
+    container.find('.js-radio-group .js-radio-btn').on('click touch', function () {
+      var radio_group = $(this).parents('.js-radio-group');
+      radio_group.find('.js-radio-btn').removeClass('active');
+      radio_group.find('.js-radio-btn input').prop('checked', false);
+      $(this).addClass('active');
+      $(this).find('input').prop('checked', true);
+    });
+  }
+
+  function checkboxToggle() {
+    container.find('.js-checkbox').on('click touch', function () {
+      $(this).toggleClass('active');
+    });
+  }
+};
+'use strict';
+
+$.fn.Business = function (opts) {
+
+  var container = $(this);
+  var submitBtn = container.find('.js-submit');
+  var form = container.find('form');
+
+  events();
+
+  function events() {
+    formValidation();
+  }
+  function formValidation() {
+    submitBtn.on('click touch', function () {
+      form.validate({
+        rules: {
+          locationCountry: 'required',
+          locationCity: 'required',
+          launchLocation: 'required',
+          authorization: 'required'
+        },
+        messages: {
+          locationCountry: '不能为空',
+          locationCity: '不能为空',
+          launchLocation: '不能为空',
+          authorization: '不能为空'
+
+        },
+        submitHandler: function submitHandler(e) {
+          // 临时代码，
+          e.preventDefault();
+        }
+      });
+    });
+  }
+};
+'use strict';
+
 $.fn.Calender = function (opts) {
 
   var _calendarContainer = $(this).find('.js-calendar-container');
@@ -401,6 +507,8 @@ $(document).ready(function () {
 
   $('[data-js-setting-user]').SettingUser();
 
+  $('[data-js-product-management]').ProductManagement();
+
   $('[data-js-publish]').Publish();
 
   $('[data-js-product-info]').ProductInfo();
@@ -410,9 +518,11 @@ $(document).ready(function () {
   $('[data-js-location]').SelectLocation();
 
   $('[data-js-selected]').Selected();
+  $('[data-js-add-product]').AddProduct();
 
   $('[data-js-more-menu]').MoreMenu();
   $('[data-js-favorite]').Favorite();
+  $('[data-js-business]').Business();
 
   $('[data-js-add-media]').AddMedia();
   $('[data-js-checkbox]').Checkbox();
@@ -424,12 +534,27 @@ $(document).ready(function () {
     text: true
   });
 
+  $('[data-js-progress-bar]').ProgressBar();
   $('[data-js-search]').Search();
 
   // lightbox on store
   lightbox.option({
     'resizeDuration': 200,
     'wrapAround': true
+  });
+
+  $('.js-ui-datepicker').datepicker({
+    changeMonth: true,
+    changeYear: true,
+    showButtonPanel: true,
+    dateFormat: 'yy-mm',
+    onClose: function onClose(dataText, inst) {
+      var month = $('#ui-datepicker-div .ui-datepicker-month :selected').val();
+      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+      $(this).datepicker('setDate', new Date(year, month, 1));
+    }
+  }).click(function () {
+    $('.ui-datepicker-calendar').hide();
   });
 });
 
@@ -1100,6 +1225,8 @@ $.fn.PrePay = function (opts) {
 $.fn.ProductInfo = function (opts) {
 
   var container = $(this);
+  var submitBtn = container.find('.js-submit');
+  var form = container.find('form');
 
   var mediaHtml = container.find('.js-media').html();
   var maxMedia = 6;
@@ -1107,6 +1234,7 @@ $.fn.ProductInfo = function (opts) {
 
   function events() {
     addMedia();
+    formValidation();
   }
 
   function addMedia() {
@@ -1132,6 +1260,33 @@ $.fn.ProductInfo = function (opts) {
     });
   }
 
+  function formValidation() {
+    submitBtn.on('click touch', function () {
+      form.validate({
+        rules: {
+          productTitle: 'required',
+          productDescription: 'required',
+          productProgress: 'required',
+          productSize: 'required',
+          productLanguage: 'required'
+        },
+        messages: {
+          productTitle: '不能为空',
+          productDescription: '不能为空',
+          productProgress: '不能为空',
+          productSize: '不能为空',
+          productLanguage: '不能为空'
+
+        },
+        submitHandler: function submitHandler(e) {
+          // 临时代码，
+
+
+        }
+      });
+    });
+  }
+
   function updateMedia() {
     if (isIOSDevice) {
       container.find('.js-media input[type="file"]').removeAttr("capture");
@@ -1148,6 +1303,88 @@ $.fn.ProductInfo = function (opts) {
     if (isIOS) {
       return true;
     }
+  }
+};
+'use strict';
+
+$.fn.ProductManagement = function (opts) {
+
+  var container = $(this);
+  var moreBtn = $(this).find('.js-more');
+  var morePopup = $('.js-product-management-more-popup');
+  var popupCover = $('.js-cover');
+
+  events();
+
+  function events() {
+
+    moreBtn.each(function () {
+      $(this).on('click touch', function () {
+        var status = $(this).attr('data-status');
+        openPopup(status);
+      });
+    });
+
+    popupCover.on('click touch', function () {
+      closePopup();
+    });
+
+    morePopup.find('.js-cancel').on('click touch', function () {
+      closePopup();
+    });
+  }
+
+  function openPopup(status) {
+    morePopup.find('a.item').each(function () {
+      if ($(this).attr('data-display').indexOf(status) >= 0) {
+        $(this).show();
+      } else {
+        $(this).hide();
+      }
+    });
+    morePopup.show();
+    popupCover.show();
+    stopBodyScrolling(true);
+  }
+
+  function closePopup() {
+    morePopup.hide();
+    popupCover.hide();
+    stopBodyScrolling(false);
+  }
+
+  function stopBodyScrolling(bool) {
+    if (bool === true) {
+      $('html, body').css('overflow', 'hidden');
+      document.body.addEventListener('touchmove', freezeVp, false);
+    } else {
+      $('html, body').css('overflow', 'initial');
+      document.body.removeEventListener('touchmove', freezeVp, false);
+    }
+  }
+
+  var freezeVp = function freezeVp(e) {
+    e.preventDefault();
+  };
+};
+'use strict';
+
+$.fn.ProgressBar = function (opts) {
+
+  var container = $(this);
+  var progressBar = $(this).find('.js-progress-bar');
+  var progressNumber = $(this).find('.js-progress-number');
+
+  events();
+
+  function events() {
+    container.each(function () {
+      var num = $(this).find('.js-progress-number').attr('data-number');
+      console.log(num);
+      $(this).find('.js-progress-bar').css({
+        width: num + '%'
+      });
+    });
   }
 };
 'use strict';
@@ -1196,6 +1433,8 @@ $.fn.Publish = function (opts) {
   var type = container.find('.js-type');
   var selectedTypeLabel = container.find('.js-selected-type');
   var selectedTypeInput = container.find('input[name="type"]');
+  var submitBtn = container.find('.js-submit');
+  var form = container.find('form');
 
   events();
 
@@ -1238,9 +1477,8 @@ $.fn.Publish = function (opts) {
     }
   }
   function showContent(show, option1, option2) {
-    // console.log(data);
-    console.log("option1: " + option1);
-    console.log(option2);
+    // console.log("option1: " + option1);
+    // console.log(option2);
     var show = show;
     if (show == '1') {
       $('.js-show-game').removeClass('hide');
@@ -1268,6 +1506,46 @@ $.fn.Publish = function (opts) {
       }
     }
     $('.js-next').removeClass('hide');
+    formVerification();
+  }
+  function formVerification() {
+    if (!$('.js-show-game').hasClass('hide')) {
+      submitBtn.unbind('click touch').on('click touch', function () {
+        form.validate({
+          rules: {
+            gameType: 'required',
+            gameName: 'required',
+            companyName: 'required'
+          },
+          messages: {
+            gameType: '不能为空',
+            gameName: '不能为空',
+            companyName: '不能为空'
+          },
+          submitHandler: function submitHandler(e) {
+            // 临时代码，
+            window.location.href = '/product-info.html';
+          }
+        });
+      });
+    } else {
+      submitBtn.unbind('click touch').on('click touch', function () {
+        form.validate({
+          rules: {
+            typeOptions: 'required',
+            keywordsOptions: 'required'
+          },
+          messages: {
+            typeOptions: '不能为空',
+            keywordsOptions: '不能为空'
+          },
+          submitHandler: function submitHandler(e) {
+            // 临时代码，
+            window.location.href = '/add-product-detail.html'; //window.location.href='./business.html';
+          }
+        });
+      });
+    }
   }
   function selectType() {
     type.find('.js-type-heading').on('click touch', function () {
@@ -2200,8 +2478,19 @@ $.fn.SettingUser = function (opts) {
   }
 
   function updateAstro() {
+    var today = new Date();
+    var year = today.getFullYear();
+    year = "1950:" + year;
+
+    // console.log(currentYear);
+    DOBInput.datepicker({
+      changeMonth: true,
+      changeYear: true,
+      yearRange: year
+    });
+
     DOBInput.on('change', function () {
-      var DOB = new Date($(this).val().replace('-', '/'));
+      var DOB = new Date($(this).val());
       var month = DOB.getMonth() + 1;
       var date = DOB.getDate();
       astroInput.html(getAstro(month, date));

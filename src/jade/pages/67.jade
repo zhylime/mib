@@ -27,8 +27,11 @@ block content
               - klass = 'l-pad--t-5 l-pad--b-5';
             div(class=klass)
               .box
-                .title!= item.title
-                p!= item.description
+                - var step = '第'+(index + 1)+'步:'
+                .num.title!=step
+                .box--content
+                  .title.txt--500!= item.title
+                  p!= item.description
 
 
     .c-menu.l-pad--20.no-shadow
