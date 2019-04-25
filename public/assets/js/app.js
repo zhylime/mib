@@ -532,6 +532,7 @@ $(document).ready(function () {
 
   $('[data-js-get-language]').GetLanguage();
   $('[data-js-select-language]').SelectLanguage();
+  $('[data-js-select-language-single]').SelectLanguageSingle();
 
   $('[data-js-tab-panel]').TabPanel();
 
@@ -554,18 +555,26 @@ $(document).ready(function () {
     'wrapAround': true
   });
 
+  var today = new Date();
+  var yearRange = today.getFullYear();
+  yearRange = "1950:" + yearRange;
   $('.js-ui-datepicker').datepicker({
     changeMonth: true,
     changeYear: true,
-    showButtonPanel: true,
     dateFormat: 'yy-mm',
-    onClose: function onClose(dataText, inst) {
-      var month = $('#ui-datepicker-div .ui-datepicker-month :selected').val();
-      var year = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
-      $(this).datepicker('setDate', new Date(year, month, 1));
+    yearRange: yearRange,
+    showButtonPanel: true,
+    currentText: "当月",
+    onChangeMonthYear: function onChangeMonthYear(year, month, inst) {
+      $(this).val($.datepicker.formatDate('M yy', new Date(year, month - 1, 1)));
+    },
+    onClose: function onClose(dateText, inst) {
+      var month = $(".ui-datepicker-month :selected").val();
+      var year = $(".ui-datepicker-year :selected").val();
+      $(this).val($.datepicker.formatDate('M yy', new Date(year, month, 1)));
     }
-  }).click(function () {
-    $('.ui-datepicker-calendar').hide();
+  }).focus(function () {
+    $(".ui-datepicker-calendar").hide();
   });
 });
 
@@ -1503,6 +1512,7 @@ $.fn.Publish = function (opts) {
 
   var container = $(this);
   var checkbox = container.find('.js-checkbox');
+  var multiCheckbox = container.find('.js-checkbox-multiple');
   var projectExperience = container.find('.js-project-experience');
   var type = container.find('.js-type');
   var selectedTypeLabel = container.find('.js-selected-type');
@@ -1515,6 +1525,10 @@ $.fn.Publish = function (opts) {
   function events() {
     if (checkbox.length > 0) {
       initCheckbox();
+    }
+
+    if (multiCheckbox.length > 0) {
+      initMultiCheckbox();
     }
 
     initPublish();
@@ -1558,6 +1572,7 @@ $.fn.Publish = function (opts) {
     } else {
       $('.js-show-other').removeClass('hide');
       if (option1) {
+        console.log(option1);
         $('[data-show="' + option1 + '"]').removeClass('hide');
         // switch(option1){
         //   case 'input':
@@ -1674,6 +1689,19 @@ $.fn.Publish = function (opts) {
         $(this).addClass('active');
         $(this).attr('data-checked', 'checked');
         $(this).next().val('checked');
+      });
+    });
+  }
+
+  function initMultiCheckbox() {
+    multiCheckbox.each(function () {
+      $(this).on('click touch', function () {
+        var toggleVal = $(this).attr('data-checked') == 'checked' ? '' : 'checked';
+        var inputVal = toggleVal == 'checked' ? true : false;
+
+        $(this).toggleClass('active');
+        $(this).attr('data-checked', toggleVal);
+        $(this).find('input').prop('checked', inputVal);
       });
     });
   }
@@ -2464,6 +2492,45 @@ $.fn.SelectFriends = function (opts) {
   }
 
   function submitDate() {}
+};
+'use strict';
+
+$.fn.SelectLanguageSingle = function (opts) {
+
+  var container = $(this);
+  var completeBtn = container.find('.js-complete');
+  var selections = container.find('.js-selection');
+  var selected = container.find('.js-selected');
+
+  var btnLabel = completeBtn.html();
+
+  events();
+
+  function events() {
+    var queryString;
+
+    selections.on('click touch', function () {
+      var lang = $(this).find('c-select-country-language--item--name').html();
+      selections.removeClass('active');
+      $(this).toggleClass('active');
+      selected.find('c-select-country-language--item--name').html(lang);
+      selected.removeClass('hide');
+
+      var locString = $(this).find('[data-language]').attr('data-language');
+
+      queryString = 'lang=' + locString;
+      // console.log(queryString);
+    });
+
+    completeBtn.on('click touch', function () {
+      // 这里返回之前页面并且需要有参数
+      // window.location.href="./51.html?" + queryString;
+      window.location.href = './51.html';
+    });
+
+    // 默认选中国
+    selections.find('[data-location="简体中文"]').click();
+  }
 };
 'use strict';
 

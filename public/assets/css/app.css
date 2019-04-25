@@ -17,6 +17,7 @@ footer {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei";
 }
 h1,
 h2,
@@ -251,6 +252,7 @@ button {
   border-radius: 5px;
   text-align: center;
   display: block;
+  font-size: initial;
 }
 button.btn-type-3 {
   width: 100%;
@@ -1090,6 +1092,22 @@ input:-ms-input-placeholder {
   width: 24px;
   height: 24px;
 }
+.ic--setting--9 {
+  background-image: url("../img/ic-setting-9.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+}
+.ic--setting--10 {
+  background-image: url("../img/ic-setting-10.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 24px;
+  height: 24px;
+}
 .ic--edit {
   background-image: url("../img/ic-edit.png");
   background-size: 100%;
@@ -1186,6 +1204,7 @@ footer {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, "Microsoft YaHei";
 }
 h1,
 h2,
@@ -2091,6 +2110,9 @@ textarea.light:-ms-input-placeholder {
 .c-add-card .btn-type-2 {
   font-size: 12px;
 }
+.c-business .btn-type-3 {
+  font-size: 16px;
+}
 .c-business textarea {
   border: none;
 }
@@ -2152,9 +2174,11 @@ textarea.light:-ms-input-placeholder {
   line-height: 20px;
 }
 .c-business .btn-preview {
-  width: 120px;
-  height: 40px;
-  line-height: 40px;
+  padding: 5px 18px;
+  font-weight: 300;
+  font-size: 14px;
+  height: auto;
+  line-height: initial;
   display: inline-block;
 }
 .c-calendar--main--top {
@@ -2796,7 +2820,7 @@ textarea.light:-ms-input-placeholder {
   font-size: 16px;
 }
 .c-guide__add-product__item .note {
-  font-size: 13px;
+  font-size: 10px;
   font-weight: 200;
   padding-left: 10px;
 }
@@ -2808,11 +2832,14 @@ textarea.light:-ms-input-placeholder {
 .c-guide__add-product__item .input {
   display: inline-block;
   vertical-align: middle;
+  width: calc(100% - 80px);
 }
+.c-guide__add-product__item textarea,
 .c-guide__add-product__item input,
 .c-guide__add-product__item select {
   font-size: inherit;
 }
+.c-guide__add-product__item textarea.error,
 .c-guide__add-product__item input.error,
 .c-guide__add-product__item select.error {
   border: 1px solid #f00;
@@ -2822,7 +2849,14 @@ textarea.light:-ms-input-placeholder {
 }
 .c-guide__add-product__item select {
   background-color: #f2f9f8;
-  padding: 2px 0;
+  padding: 2px 0 2px 5%;
+  text-align: center;
+  text-align-last: center;
+  font-size: 12px;
+}
+.c-guide__add-product__item textarea {
+  height: 24px;
+  border: none;
 }
 .c-guide__add-product__item input::-webkit-input-placeholder {
   font-weight: 300;
@@ -2848,21 +2882,28 @@ textarea.light:-ms-input-placeholder {
   display: inline-block;
   vertical-align: middle;
   padding-left: 10px;
+  width: calc(100% - 30px);
 }
 .c-guide__add-product__item__period__detail input {
   width: 70px;
   font-size: 16px;
-  margin-right: 10px;
 }
 .c-guide__add-product__item__period__detail p {
   font-weight: 300;
   font-size: 16px;
 }
 .c-guide__add-product__item--price input {
-  width: 50px;
+  width: 90px;
+}
+.c-guide__add-product__item--price .left {
+  width: 110px;
+}
+.c-guide__add-product__item--price .right {
+  width: calc(100% - 110px);
 }
 .c-guide__add-product__item .radio-group__item {
   padding-right: 20px;
+  margin-bottom: 10px;
 }
 .c-guide__add-product__item .radio-group__item label,
 .c-guide__add-product__item .radio-group__item .ic--checkbox-2 {
@@ -2904,7 +2945,7 @@ textarea.light:-ms-input-placeholder {
   width: 50px;
   border-bottom: 1px solid #acacac;
   text-align: center;
-  color: #c5c9c9;
+  color: #000;
 }
 .c-guide__refund-setting input[type="checkbox"] {
   opacity: 0;
@@ -3972,10 +4013,10 @@ textarea.light:-ms-input-placeholder {
   font-size: 16px;
 }
 .c-product-management__edit .preview-button {
-  background-color: #f2f9f8;
-  padding: 5px 12px;
+  background-color: #00a5a5;
+  padding: 5px 18px;
   font-size: 14px;
-  color: #000;
+  color: #fff;
   font-weight: 300;
   border-radius: 5px;
   display: inline-block;
@@ -4069,22 +4110,22 @@ textarea.light:-ms-input-placeholder {
 }
 .c-publish input::-webkit-input-placeholder,
 .c-publish textarea::-webkit-input-placeholder {
-  color: #c5c9c9;
+  color: #000;
   font-weight: 300;
 }
 .c-publish input:-moz-placeholder,
 .c-publish textarea:-moz-placeholder {
-  color: #c5c9c9;
+  color: #000;
   font-weight: 300;
 }
 .c-publish input::-moz-placeholder,
 .c-publish textarea::-moz-placeholder {
-  color: #c5c9c9;
+  color: #000;
   font-weight: 300;
 }
 .c-publish input:-ms-input-placeholder,
 .c-publish textarea:-ms-input-placeholder {
-  color: #c5c9c9;
+  color: #000;
   font-weight: 300;
 }
 .c-publish select {
@@ -4113,6 +4154,9 @@ textarea.light:-ms-input-placeholder {
   font-size: 14px;
   font-weight: 300;
   line-height: 20px;
+}
+.c-publish .strong input {
+  font-weight: bold;
 }
 .c-publish .ic--add-3.large {
   width: 25px;
@@ -4154,6 +4198,13 @@ textarea.light:-ms-input-placeholder {
 }
 .c-publish--categories ul li.selected span {
   color: #fd6160;
+}
+.c-publish--other .checkbox-group .checkbox-item {
+  display: inline-block;
+  margin: 5px 20px 5px 0;
+}
+.c-publish--other .checkbox-group .checkbox-item label {
+  margin-right: 5px;
 }
 .c-register .c-sign-in--form--rol {
   margin-top: 30px;

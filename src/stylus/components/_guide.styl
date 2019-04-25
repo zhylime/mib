@@ -89,7 +89,7 @@
     &__item
       font-size 16px
       .note
-        font-size 13px
+        font-size 10px
         font-weight 200
         padding-left 10px
       .title
@@ -99,6 +99,8 @@
       .input
         display inline-block
         vertical-align middle
+        width calc(100% - 80px)
+      textarea
       input
       select
         font-size inherit
@@ -109,8 +111,14 @@
           margin-top 0
       select
         background-color $col-cornflower-blue
-        padding 2px 0
-
+        padding 2px 0 2px 5%
+        text-align center
+        text-align-last center
+        font-size 12px
+        
+      textarea
+        height 24px
+        border none
       input
         &::-webkit-input-placeholder
           font-weight 300
@@ -131,19 +139,25 @@
           display inline-block
           vertical-align middle
           padding-left 10px
+          width calc(100% - 30px)
           input
             width 70px
             font-size 16px
-            margin-right 10px
+
           p
             font-weight 300
             font-size 16px
       &--price
         input
-          width 50px
+          width 90px
+        .left
+          width 110px
+        .right
+          width calc(100% - 110px)
       .radio-group
         &__item
           padding-right 20px
+          margin-bottom 10px
           label
           .ic--checkbox-2
             display inline-block
@@ -179,6 +193,6 @@
         width 50px
         border-bottom 1px solid $col-silver-chalice
         text-align center
-        color $col-silver-sand-2
+        color $col-black
     input[type="checkbox"]
       opacity 0
