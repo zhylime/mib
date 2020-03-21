@@ -2,8 +2,8 @@ mixin showOther()
   .c-list.c-content
     .c-list--item
       .title.l-mgn--b-10 在该类别下提供什么具体服务
-      input.js-option1-input.hide(type="text", value="全套美术设计和制作", disabled, data-show="data13")
-      input.js-option1-input.hide(type="text", value="策划相关的业务外包", disabled, data-show="data14")
+      input.js-option1-input.hide.txt--black(type="text", value="全套美术设计和制作", disabled, data-show="data13")
+      input.js-option1-input.hide.txt--black(type="text", value="策划相关的业务外包", disabled, data-show="data14")
       //- select.js-option1-select.hide(name="typeOptions", data-show="data11")
       //-   option(value="") 请选择
       //-   option(value="UI") UI
@@ -282,7 +282,7 @@ mixin showOther()
         
     .c-list--item
       .title.l-mgn--b-10 请补充该品类下的其他关键词
-      input.js-option2-input.hide(type="text", placeholder="如果您有补充，请填写")
+      input.js-option2-input.placeholder-black.hide(type="text", placeholder="如果您有补充，请填写")
       .checkbox-group.js-option2-select.hide
         .checkbox-item
           label 像素风

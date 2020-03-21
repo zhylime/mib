@@ -156,7 +156,10 @@ $.fn.AddProduct = function (opts) {
   var form = container.find('form');
   var submitBtn = container.find('.js-submit');
   var addNewProductBtn = container.find('.js-add-new-product');
-
+  var promtContainer = container.find('.js-promt-container');
+  var categoryContainer = container.find('.js-category-container');
+  var promtHtml = container.find('.js-promt-container').html();
+  var categoryHtml = container.find('.js-category-container').html();
   var productHtml = container.find('.js-product-container').html();
 
   events();
@@ -165,13 +168,38 @@ $.fn.AddProduct = function (opts) {
     initAll();
 
     addNewProductBtn.on('click touch', function () {
-      $(productHtml).appendTo(container.find('.js-product-container'));
-      initAll();
+      if ($('.c-guide__add-product').length < 10) {
+        $(productHtml).appendTo(container.find('.js-product-container'));
+        initAll();
+      } else {
+        addNewProductBtn.hide();
+      }
+    });
+
+    $(document).on('click touch', '.js-collapse-btn', function () {
+      $(this).parent('.collapse').toggleClass('active');
+    });
+    // +-额外优惠
+    $(document).on('click touch', '.js-add-promt', function () {
+      addPromt();
+    });
+    $(document).on('click touch', '.js-remove-promt', function () {
+      $(this).parents('.js-promt-item').remove();
+    });
+
+    // +-商品类别
+    $(document).on('click touch', '.js-add-category', function () {
+      addCategory();
+    });
+    $(document).on('click touch', '.js-remove-category', function () {
+      $(this).parents('.js-category-item').remove();
     });
   }
   function initAll() {
     radioToggle();
+    invoiceTypeToggle();
     checkboxToggle();
+    removeItem();
     submitBtn.on('click touch', function () {
       $('input[name="period"][value="yes"]').each(function () {
         // 周期预估 输入数量 true
@@ -211,10 +239,37 @@ $.fn.AddProduct = function (opts) {
     });
   }
 
+  function invoiceTypeToggle() {
+    $('.js-invoice-radio-group .js-invoice-radio-btn').on('click touch', function () {
+      if (!$(this).hasClass('active')) {
+        $(this).parents('.js-invoice-radio-group').find('.js-invoice-radio-btn').toggleClass('active');
+      }
+    });
+  }
+
   function checkboxToggle() {
     container.find('.js-checkbox').on('click touch', function () {
       $(this).toggleClass('active');
     });
+  }
+
+  function removeItem() {
+    container.find('.js-remove-btn').on('click touch', function () {
+      $(this).parents('.c-guide__add-product__list').remove();
+      addNewProductBtn.show();
+    });
+  }
+
+  function addPromt() {
+    $(promtContainer).find('.js-remove-promt').removeClass('hide');
+    $(promtContainer).find('.js-add-promt').addClass('hide');
+    $(promtHtml).appendTo(promtContainer);
+  }
+
+  function addCategory() {
+    $(categoryContainer).find('.js-remove-category').removeClass('hide');
+    $(categoryContainer).find('.js-add-category').addClass('hide');
+    $(categoryHtml).appendTo(categoryContainer);
   }
 };
 'use strict';
@@ -412,6 +467,64 @@ $.fn.Collapse = function (opts) {
 };
 'use strict';
 
+$.fn.CompanyInfo = function (opts) {
+
+  var container = $(this);
+  var checkbox = container.find('.js-checkbox');
+
+  var projectExperience = container.find('.js-project-experience');
+
+  events();
+
+  function events() {
+    if (checkbox.length > 0) {
+      initCheckbox();
+    }
+
+    if (projectExperience.length > 0) {
+      addProjectExperience();
+      removeProjectExperience();
+    }
+  }
+
+  function initCheckbox() {
+    checkbox.each(function () {
+      $(this).on('click touch', function () {
+        resetAllInput();
+
+        $(this).addClass('active');
+        $(this).attr('data-checked', 'checked');
+        $(this).next().val('checked');
+      });
+    });
+  }
+
+  function resetAllInput() {
+    checkbox.each(function () {
+      $(this).removeClass('active');
+      $(this).attr('data-checked', '');
+      $(this).next().val('');
+    });
+  }
+
+  function addProjectExperience() {
+    var html = projectExperience.html();
+    $(document).on('click touch', '.js-add', function () {
+      if (container.find('.js-add').length < 10) {
+        projectExperience.append(html);
+      }
+    });
+  }
+
+  function removeProjectExperience() {
+    $(document).on('click touch', '.js-remove-btn', function () {
+      $(this).parents('.c-list--item').remove();
+      // container.find('.js-remove-btn').on('click touch', function(){
+    });
+  }
+};
+'use strict';
+
 $.fn.DeleteFriends = function (opts) {
 
   var container = $(this);
@@ -509,6 +622,7 @@ $(document).ready(function () {
   $('[data-js-product-management]').ProductManagement();
 
   $('[data-js-publish]').Publish();
+  $('[data-js-company-info]').CompanyInfo();
 
   $('[data-js-product-info]').ProductInfo();
 
@@ -1318,6 +1432,7 @@ $.fn.ProductInfo = function (opts) {
   function events() {
     addMedia();
     formValidation();
+    removeMedia();
   }
 
   function addMedia() {
@@ -1376,6 +1491,12 @@ $.fn.ProductInfo = function (opts) {
     }
   }
 
+  function removeMedia() {
+    container.on('click touch', '.js-remove-media', function () {
+      $(this).parent('.item.uploaded').remove();
+    });
+  }
+
   function isIOSDevice() {
     var u = navigator.userAgent;
     var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
@@ -1427,13 +1548,13 @@ $.fn.ProductManagement = function (opts) {
     });
     morePopup.show();
     popupCover.show();
-    stopBodyScrolling(true);
+    // stopBodyScrolling(true);
   }
 
   function closePopup() {
     morePopup.hide();
     popupCover.hide();
-    stopBodyScrolling(false);
+    // stopBodyScrolling(false);
   }
 
   function stopBodyScrolling(bool) {
@@ -1534,6 +1655,7 @@ $.fn.Publish = function (opts) {
     initPublish();
     if (projectExperience.length > 0) {
       addProjectExperience();
+      removeProjectExperience();
     }
 
     if (type.length > 0) {
@@ -1717,7 +1839,15 @@ $.fn.Publish = function (opts) {
   function addProjectExperience() {
     var html = projectExperience.html();
     container.find('.js-add').on('click touch', function () {
-      projectExperience.append(html);
+      if (container.find('.js-add').length < 10) {
+        projectExperience.append(html);
+      }
+    });
+  }
+
+  function removeProjectExperience() {
+    container.find('.js-remove-btn').on('click touch', function () {
+      $(this).parents('.c-list--item').remove();
     });
   }
 };
