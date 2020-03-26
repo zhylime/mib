@@ -2853,6 +2853,22 @@ textarea.light:-ms-input-placeholder {
 .c-guide__add-product #period_number-error {
   display: none !important;
 }
+.c-guide__add-product__thumb {
+  width: 100px;
+  height: 100px;
+  margin-left: 30px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.c-guide__add-product__thumb .remove-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.c-guide__add-product__thumb img {
+  width: 100%;
+  height: auto;
+}
 .c-guide__add-product__list .collapse i:after {
   content: "+";
   width: 20px;
