@@ -1213,6 +1213,22 @@ input:-ms-input-placeholder {
   display: inline-block;
   vertical-align: middle;
 }
+.ic--include__y {
+  background-image: url("../img/ic-check-2.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
+.ic--include__n {
+  background-image: url("../img/ic-include-n.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 20px;
+  height: 20px;
+}
 html,
 body {
   height: 100%;
@@ -1363,6 +1379,9 @@ textarea.light:-ms-input-placeholder {
 }
 .txt--cross {
   text-decoration: line-through;
+}
+.txt--underline {
+  border-bottom: 1px solid #dde0e3;
 }
 .txt--100 {
   font-weight: 100;
@@ -3876,12 +3895,16 @@ textarea.light:-ms-input-placeholder {
 }
 .c-price-detail__item__bottom {
   background-color: #edf9f9;
+  border-radius: 4px;
   padding: 20px 10px;
   margin-top: 15px;
 }
 .c-price-detail__item__bottom p {
   width: 60px;
   display: inline-block;
+}
+.c-price-detail__item__bottom p.unit {
+  width: 44px;
 }
 .c-price-detail__item__bottom .box-white {
   background-color: #fff;
@@ -3892,6 +3915,31 @@ textarea.light:-ms-input-placeholder {
   width: calc(100% - 60px);
   display: inline-block;
   vertical-align: middle;
+}
+.c-price-detail__promo__item {
+  margin: 15px 0;
+}
+.c-price-detail__promo__item__content,
+.c-price-detail__promo__item .icon {
+  display: inline-block;
+  vertical-align: top;
+}
+.c-price-detail__promo__item .icon {
+  padding-top: 2px;
+}
+.c-price-detail__promo__item__content {
+  width: calc(100% - 40px);
+  padding-left: 10px;
+}
+.c-price-detail__promo__item ul {
+  margin-top: 10px;
+}
+.c-price-detail__promo__item ul li {
+  list-style-type: none;
+  line-height: 24px;
+}
+.c-price-detail__promo__item .txt--underline {
+  padding-right: 15px;
 }
 .c-process h2 {
   font-size: 28px;
