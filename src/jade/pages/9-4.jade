@@ -3,12 +3,17 @@ extends ../partials/_template
 
 block content
   .c-price-detail
-    .l-pad--20
-      a.ic--back--black.l-mgn--b-20.js-go-back(href="javascript:void(0)")
-      p.txt--font--16
-        span.txt--b 商品名称：
-        span 美术外包/The art of outsourcing
-    .hr.l-mgn--b-20
+    .c-header.l-columns.l-v--m.l-pad--20.pos-relative
+      .col.c-header--back.l-w--50p.l-v--m
+        a.ic--back--black.js-go-back(href="javascript:void(0)")
+      .col.l-w--50p.txt--r.l-v--m
+        a.l-f--r(href="javascript:void(0)")
+          .ic--transalte
+
+    p.txt--font--16.l-pad--l-20.l-pad--r-20
+      span.txt--b 商品名称：
+      span 美术外包/The art of outsourcing
+    .hr.l-mgn--t-20.l-mgn--b-20
     .l-pad--l-20.l-pad--r-20
       .c-price-detail__promo
         .c-price-detail__promo__item.txt--font--16.
@@ -44,5 +49,5 @@ block content
 
 
   .c-menu.l-pad--20.no-shadow.no-border
-    a.btn-type-2(href="./9-2.html") 关闭
+    a.btn-type-2(href="./9-1.html") 关闭
     
