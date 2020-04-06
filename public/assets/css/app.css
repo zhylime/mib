@@ -4657,6 +4657,47 @@ textarea.light:-ms-input-placeholder {
   height: 100px;
   font-size: 14px;
 }
+.c-requirement__edit__item .status-group {
+  text-align: center;
+  display: inline-block;
+  vertical-align: middle;
+  float: right;
+}
+.c-requirement__edit__item .status-group .status-icon {
+  background-image: url("../img/ic-stage-status.png");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+  margin: auto;
+}
+.c-requirement__edit__item .status-group .status-text {
+  font-size: 12px;
+}
+.c-requirement__edit__item[data-status=done] .status-group .status-icon {
+  background-position: 0 0;
+}
+.c-requirement__edit__item[data-status=done] .status-group .status-text {
+  color: #00a5a5;
+}
+.c-requirement__edit__item[data-status=done] .input-wrapper {
+  border-color: #00a5a5;
+}
+.c-requirement__edit__item[data-status=inProgress] .status-group .status-icon {
+  background-position: -21px 0;
+}
+.c-requirement__edit__item[data-status=inProgress] .status-group .status-text {
+  color: #fe7380;
+}
+.c-requirement__edit__item[data-status=inProgress] .input-wrapper {
+  border-color: #fe7380;
+}
+.c-requirement__edit__item[data-status=toStart] .status-group .status-icon {
+  background-position: -42px 0;
+}
+.c-requirement__edit__item[data-status=toStart] .status-group .status-text {
+  color: #b8bebe;
+}
 .c-reservation__link {
   display: block;
   position: relative;
