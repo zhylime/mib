@@ -225,6 +225,12 @@ $.fn.AddProduct = function (opts) {
     $(document).on('click touch', '.js-remove-lang', function () {
       $(this).parents('.js-lang-item').remove();
     });
+
+    // 折后价max设置
+    $('.js-discount-price').on('click', function () {
+      var max = $('.js-price').val();
+      $(this).attr('max', max);
+    });
   }
   function initAll() {
     radioToggle();
@@ -564,7 +570,7 @@ $.fn.CompanyInfo = function (opts) {
 };
 'use strict';
 
-$.fn.datePickerRange = function (opts) {
+$.fn.DatePickerRange = function (opts) {
 
     var container = $(this);
     var datePicker = container.find('.js-ui-datepicker-range');
@@ -599,7 +605,9 @@ $.fn.datePickerRange = function (opts) {
             onClose: function onClose() {
                 $('.js-date-display').html(selectedRange);
                 // $(this).val(defaultVal);
-                $('.display-date').addClass('active');
+
+                // $('.display-date').addClass('active');
+                $('.display-date').addClass('active').removeClass('hide');
                 delete $(this).data().datepicker.first;
                 $(this).data().datepicker.inline = false;
             }
@@ -757,6 +765,7 @@ $(document).ready(function () {
   $('[data-js-more-menu]').MoreMenu();
   $('[data-js-favorite]').Favorite();
   $('[data-js-business]').Business();
+  $('[data-edit-stage]').EditStage();
 
   $('[data-js-add-media]').AddMedia();
   $('[data-js-upload-file]').UploadFile();
@@ -777,7 +786,7 @@ $(document).ready(function () {
   $('[data-js-search]').Search();
 
   $('[data-js-datepicker]').datePicker();
-  $('[data-js-datepickerRange]').datePickerRange();
+  $('[data-js-datepickerRange]').DatePickerRange();
 
   $('[data-js-spinner]').Spinner();
 
@@ -797,6 +806,58 @@ $(document).ready(function () {
 // $(window).onload(function(){
 //   $('[data-js-sign-in]').SignIn();
 // })
+'use strict';
+
+$.fn.EditStage = function (opts) {
+
+  var container = $(this);
+
+  var stageTemplateHTML = container.find('.template').html();
+
+  events();
+
+  function events() {
+    syncInput();
+    $(document).on('click touch', '.js-add-stage', function () {
+      // var stageNum = $(this).parents('.js-stage-item').data('stage');
+      // addStage(stageNum+1);
+      $(stageTemplateHTML).insertAfter($(this).parents('.js-stage-item'));
+      syncStageNum();
+      // syncInput();
+    });
+
+    $(document).on('click touch', '.js-remove-stage', function () {
+      var stageNum = $(this).parents('.js-stage-item').data('stage');
+      var length = $('.js-stage-item').length;
+      if (stageNum > 1 && stageNum < length - 1) {
+        $(this).parents('.js-stage-item').remove();
+        syncStageNum();
+      }
+    });
+  }
+
+  function syncInput() {
+    $('input.input-number').on('change', function () {
+      var n = $(this).val();
+      $(this).parents('.js-stage-item').find('span.input-number').html(n);
+    });
+  }
+
+  function syncStageNum() {
+    var length = $('.js-stage-item').length;
+    $(container).find('.js-stage-item').each(function (i) {
+
+      if (!$(this).parents().hasClass('template')) {
+        $(this).data('stage', i);
+        if (i > 1 && i < length - 1) {
+          $(this).find('.input-wrapper span').html('第' + i + '阶段');
+          $(this).find('.input-wrapper input').val('第' + i + '笔付款');
+        };
+      }
+    });
+    syncInput();
+  }
+};
 'use strict';
 
 $.fn.Favorite = function (opts) {

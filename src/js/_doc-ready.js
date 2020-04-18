@@ -52,6 +52,7 @@ $(document).ready(function(){
   $('[data-js-more-menu]').MoreMenu();
   $('[data-js-favorite]').Favorite();
   $('[data-js-business]').Business();
+  $('[data-edit-stage]').EditStage();
 
 
   $('[data-js-add-media]').AddMedia();
@@ -76,7 +77,7 @@ $(document).ready(function(){
   $('[data-js-search]').Search();
 
   $('[data-js-datepicker]').datePicker();
-  $('[data-js-datepickerRange]').datePickerRange();
+  $('[data-js-datepickerRange]').DatePickerRange();
 
   $('[data-js-spinner]').Spinner();
 
