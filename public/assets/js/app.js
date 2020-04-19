@@ -721,7 +721,7 @@ $(document).ready(function () {
   $('[data-js-sign-in-by-mobile]').SignInByMobile();
   $('[data-js-sign-in-by-mobile]').MobileVerification();
   $('[data-js-register]').Register();
-  $('[data-js-order-detail]').OrderDetail();
+  // $('[data-js-order-detail]').OrderDetail(); --removed
   $('[data-js-prepay]').PrePay();
   $('[data-js-payment-method]').PaymentMethod();
   $('[data-js-home]').Home();
@@ -751,6 +751,7 @@ $(document).ready(function () {
   $('[data-js-company-info]').CompanyInfo();
 
   $('[data-js-product-info]').ProductInfo();
+  $('[data-js-invoice]').Invoice();
 
   $('[data-js-chat]').Chat();
   $('[data-js-select-and-count]').SelectAndCount();
@@ -1209,6 +1210,42 @@ $.fn.Home = function (opts) {
       infinite: false,
       slidesToShow: 4,
       arrows: false
+    });
+  }
+};
+'use strict';
+
+$.fn.Invoice = function (opts) {
+
+  var container = $(this);
+  var resetInputBtn = container.find('.js-clear');
+  var invoiceTypeBtn = container.find('.js-invoice-type .type');
+  var typeInput = container.find('.js-invoice-type .type-input');
+  var deleteComBtn = container.find('.js-delete');
+  var invoiceBtn = container.find('.js-invoice-btn');
+
+  events();
+
+  function events() {
+
+    resetInputBtn.on('click touch', function () {
+      $(this).prev().val('');
+    });
+
+    invoiceTypeBtn.on('click touch', function () {
+      var n;
+      invoiceTypeBtn.toggleClass('active');
+      typeInput.removeClass('active');
+      n = container.find('.js-invoice-type .type.active').data('tab');
+      container.find('.js-invoice-type .type-input[data-tab-panel=' + n + ']').addClass('active');
+    });
+
+    deleteComBtn.on('click touch', function () {
+      $(this).parent().remove();
+    });
+
+    invoiceBtn.on('click touch', function () {
+      $(this).toggleClass('active');
     });
   }
 };
@@ -3201,6 +3238,13 @@ $.fn.Spinner = function (opts) {
   events();
 
   function events() {
+    if (!container.hasClass('disabled')) {
+      initSpinner();
+    } else {
+      inputBox.attr('readonly', 'readonly');
+    }
+  }
+  function initSpinner() {
     var spinnerNum = 0;
     upBtn.on('click touch', function () {
       if (spinnerNum < max) {
