@@ -1,7 +1,9 @@
 $.fn.ProjectList = function(opts){
 
-  var sliderContainer = $(this).find('.js-categories-slider');
+  // var sliderContainer = $(this).find('.js-categories-slider');
   var favoriteIcons = $(this).find('.js-favorite');
+  var filter1 = $(this).find('.filter-1');
+  var filterBtn = $(this).find('.filter .filter-btn');
 
 
  
@@ -9,9 +11,20 @@ $.fn.ProjectList = function(opts){
   events();
 
   function events(){
-    slider();
-    // getData();
+    // slider();
+   
     toggleFavorite();
+
+
+    filterBtn.on('click touch',function(){
+      filterBtn.removeClass('active');
+      $(this).addClass('active');
+      $('.filter__dropdown').hide();
+    })
+    filter1.find('.filter-btn').on('click touch', function(e){
+      $(this).next().stop().slideToggle();
+      $(this).addClass('active')
+    })
    }
 
   function slider(){
@@ -22,9 +35,7 @@ $.fn.ProjectList = function(opts){
       arrows: false
     })
   }
-  // function getData(){
-  //   var 
-  // }
+
   function toggleFavorite(){
     favoriteIcons.each(function(){
       $(this).on('click touch', function(e){

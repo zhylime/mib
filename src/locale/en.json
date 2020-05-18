@@ -13,18 +13,24 @@
       {
         "title": "著名大师若昕，欧美魔幻画风",
         "image": "home-thumb-1.jpg",
+        "discount_price": "3000",
         "price": "5000",
         "days": "45",
         "comments": "26",
-        "stars_image": "ic-stars-1.png"
+        "stars_image": "ic-stars-1.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评"
       },
       {
         "title": "大师zhangji曾服务世界顶级项目",
         "image": "home-thumb-2.jpg",
+        "discount_price": "3000",
         "price": "5000",
         "days": "45",
         "comments": "26",
-        "stars_image": "ic-stars-2.png"
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评"
       }
     ]
   },
@@ -36,18 +42,24 @@
       {
         "title": "现代风格3D角色，韩国作者",
         "image": "home-thumb-3.jpg",
-        "price": "12000",
+        "discount_price": "3000",
+        "price": "5000",
         "days": "45",
-        "comments": "54",
-        "stars_image": "ic-stars-3.png"
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评"
       },
       {
         "title": "大师zhangji曾服务世界顶级项目",
         "image": "home-thumb-4.jpg",
+        "discount_price": "3000",
         "price": "5000",
         "days": "45",
         "comments": "26",
-        "stars_image": "ic-stars-4.png"
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评"
       }
     ],
     "other": "查看更多同类资源"
@@ -60,25 +72,37 @@
       {
         "title": "水墨风格/国产武侠原画，超高精度，包满意",
         "image": "home-thumb-5.jpg",
-        "price": "¥30000-50000",
+        "discount_price": "3000",
+        "price": "5000",
         "days": "45",
-        "comments": "1012",
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
         "author": "home-author-thumb-1.jpg"
       },
       {
         "title": "游戏美术风格的归类与划分",
         "image": "home-thumb-6.jpg",
-        "price": "¥30000-50000",
+        "discount_price": "3000-5000",
+        "price": "5000-8000",
         "days": "45",
-        "comments": "2091",
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
         "author": "home-author-thumb-2.jpg"
       },
       {
         "title": "游戏美术风格的归类与划分",
         "image": "home-thumb-7.jpg",
-        "price": "¥ 30000-50000",
+        "discount_price": "3000-5000",
+        "price": "5000-8000",
         "days": "45",
-        "comments": "2091",
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
         "author": "home-author-thumb-3.jpg"
       }
     ]
@@ -92,46 +116,62 @@
       {
         "title": "蒸汽朋克风格场景设计，多款成功项目经验，顶级水平",
         "image": "list-thumb-1.jpg",
-        "price": "¥599",
-        "days": "1",
-        "comments": "1001",
-        "author": "list-author-thumb-1.jpg",
-        "stars_image": "ic-stars-4.png"
+        "discount_price": "3000",
+        "price": "5000",
+        "days": "45",
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
+        "author": "list-author-thumb-1.jpg"
       },
       {
         "title": "中国水墨风格/国产武侠原画，超高精度，包满意",
-        "image": "home-thumb-5.jpg",
-        "price": "¥599",
-        "days": "1",
-        "comments": "2091",
-        "author": "home-author-thumb-1.jpg",
-        "stars_image": "ic-stars-3.png"
-      },
-      {
-        "title": "3D/支持虚幻4引擎/欧美竞速，模型设计，全球顶级制作水准",
         "image": "list-thumb-2.jpg",
-        "price": "¥599",
-        "days": "1",
-        "comments": "2091",
-        "author": "list-author-thumb-2.jpg",
-        "stars_image": "ic-stars-2.png"
-      },
-      {
-        "title": "3D/支持虚幻4引擎/欧美竞速，模型设计，全球顶级制作水准",
-        "image": "home-thumb-6.jpg",
-        "price": "¥599",
-        "days": "1",
-        "comments": "2091",
-        "author": "home-author-thumb-3.jpg",
-        "stars_image": "ic-stars-1.png"
+        "discount_price": "3000",
+        "price": "5000",
+        "days": "45",
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
+        "author": "home-author-thumb-1.jpg"
       },
       {
         "title": "3D/支持虚幻4引擎/欧美竞速，模型设计，全球顶级制作水准",
         "image": "list-thumb-3.jpg",
-        "price": "¥599",
-        "days": "1",
-        "comments": "2091",
-        "author": "list-author-thumb-3.jpg"
+        "discount_price": "3000",
+        "price": "5000",
+        "days": "45",
+        "comments": "26",
+        "stars_image": "ic-stars-2.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
+        "author": "list-author-thumb-2.jpg"
+      },
+      {
+        "title": "3D/支持虚幻4引擎/欧美竞速，模型设计，全球顶级制作水准",
+        "image": "list-thumb-1.jpg",
+        "discount_price": "3000",
+        "price": "5000",
+        "days": "45",
+        "comments": "26",
+        "stars_image": "ic-stars-1.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
+        "author": "home-author-thumb-3.jpg"
+      },
+      {
+        "title": "3D/支持虚幻4引擎/欧美竞速，模型设计，全球顶级制作水准",
+        "image": "list-thumb-3.jpg",
+        "discount_price": "3000",
+        "price": "5000",
+        "days": "45",
+        "comments": "26",
+        "stars_image": "ic-stars-3.png",
+        "promo":["整单95折", "额外满减"],
+        "msg":"超赞商户！100%客户好评",
+        "author": "home-author-thumb-2.jpg"
       }
     ]
   },

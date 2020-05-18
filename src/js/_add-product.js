@@ -7,7 +7,7 @@ $.fn.AddProduct = function(opts){
   var promtContainer = container.find('.js-promt-container');
   var categoryContainer = container.find('.js-category-container');
   var promtHtml = container.find('.js-promt-container').html();
-  var categoryHtml = container.find('.js-category-container').html();
+  var categoryHtml = container.find('.js-category-container .template').html();
   var productHtml = container.find('.js-product-container').html();
 
 
@@ -148,8 +148,8 @@ $.fn.AddProduct = function(opts){
   }
   function updateCategoryIndex(){
     $('.js-category-item').each(function(i){
-      $(this).attr('data-category-index',i+1);
-      $(this).find('.js-category-index').html(i+1);
+      $(this).attr('data-category-index',i);
+      $(this).find('.js-category-index').html(i);
     })
   }
 

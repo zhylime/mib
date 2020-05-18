@@ -2,6 +2,7 @@
   &--note
     font-size 16px
     line-height 20px
+    color $col-persian-green
   .ic--reservation
     margin auto 0 auto auto
   .m-display-projects--item--name
@@ -14,3 +15,77 @@
       right 10px
       top 10px
       z-index 1
+  &__filters
+    margin-top 20px
+    display flex
+    justify-content space-between
+    padding 0 20px
+    .filter
+      position relative
+      
+    .filter__dropdown
+      display none
+      width 100px
+      position absolute
+      top 30px
+      left -20px
+      background $col-white
+      border 1px solid $col-iron
+      border-radius 5px
+      padding 10px 20px
+      z-index 10
+      li
+        list-style-type none
+        line-height 24px
+        
+        
+    .filter-btn
+      span
+        color inherit
+      &.active
+        color $col-persian-green
+    .filter-1
+      .filter-btn
+        &:after
+          content ""
+          width 0
+          height 0
+          border 6px solid transparent
+          border-top 6px solid $col-iron
+          display inline-block
+          margin-top 5px
+          margin-left 3px
+          vertical-align middle
+        &.active
+          &:after
+            border-bottom 6px solid $col-persian-green
+            border-top 6px solid transparent
+            margin-top -7px
+    .filter-2
+      .filter-btn
+        &:after
+          content ""
+          background url(../img/ic-filter-arrows.png)
+          background-size 100%
+          width 5px
+          height 10px
+          background-position center
+          display inline-block
+          margin-left 3px
+          vertical-align middle
+    .filter-3
+      .filter-btn
+        &:after
+          content ""
+          background url(../img/ic-filters.png)
+          background-size 100%
+          background-position center
+          width 12px
+          height 12px
+          margin-left 3px
+          display inline-block
+          vertical-align middle
+          
+          vertical-align middle
+            
+

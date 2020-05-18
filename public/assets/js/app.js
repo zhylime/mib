@@ -183,7 +183,7 @@ $.fn.AddProduct = function (opts) {
   var promtContainer = container.find('.js-promt-container');
   var categoryContainer = container.find('.js-category-container');
   var promtHtml = container.find('.js-promt-container').html();
-  var categoryHtml = container.find('.js-category-container').html();
+  var categoryHtml = container.find('.js-category-container .template').html();
   var productHtml = container.find('.js-product-container').html();
 
   events();
@@ -312,8 +312,8 @@ $.fn.AddProduct = function (opts) {
   }
   function updateCategoryIndex() {
     $('.js-category-item').each(function (i) {
-      $(this).attr('data-category-index', i + 1);
-      $(this).find('.js-category-index').html(i + 1);
+      $(this).attr('data-category-index', i);
+      $(this).find('.js-category-index').html(i);
     });
   }
 };
@@ -574,12 +574,17 @@ $.fn.DatePickerRange = function (opts) {
 
     var container = $(this);
     var datePicker = container.find('.js-ui-datepicker-range');
+    var DatePickerDefaultValue = '点击设置折扣价的有效周期';
 
     events();
 
     function events() {
 
         rangePicker();
+
+        container.find('.js-clear-date').on('click touch', function () {
+            clearDate($(this));
+        });
     }
 
     function rangePicker() {
@@ -613,6 +618,12 @@ $.fn.DatePickerRange = function (opts) {
                 $(this).data().datepicker.inline = false;
             }
         });
+    }
+
+    function clearDate(el) {
+        el.prev().html('');
+        el.parents('.display-date').removeClass('active');
+        el.parents('.datepicker-wrapper').find('.date-picker-input').val(DatePickerDefaultValue);
     }
 };
 'use strict';
@@ -829,16 +840,28 @@ $.fn.EditStage = function (opts) {
       // syncInput();
     });
 
+    // 移除阶段
     $(document).on('click touch', '.js-remove-stage', function () {
       var stageNum = $(this).parents('.js-stage-item').data('stage');
       var length = $('.js-stage-item').length;
       if (stageNum > 1 && stageNum < length - 1) {
         $(this).parents('.js-stage-item').remove();
         syncStageNum();
+      } else {
+        $(this).addClass('hide');
+        $(this).next().removeClass('hide');
+        $(this).parents('.js-stage-item').addClass('disabled');
       }
+    });
+
+    $(document).on('click touch', '.js-refresh-stage', function () {
+      $(this).addClass('hide');
+      $(this).prev().removeClass('hide');
+      $(this).parents('.js-stage-item').removeClass('disabled');
     });
   }
 
+  // 重制数字
   function syncInput() {
     $('input.input-number').on('change', function () {
       var n = $(this).val();
@@ -846,6 +869,7 @@ $.fn.EditStage = function (opts) {
     });
   }
 
+  // 重制数列
   function syncStageNum() {
     var length = $('.js-stage-item').length;
     $(container).find('.js-stage-item').each(function (i) {
@@ -1798,15 +1822,27 @@ $.fn.ProgressBar = function (opts) {
 
 $.fn.ProjectList = function (opts) {
 
-  var sliderContainer = $(this).find('.js-categories-slider');
+  // var sliderContainer = $(this).find('.js-categories-slider');
   var favoriteIcons = $(this).find('.js-favorite');
+  var filter1 = $(this).find('.filter-1');
+  var filterBtn = $(this).find('.filter .filter-btn');
 
   events();
 
   function events() {
-    slider();
-    // getData();
+    // slider();
+
     toggleFavorite();
+
+    filterBtn.on('click touch', function () {
+      filterBtn.removeClass('active');
+      $(this).addClass('active');
+      $('.filter__dropdown').hide();
+    });
+    filter1.find('.filter-btn').on('click touch', function (e) {
+      $(this).next().stop().slideToggle();
+      $(this).addClass('active');
+    });
   }
 
   function slider() {
@@ -1817,9 +1853,7 @@ $.fn.ProjectList = function (opts) {
       arrows: false
     });
   }
-  // function getData(){
-  //   var 
-  // }
+
   function toggleFavorite() {
     favoriteIcons.each(function () {
       $(this).on('click touch', function (e) {
@@ -3418,6 +3452,7 @@ $.fn.UploadFile = function (opts) {
 
       reader.onload = function () {
         displayFile.html(file.name);
+        _this.parents('[data-js-upload-file]').find('.display-file').removeClass('hide');
       };
     });
   }

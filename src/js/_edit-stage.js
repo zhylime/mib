@@ -23,6 +23,7 @@ $.fn.EditStage = function(opts){
     
     });
 
+    // 移除阶段
     $(document).on('click touch', '.js-remove-stage',function(){
       var stageNum = $(this).parents('.js-stage-item').data('stage');
       var length = $('.js-stage-item').length;
@@ -30,12 +31,24 @@ $.fn.EditStage = function(opts){
         $(this).parents('.js-stage-item').remove();
         syncStageNum();
       }
+      else{
+        $(this).addClass('hide');
+        $(this).next().removeClass('hide');
+        $(this).parents('.js-stage-item').addClass('disabled');
+      }
+    })
+
+    $(document).on('click touch', '.js-refresh-stage', function(){
+      $(this).addClass('hide');
+      $(this).prev().removeClass('hide');
+      $(this).parents('.js-stage-item').removeClass('disabled');
     })
     
   }
 
 
 
+  // 重制数字
   function syncInput(){
     $('input.input-number').on('change', function(){
       var n = $(this).val();
@@ -43,6 +56,7 @@ $.fn.EditStage = function(opts){
     })
   }
  
+   // 重制数列
   function syncStageNum(){
     var length = $('.js-stage-item').length;
     $(container).find('.js-stage-item').each(function(i){
@@ -57,8 +71,9 @@ $.fn.EditStage = function(opts){
       }
     })
     syncInput();
-      $('[data-js-datepickerRange]').DatePickerRange();
+    $('[data-js-datepickerRange]').DatePickerRange();
   }
+
 
   
 }

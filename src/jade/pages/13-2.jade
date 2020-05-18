@@ -2,7 +2,7 @@
 extends ../partials/_template
 
 block content
-  .c-reservation.has-sticky-btn
+  .c-reservation.has-sticky-btn(data-js-reservation)
     .c-header.l-columns.l-v--m.l-pad--20.pos-relative
       .col.c-header--back.l-w--50p.l-v--m
         a.ic--back--black.js-go-back(href="javascript:void(0)")
@@ -36,7 +36,8 @@ block content
               - klass = 'active js-checkbox'
             else
               - klass = 'js-checkbox'
-            li(class=klass)!=item.name
+            li(class=klass)
+              .list-content!=item.name
     
       .hr
       .c-reservation__order-detail__section.l-columns

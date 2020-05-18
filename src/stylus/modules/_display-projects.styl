@@ -19,6 +19,9 @@
       line-height 16px
     &--price
       color $col-flamenco
+      &.txt--cross
+        color $col-silver-sand-2
+        font-size smaller
     &--price
     &--days
     &--comments
@@ -29,7 +32,22 @@
       float right
       img
         height 100%
-    .l-columns
+    &__promo
+      margin 5px 0 0
+      .item
+        background-color $col-cornflower-blue
+        border 1px solid $col-persian-green
+        display inline-block
+        vertical-align middle
+        font-size 8px
+        padding 3px 6px
+        border-top-left-radius 5px
+        border-bottom-right-radius 5px
+        text-align center
+        margin-right 5px
+        margin-bottom 5px
+        line-height 11px
+.l-columns
       line-height 0
     &.col-1
       .m-display-projects--item--name

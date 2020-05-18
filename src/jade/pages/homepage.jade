@@ -9,8 +9,10 @@ block content
     +search-bar(0)
 
     .c-categories.l-mgn--t-15.js-categories-slider
-      each item in home_categories
-        a.c-categories--btn(href="project-list.html")!=item
+      each item, index in home_categories
+        - var _klass = index == 0 ? 'active' : '';
+          a.c-categories--btn(href="javascript:void(0);", class=_klass)!=item
+
     .l-mgn--t-40
       +display-projects(home_display1)
       +display-projects(home_display2)

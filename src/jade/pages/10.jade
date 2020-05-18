@@ -36,10 +36,13 @@ block content
       input.l-w--100p.txt--font--14(type="text", placeholder="请填写要翻译的总文字量")
     .hr.l-mgn--b-20.l-mgn--t-15
     .l-pad--l-10.l-pad--r-10(data-js-upload-file)
+      .display-file.hide
+        div.
+          <span class="ic--checkbox-2 active"></span> <span class="txt--w--lighter">已上传</span> 文档名：<span class="js-display-file txt--persian-green"></span>
       div 点击
         a.txt--persian-green.upload-file-btn.js-upload-file-btn.txt--underline(href="javascript:void(0);") 上传翻译文件
           input.upload-file-input.js-upload-file(type="file", name="")
-      div.display-file.js-display-file
+      
     .hr.l-mgn--b-20.l-mgn--t-15
     .l-pad--l-10.l-pad--r-10
       .txt--font--16.txt--b.l-mgn--b-15 翻译内容覆盖的专业领域
@@ -66,7 +69,9 @@ block content
           .radio-label.txt--font--14 有，点击
             a.txt--persian-green.upload-file-btn.js-upload-file-btn.txt--underline(href="javascript:void(0);") 上传文件
               input.upload-file-input.js-upload-file(type="file", name="")
-            div.display-file.js-display-file
+            .display-file.hide
+              div.
+                <span class="ic--checkbox-2 active"></span> <span class="txt--w--lighter">已上传</span> 文档名：<span class="js-display-file txt--persian-green"></span>
     .hr.l-mgn--b-20.l-mgn--t-15
     .l-pad--l-10.l-pad--r-10
       .txt--font--16.txt--b.l-mgn--b-15 请勾选对翻译质量的要求（可多选）
@@ -109,8 +114,12 @@ block content
               input(type="hidden" name="")
     .hr.l-mgn--t-20.l-mgn--b-20
     .l-pad--l-10.l-pad--r-10.l-pad--b-20
-      .txt--font--16.txt--b.l-mgn--b-15 其他要求
-      input.l-w--100p.txt--font--14(type="text", placeholder="如有其他要求请填写")
+      a(href="javascript:void(0);")
+        .ic--add-4.l-inl-b.l-v--m.l-mgn--r-10
+        span.txt--persian-green.l-inl-b.l-v--m 点击添加其他需求
+      //- .txt--font--16.txt--b.l-mgn--b-15 其他要求
+      //- input.l-w--100p.txt--font--14(type="text", placeholder="如有其他要求请填写")
+
 
 
   .c-menu.l-pad--20.no-shadow

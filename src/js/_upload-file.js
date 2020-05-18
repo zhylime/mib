@@ -26,6 +26,8 @@ $.fn.UploadFile = function(opts){
      
       reader.onload = function(){
         displayFile.html(file.name);
+        _this.parents('[data-js-upload-file]').find('.display-file').removeClass('hide');
+      
       }
     })
 

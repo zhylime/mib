@@ -24,6 +24,21 @@
         vertical-align middle
         .price
           color 
+      .special-offer
+        ul
+          li
+            list-style-type none
+            background-color $col-cornflower-blue
+            border 1px solid $col-persian-green
+            display inline-block
+            vertical-align middle
+            font-size 8px
+            padding 3px 6px
+            border-top-left-radius 5px
+            border-bottom-right-radius 5px
+            text-align center
+            margin-right 5px
+            margin-bottom 5px
     &__section
       margin 20px 0
       .title
@@ -64,16 +79,62 @@
         text-align left
         margin-bottom 20px
         text-align center
-        padding 5px 10px
+        padding 0
+        .list-content
+          display block
+          border-radius 5px
+          padding 5px 10px
+          font-size 12px
+          
         &.active
           background-color $col-cornflower-blue
           border-radius 4px
           color $col-persian-green
+          .list-content
+            background-color $col-cornflower-blue
+            position relative
+            padding-right 15px
+            &:after
+              content ""
+              background url(../img/ic-selected.png)
+              background-size 100%
+              background-position center
+              background-repeat no-repeat
+              display block
+              position absolute
+              bottom 0
+              right 0
+              width 10px
+              height 9px
        
       .language-list
-        padding 5px 10px
-        font-size 12px
+        
+        padding 5px 0
         margin 2px 0
+      
+        &.active
+          background-color transparent !important
+          .list-content
+            display inline-block
+            border-radius 5px
+            padding 5px 10px
+            font-size 12px
+          // .list-ontent
+          //   background-color $col-cornflower-blue
+          //   position relative
+          //   padding-right 15px
+          //   &:after
+          //     content ""
+          //     background url(../img/ic-selected.png)
+          //     background-size 100%
+          //     background-position center
+          //     background-repeat no-repeat
+          //     display block
+          //     position absolute
+          //     bottom 0
+          //     right 0
+          //     width 10px
+          //     height 9px
         
         
         

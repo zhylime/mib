@@ -18,7 +18,33 @@ block content
           img.l-v--m.l-mgn--r-10(src=paths.img+"ic-location-2.png", alt="", width="18")
           span.txt--font--18.txt--b 添加商品类型、名称和定价
           p.l-mgn--t-5.txt--b 请选设定商品分类，并根据类别设定商品的定价
+
         .js-category-container
+          //- template
+          .template.hide
+            .c-guide__add-product__general.js-category-item
+              .c-guide__add-product__general__line1.l-mgn--b-15
+                img.l-inl-b.l-v--m(src=paths.img + "ic-check-2.png", alt="", width="20")
+                .input-wrapper.has-border.l-inl-b.has-corner--5
+                  span.l-inl-b.l-v--m.l-mgn--r-5.txt--b.
+                    类别<span class="js-category-index">1</span>: 
+                  input.txt--font--14.l-inl-b.l-v--m(type="text", placeholder="请填写该类别的关键词")
+                .ic--add-2.l-v--m.l-inl-b.js-add-category
+                .ic--mutiply.large.l-v--m.l-inl-b.js-remove-category.hide
+              div(data-js-add-media)
+                .c-guide__add-product__general__line2.l-mgn--b-15(data-js-add-media)
+                  .input-wrapper.has-border.l-inl-b.has-corner--5
+                    span.l-inl-b.l-v--m.l-mgn--r-5.txt--b 备注: 
+                    input.txt--font--14.l-inl-b.l-v--m(type="text", placeholder="补充说明")
+                  .js-media-one.media-wrapper.btn-type-2.l-inl-b.l-v--m
+                    span.txt--white.txt--font--14 上传照片
+                    input.input-file.js-input-file(type="file", name="", accept="image/*" capture="camera")
+                .js-media-display.c-guide__add-product__thumb.hide
+              .c-guide__add-product__general__line3.l-mgn--b-10.l-mgn--l-30
+              .c-guide__add-product__general__line4.l-mgn--b-10.l-mgn--l-30
+                a(href="./66-1.html")
+                  span.txt--persian-green.l-inl-b.l-v--m.l-mgn--r-10 点击添加该品类下的商品
+                  .ic--add-4.l-inl-b.l-v--m
           .c-guide__add-product__general.js-category-item(data-category-index=1)
             .c-guide__add-product__general__line1.l-mgn--b-15
               img.l-inl-b.l-v--m(src=paths.img + "ic-check-2.png", alt="", width="20")

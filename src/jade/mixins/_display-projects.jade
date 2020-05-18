@@ -17,7 +17,12 @@ mixin display-projects(data, ifLike)
       each item, i in data.body
         - var klass = col == 2 ? 'l-w--50p col-2' : 'l-w--100p col-1';
         - var space_klass = (i+1)%2 == 0 ? 'l-pad--l-5' : 'l-pad--r-5';
-        - var _price = item.price + '/套';
+        - var _discount_price;
+
+
+        if (item.discount_price)
+           - _discount_price = '¥' + item.discount_price + '/套';
+        - var _price = '¥' + item.price + '/套';
         - var _days = '制作周期: ' + item.days + '天';
         - var _comments = item.comments + '人评价';
         //- - klass = klass + ' ' + space_klass;
@@ -27,26 +32,47 @@ mixin display-projects(data, ifLike)
         if (col == 2)
           - klass = klass + ' ' + space_klass;
 
-        a.col.m-display-projects--item(class=klass, href="store.html")
+        a.col.m-display-projects--item.l-v--t(class=klass, href="store.html")
           if (data.hasFavorite)
             .ic--favorite.js-favorite(class=favClass)
           img.has-corner--5.l-w--100p(src=paths.img + item.image, class=shadow_klass)
           .m-display-projects--item--name!=item.title
           if (col == 2)
-            .m-display-projects--item--price!=_price
-            .m-display-projects--item--days!=_days
+            if (_discount_price)
+              .m-display-projects--item--price.l-inl-b.l-mgn--r-5!=_discount_price
+              .m-display-projects--item--price.txt--cross.l-inl-b!=_price
+            else
+              .m-display-projects--item--price!=_price
+            //- .m-display-projects--item--days!=_days
+            if (item.promo)
+              .m-display-projects--item__promo
+                each promoItem in item.promo
+                  .item!=promoItem
+
             .l-columns
               .col.l-w--30p
                 img.l-w--100p(src=paths.img + stars_img)
               .col.l-w--60p.l-pad--l-10.m-display-projects--item--comments!=_comments
+            if (item.msg)
+              .txt--persian-green.txt--font--10!=item.msg
           else
-            .col.l-w--70p.l-v--t
-              .m-display-projects--item--price!=_price
-              .m-display-projects--item--days!=_days
+            .col.l-w--70p.l-v--t.l-mgn--t-5
+              if (_discount_price)
+                .m-display-projects--item--price.l-inl-b.l-mgn--r-5!=_discount_price
+                .m-display-projects--item--price.txt--cross.l-inl-b!=_price
+              else
+                .m-display-projects--item--price!=_price
+              //- .m-display-projects--item--days!=_days
+              if (item.promo)
+                .m-display-projects--item__promo
+                  each promoItem in item.promo
+                    .item!=promoItem
               .l-columns.l-pad--l-5.l-pad--r-5
                 .col.l-w--25p.l-v--m
                   img.l-w--100p(src=paths.img + stars_img)
                 .col.l-w--70p.l-pad--l-10.m-display-projects--item--comments.l-v--m!=_comments
+              if (item.msg)
+                .txt--persian-green.txt--font--10!=item.msg
             .col.l-w--30p.l-pad--r-10
               .m-display-projects--item--author
                 img.has-corner--50p(src=paths.img + item.author)

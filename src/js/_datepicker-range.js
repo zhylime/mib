@@ -2,6 +2,7 @@ $.fn.DatePickerRange = function(opts){
 
   var container = $(this);
   var datePicker = container.find('.js-ui-datepicker-range');
+  const DatePickerDefaultValue = '点击设置折扣价的有效周期';
 
 
 
@@ -13,6 +14,10 @@ $.fn.DatePickerRange = function(opts){
   function events(){
  
     rangePicker();
+
+    container.find('.js-clear-date').on('click touch', function(){
+      clearDate($(this));
+    })
   }
 
   function rangePicker(){
@@ -47,6 +52,13 @@ $.fn.DatePickerRange = function(opts){
           $(this).data().datepicker.inline = false;
       }
     })
+  }
+
+  function clearDate(el){
+    el.prev().html('');
+    el.parents('.display-date').removeClass('active');
+    el.parents('.datepicker-wrapper').find('.date-picker-input').val(DatePickerDefaultValue);
+
   }
   
  

@@ -11,8 +11,13 @@ block content
       .c-reservation__order-detail__top
         img(src=paths.img+"product-image-6.jpg", alt="")
         .c-reservation__order-detail__top__content
-          .txt--font--16.l-mgn--b-10
+          .txt--font--16.l-mgn--b-5
             <b>限时特惠</b> <span class="txt--bittersweet l-mgn--l-5 l-mgn--r-5 txt--b">¥520.00</span> <span class="txt--cross txt--iron txt--font--14">¥720</span>
+          .special-offer
+            ul
+              li 整单95折
+              li 额外满减
+              li 限时优惠
           .txt--font--12.
             已选 <span class="js-level">S级</span><span class="js-lang">中文 → 英文</span>
           .txt--font--12 单位：/千字源文字
@@ -39,7 +44,8 @@ block content
               - klass = 'active js-checkbox'
             else
               - klass = 'js-checkbox'
-            li.language-list.l-w--100p.txt--l(class=klass)!=item.name
+            li.language-list.l-w--100p.txt--l(class=klass)
+              .list-content!=item.name
     
       .hr
       .c-reservation__order-detail__section.l-columns
